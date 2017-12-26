@@ -1,5 +1,15 @@
 <resources>
     <string name="app_name">Stellar Leap Scorepad</string>
+
+    <!--WelcomeActivity -->
     <string name="score_game">Score game!</string>
     <string name="about">About</string>
+
+    <!--AboutActivity-->
+    <!--TODO Get text from Weird Giraffe-->
+    <string name="about_the_game">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</string>
+    <!--TODO get link to rules-->
+    <string name="see_rules">See rules</string>
+    <!--TODO write something about amiculous apps-->
+    <string name="about_amiculous_apps">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
 </resources>
