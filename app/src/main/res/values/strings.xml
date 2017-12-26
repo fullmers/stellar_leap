@@ -12,4 +12,14 @@
     <string name="see_rules">See rules</string>
     <!--TODO write something about amiculous apps-->
     <string name="about_amiculous_apps">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+
+
+    <!--ChooseRacesActivity-->
+    <string name="select_races">Select Race(s)</string>
+    <string name="tuskadon">Tuskadon</string>
+    <string name="starlings">Starlings</string>
+    <string name="cosmosaurus">Cosmosaurus</string>
+    <string name="scoutars">Scoutars</string>
+    <string name="araklith">Araklith</string>
+    <string name="next">Next</string>
 </resources>
