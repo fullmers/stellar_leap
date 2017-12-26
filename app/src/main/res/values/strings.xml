@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Stellar Leap Scorepad</string>
+    <string name="score_game">Score game!</string>
+    <string name="about">About</string>
+</resources>

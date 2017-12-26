@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context="com.weirdgiraffegames.stellarleapscorepad.WelcomeScreenActivity">
+
+    <!---TODO put logo asset here
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+        -->
+
+    <Button
+        android:id="@+id/score_new_game_btn"
+        android:layout_marginTop="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/score_game" />
+
+    <Button
+        android:id="@+id/about_app_btn"
+        android:layout_marginTop="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/about" />
+
+</LinearLayout>
