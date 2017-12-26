@@ -1,8 +1,8 @@
 package com.weirdgiraffegames.stellarleapscorepad;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -37,7 +37,8 @@ public class ChooseRacesActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //at least one race must be selected to continue
                 if (isOneRaceSelected) {
-                    Log.d("button click","move to next activity");
+                    Intent i = new Intent(view.getContext(),InputPointsActivity.class);
+                    startActivity(i);
                 }
             }
         });

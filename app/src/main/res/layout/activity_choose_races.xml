@@ -75,6 +75,7 @@
         android:id="@+id/next_btn"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        android:background="@color/inactiveButton"
         android:text="@string/next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
