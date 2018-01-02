@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="standarMargin">16dp</dimen>
+    <dimen name="smallMargin">8dp</dimen>
 
     <dimen name="inputCellHeight">35dp</dimen>
     <dimen name="inputCellWidth">75dp</dimen>
