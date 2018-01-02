@@ -1,9 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.weirdgiraffegames.stellarleapscorepad.InputPointsActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/standarMargin"
+        android:paddingTop="@dimen/standarMargin">
+
+        <TextView
+            android:id="@+id/species_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/headerTextSize"
+            tools:text="Tuskadon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="@string/points"
+            android:textSize="@dimen/headerTextSize" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/inputCellWidth"
+                    android:layout_height="@dimen/inputCellHeight"
+                    android:gravity="right"
+                    android:text="@string/missions" />
+                <!-- TODO Get arrow assets and insert arrow images here -->
+
+                <EditText
+                    android:id="@+id/mission_points_et"
+                    android:layout_width="@dimen/inputCellWidth"
+                    android:layout_height="@dimen/inputCellHeight" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/inputCellWidth"
+                    android:layout_height="@dimen/inputCellHeight"
+                    android:gravity="right"
+                    android:text="@string/player_board" />
+
+                <!-- TODO Get arrow assets and insert arrow images here -->
+
+                <EditText
+                    android:id="@+id/player_board_points_et"
+                    android:layout_width="@dimen/inputCellWidth"
+                    android:layout_height="@dimen/inputCellHeight" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/inputCellWidth"
+                    android:layout_height="@dimen/inputCellHeight"
+                    android:gravity="right"
+                    android:text="@string/trait" />
+
+                <!-- TODO Get arrow assets and insert arrow images here -->
+
+                <EditText
+                    android:id="@+id/trait_points_et"
+                    android:layout_width="@dimen/inputCellWidth"
+                    android:layout_height="@dimen/inputCellHeight" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="3dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/standarMargin"
+            android:background="@color/activeButton"></View>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/standarMargin"
+            android:layout_marginRight="@dimen/standarMargin"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/resources" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/inputCellHeight"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/select_trait" />
+
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="@string/select_trait"></Spinner>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/trait_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/activeButton"
+                android:orientation="horizontal"></LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/next_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_gravity="right"
+        android:layout_weight="1"
+        android:text="@string/next" />
+
+</LinearLayout>

@@ -22,4 +22,14 @@
     <string name="scoutars">Scoutars</string>
     <string name="araklith">Araklith</string>
     <string name="next">Next</string>
+
+
+    <!--InputPointsActivity-->
+    <string name="points">Points</string>
+    <string name="missions">Missions</string>
+    <string name="player_board">Player Board</string>
+    <string name="trait">Trait</string>
+    <string name="resources">Resources</string>
+    <string name="select_trait">Select Trait:</string>
+    <string name="see_totals">See Totals</string>
 </resources>

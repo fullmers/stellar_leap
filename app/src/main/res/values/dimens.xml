@@ -2,4 +2,9 @@
 <resources>
     <dimen name="standarMargin">16dp</dimen>
 
+    <dimen name="inputCellHeight">35dp</dimen>
+    <dimen name="inputCellWidth">75dp</dimen>
+
+    <dimen name="headerTextSize">22sp</dimen>
+
 </resources>
