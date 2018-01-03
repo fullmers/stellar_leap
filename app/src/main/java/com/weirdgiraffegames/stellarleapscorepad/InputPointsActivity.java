@@ -62,9 +62,19 @@ public class InputPointsActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        if (layoutIndex > 0){
+            layoutIndex--;
+            showLayout();
+        } else {
+            Intent i = new Intent(InputPointsActivity.this,ChooseRacesActivity.class);
+            startActivity(i);
+        }
+    }
+
     public void showLayout() {
         String currentSpecies = selectedSpecies.get(layoutIndex);
-        Log.d("calling","replace layout, next layout = " + currentSpecies);
 
         if (currentSpecies.equals(getString(R.string.tuskadon))) {
             tuskadonLayout.setVisibility(View.VISIBLE);
