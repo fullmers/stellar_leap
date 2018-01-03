@@ -124,7 +124,7 @@ public class InputPointsActivity extends AppCompatActivity {
                         showLayout();
                     }
                 } else {
-                    Toast.makeText(context,"All fields must be completed",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context,getString(R.string.validation_toast),Toast.LENGTH_SHORT).show();
                 }
             }
         });

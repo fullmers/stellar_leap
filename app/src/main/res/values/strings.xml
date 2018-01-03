@@ -41,6 +41,8 @@
     <string name="select_trait">Select Trait:</string>
     <string name="see_totals">See Totals</string>
 
+    <string name="validation_toast">All fields must be completed to proceed.</string>
+
     <string name="every_three_resources">Gain 1VP for every three of your resources.</string>
     <string name="every_four_resources">Gain 1VP for every four of your resources.</string>
 
