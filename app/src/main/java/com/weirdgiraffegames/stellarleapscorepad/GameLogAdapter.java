@@ -1,11 +1,14 @@
 package com.weirdgiraffegames.stellarleapscorepad;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.weirdgiraffegames.stellarleapscorepad.data.GameLogContract;
 
 /**
  * Created by sarah on 03/01/2018.
@@ -15,11 +18,11 @@ public class GameLogAdapter extends RecyclerView.Adapter<GameLogAdapter.GameView
 
     private Context mContext;
 
-    private int mCount;
+    private Cursor mCursor;
 
-    public GameLogAdapter(Context context, int count) {
+    public GameLogAdapter(Context context, Cursor cursor) {
         this.mContext = context;
-        this.mCount = count;
+        this.mCursor = cursor;
     }
 
     @Override
@@ -32,12 +35,24 @@ public class GameLogAdapter extends RecyclerView.Adapter<GameLogAdapter.GameView
 
     @Override
     public void onBindViewHolder(GameViewHolder holder, int position) {
+        if (!mCursor.moveToPosition(position)) return;
 
+        int tuskadonTotal = mCursor.getInt(mCursor.getColumnIndexOrThrow(GameLogContract.GameLogEntry.COLUMN_TUSKADON_TOTAL_POINTS));
+        int starlingTotal = mCursor.getInt(mCursor.getColumnIndexOrThrow(GameLogContract.GameLogEntry.COLUMN_STARLING_TOTAL_POINTS));
+        int cosmosaurusTotal = mCursor.getInt(mCursor.getColumnIndexOrThrow(GameLogContract.GameLogEntry.COLUMN_COSMOSAURUS_TOTAL_POINTS));
+        int scoutarsTotal = mCursor.getInt(mCursor.getColumnIndexOrThrow(GameLogContract.GameLogEntry.COLUMN_SCOUTARS_TOTAL_POINTS));
+        int araklithTotal = mCursor.getInt(mCursor.getColumnIndexOrThrow(GameLogContract.GameLogEntry.COLUMN_ARAKLITH_TOTAL_POINTS));
+
+        holder.tuskadonTextView.setText(String.valueOf(tuskadonTotal));
+        holder.starlingTextView.setText(String.valueOf(starlingTotal));
+        holder.cosmosaurusTextView.setText(String.valueOf(cosmosaurusTotal));
+        holder.scoutarsTextView.setText(String.valueOf(scoutarsTotal));
+        holder.araklithTextView.setText(String.valueOf(araklithTotal));
     }
 
     @Override
     public int getItemCount() {
-        return mCount;
+        return mCursor.getCount();
     }
 
 

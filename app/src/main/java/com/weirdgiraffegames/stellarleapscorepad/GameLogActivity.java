@@ -30,7 +30,7 @@ public class GameLogActivity extends AppCompatActivity {
         gameLogRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         Cursor cursor = getAllGameLogs();
-        mAdapter = new GameLogAdapter(this, cursor.getCount());
+        mAdapter = new GameLogAdapter(this, cursor);
         gameLogRecyclerView.setAdapter(mAdapter);
     }
 
