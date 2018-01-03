@@ -45,10 +45,7 @@ public class InputPointsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 layoutIndex++;
-
-                if(layoutIndex == numSelectedSpecies - 1) {
-                    nextButton.setText(getString(R.string.see_totals));
-                }
+                setNextButtonText();
                 if (layoutIndex == numSelectedSpecies) {
                     Intent i = new Intent(InputPointsActivity.this,FinalScoreActivity.class);
                     startActivity(i);
@@ -59,11 +56,20 @@ public class InputPointsActivity extends AppCompatActivity {
         });
     }
 
+    private void setNextButtonText(){
+        if(layoutIndex == numSelectedSpecies - 1) {
+            nextButton.setText(getString(R.string.see_totals));
+        } else {
+            nextButton.setText(getString(R.string.next));
+        }
+    }
+
     @Override
     public void onBackPressed() {
         if (layoutIndex > 0){
             layoutIndex--;
             showLayout();
+            setNextButtonText();
         } else {
             Intent i = new Intent(InputPointsActivity.this,ChooseRacesActivity.class);
             startActivity(i);
