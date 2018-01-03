@@ -23,6 +23,7 @@ public class InputPointsActivity extends AppCompatActivity {
     private ArrayList<String> selectedSpecies;
     private int numSelectedSpecies = -1;
     private int layoutIndex = 0;
+    private String gameId;
     private List<EditText> tuskadonEditTexts;
     private List<EditText> starlingsEditTexts;
     private List<EditText> cosmosaurusEditTexts;
@@ -71,6 +72,7 @@ public class InputPointsActivity extends AppCompatActivity {
         context = this;
         selectedSpecies = getIntent().getExtras().getStringArrayList(getString(R.string.selected_species_key));
         numSelectedSpecies = selectedSpecies.size();
+        gameId = getIntent().getExtras().getString(getString(R.string.game_id_key));
         setupUI();
     }
 

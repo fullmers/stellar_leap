@@ -3,12 +3,14 @@ package com.weirdgiraffegames.stellarleapscorepad;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class ChooseRacesActivity extends AppCompatActivity {
 
@@ -44,6 +46,8 @@ public class ChooseRacesActivity extends AppCompatActivity {
                     defineSelectedSpecies();
                     Intent i = new Intent(view.getContext(),InputPointsActivity.class);
                     i.putExtra(getString(R.string.selected_species_key),selectedSpecies);
+                    String gameId = UUID.randomUUID().toString();
+                    i.putExtra(getString(R.string.game_id_key),gameId);
                     startActivity(i);
                 }
             }

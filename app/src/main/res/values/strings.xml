@@ -25,6 +25,7 @@
     <string name="next">Next</string>
 
     <string name="selected_species_key">selectedSpeciesKey</string>
+    <string name="game_id_key">gameIdKey</string>
 
 
     <!--InputPointsActivity-->
