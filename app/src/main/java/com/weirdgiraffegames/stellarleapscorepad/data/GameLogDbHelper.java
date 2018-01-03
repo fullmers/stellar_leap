@@ -26,7 +26,7 @@ public class GameLogDbHelper extends SQLiteOpenHelper {
                 + "("  +
                 GameLogEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 GameLogEntry.COLUMN_TIMESTAMP + " TIMESTAMP DEFAULT CURRENT_TIMESTAMP," +
-                GameLogEntry.COLUMN_WINNER + " TEXT NOT NULL," +
+                GameLogEntry.COLUMN_WINNER + " INTEGER NOT NULL," +
 
                 GameLogEntry.COLUMN_TUSKADON_MISSION_POINTS + " INTEGER, " +
                 GameLogEntry.COLUMN_TUSKADON_PLAYER_BOARD_POINTS+ " INTEGER, " +
@@ -65,6 +65,7 @@ public class GameLogDbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + GameLogEntry.TABLE_NAME);
+        onCreate(sqLiteDatabase);
     }
 }
