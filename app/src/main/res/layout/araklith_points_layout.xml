@@ -17,16 +17,16 @@
             android:layout_width="@dimen/inputPointHeaderIconSide"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
-            android:src="@drawable/tuskadon_icon"/>
+            android:src="@drawable/araklith_icon"/>
 
         <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:textColor="@color/tuskadon"
+            android:textColor="@color/araklith"
             android:textStyle="bold"
             android:layout_marginLeft="5dp"
-            android:text="@string/tuskadon_points"
+            android:text="@string/araklith_points"
             android:textSize="@dimen/headerTextSize" />
     </LinearLayout>
 
@@ -63,7 +63,7 @@
                     android:layout_height="wrap_content" />
 
                 <EditText
-                    android:id="@+id/tuskadon_mission_points_et"
+                    android:id="@+id/araklith_mission_points_et"
                     android:background="@color/nebula_very_light_blue"
                     android:textColor="@color/nebula_dark_blue"
                     android:paddingLeft="5dp"
@@ -96,7 +96,7 @@
                     android:layout_gravity="center_vertical"/>
 
                 <EditText
-                    android:id="@+id/tuskadon_player_board_points_et"
+                    android:id="@+id/araklith_player_board_points_et"
                     android:layout_width="@dimen/inputCellWidth"
                     android:layout_height="@dimen/inputCellHeight"
                     android:background="@color/nebula_very_light_blue"
@@ -114,7 +114,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/standarMargin"
             android:layout_marginBottom="@dimen/standarMargin"
-            android:background="@color/tuskadon"></View>
+            android:background="@color/araklith"></View>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -137,7 +137,7 @@
                     android:text="@string/select_trait" />
 
                 <Spinner
-                    android:id="@+id/tuskadon_trait_spinner"
+                    android:id="@+id/araklith_trait_spinner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:autofillHints="@string/select_trait"/>
@@ -165,13 +165,13 @@
                     <ImageView
                         android:id="@+id/trait_arrow_image"
                         android:background="@drawable/ic_keyboard_arrow_right_white_36dp"
-                        android:layout_toLeftOf="@+id/tuskadon_trait_points_et"
+                        android:layout_toLeftOf="@+id/araklith_trait_points_et"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"/>
 
                     <EditText
-                        android:id="@+id/tuskadon_trait_points_et"
+                        android:id="@+id/araklith_trait_points_et"
                         android:layout_alignParentRight="true"
                         android:layout_width="@dimen/inputCellWidth"
                         android:layout_gravity="center_vertical"
@@ -199,14 +199,14 @@
 
                     <ImageView
                         android:id="@+id/resource_arrow_image"
-                        android:layout_toLeftOf="@id/tuskadon_resource_points_et"
+                        android:layout_toLeftOf="@id/araklith_resource_points_et"
                         android:background="@drawable/ic_keyboard_arrow_right_white_36dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"/>
 
                     <EditText
-                        android:id="@+id/tuskadon_resource_points_et"
+                        android:id="@+id/araklith_resource_points_et"
                         android:layout_alignParentRight="true"
                         android:layout_width="@dimen/inputCellWidth"
                         android:layout_gravity="center_vertical"
