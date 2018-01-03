@@ -9,6 +9,7 @@ import com.weirdgiraffegames.stellarleapscorepad.data.GameLogContract.GameLogEnt
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by sarah on 03/01/2018.
@@ -24,6 +25,8 @@ public class TestUtil {
         List<ContentValues> list = new ArrayList<ContentValues>();
 
         ContentValues testValues = new ContentValues();  //2 player game
+        String uniqueID = UUID.randomUUID().toString();
+        testValues.put(GameLogContract.GameLogEntry.COLUMN_GAME_ID,uniqueID);
         testValues.put(GameLogContract.GameLogEntry.COLUMN_WINNER, 0);
         testValues.put(GameLogContract.GameLogEntry.COLUMN_TUSKADON_MISSION_POINTS, 99);
         testValues.put(GameLogContract.GameLogEntry.COLUMN_TUSKADON_PLAYER_BOARD_POINTS, 50);
@@ -41,6 +44,8 @@ public class TestUtil {
 
 
         testValues = new ContentValues(); //1 player game
+        uniqueID = UUID.randomUUID().toString();
+        testValues.put(GameLogContract.GameLogEntry.COLUMN_GAME_ID,uniqueID);
         testValues.put(GameLogContract.GameLogEntry.COLUMN_WINNER, 0);
         testValues.put(GameLogContract.GameLogEntry.COLUMN_TUSKADON_MISSION_POINTS, 99);
         testValues.put(GameLogContract.GameLogEntry.COLUMN_TUSKADON_PLAYER_BOARD_POINTS, 50);
@@ -51,6 +56,8 @@ public class TestUtil {
 
 
         testValues = new ContentValues(); //5 player game
+        uniqueID = UUID.randomUUID().toString();
+        testValues.put(GameLogContract.GameLogEntry.COLUMN_GAME_ID,uniqueID);
         testValues.put(GameLogContract.GameLogEntry.COLUMN_WINNER, 4);
         testValues.put(GameLogContract.GameLogEntry.COLUMN_TUSKADON_MISSION_POINTS, 49);
         testValues.put(GameLogContract.GameLogEntry.COLUMN_TUSKADON_PLAYER_BOARD_POINTS, 50);

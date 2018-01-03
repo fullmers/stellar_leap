@@ -14,6 +14,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.lang.reflect.Field;
+import java.util.UUID;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -104,6 +105,8 @@ public class DatabaseTest {
         SQLiteDatabase database = dbHelper.getWritableDatabase();
 
         ContentValues testValues = new ContentValues();
+        String uniqueID = UUID.randomUUID().toString();
+        testValues.put(GameLogContract.GameLogEntry.COLUMN_GAME_ID,uniqueID);
         testValues.put(GameLogContract.GameLogEntry.COLUMN_WINNER, 1);
         testValues.put(GameLogContract.GameLogEntry.COLUMN_TUSKADON_MISSION_POINTS, 99);
         testValues.put(GameLogContract.GameLogEntry.COLUMN_TUSKADON_PLAYER_BOARD_POINTS, 50);
@@ -177,6 +180,8 @@ public class DatabaseTest {
         SQLiteDatabase database = dbHelper.getWritableDatabase();
 
         ContentValues testValues = new ContentValues();
+        String uniqueID = UUID.randomUUID().toString();
+        testValues.put(GameLogContract.GameLogEntry.COLUMN_GAME_ID,uniqueID);
         testValues.put(GameLogContract.GameLogEntry.COLUMN_WINNER, 0);
         testValues.put(GameLogContract.GameLogEntry.COLUMN_TUSKADON_MISSION_POINTS, 99);
         testValues.put(GameLogContract.GameLogEntry.COLUMN_TUSKADON_PLAYER_BOARD_POINTS, 50);
@@ -222,6 +227,8 @@ public class DatabaseTest {
         SQLiteDatabase database = dbHelper.getWritableDatabase();
 
         ContentValues testValues = new ContentValues();
+        String uniqueID = UUID.randomUUID().toString();
+        testValues.put(GameLogContract.GameLogEntry.COLUMN_GAME_ID,uniqueID);
         testValues.put(GameLogContract.GameLogEntry.COLUMN_WINNER, 0);
         testValues.put(GameLogContract.GameLogEntry.COLUMN_TUSKADON_MISSION_POINTS, 99);
         testValues.put(GameLogContract.GameLogEntry.COLUMN_TUSKADON_PLAYER_BOARD_POINTS, 50);

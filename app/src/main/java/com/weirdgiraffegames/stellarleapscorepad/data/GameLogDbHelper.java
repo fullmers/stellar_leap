@@ -25,6 +25,7 @@ public class GameLogDbHelper extends SQLiteOpenHelper {
         String SQL_CREATE_GAME_LOG_TABLE = "CREATE TABLE " + GameLogEntry.TABLE_NAME
                 + "("  +
                 GameLogEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                GameLogEntry.COLUMN_GAME_ID + " STRING NOT NULL," +
                 GameLogEntry.COLUMN_TIMESTAMP + " TIMESTAMP DEFAULT CURRENT_TIMESTAMP," +
                 GameLogEntry.COLUMN_WINNER + " INTEGER NOT NULL," +
 
