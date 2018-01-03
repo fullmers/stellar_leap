@@ -13,6 +13,7 @@ public class GameLogContract {
     public static final class GameLogEntry implements BaseColumns {
 
         public static final String TABLE_NAME = "gameLog";
+
         public static final String COLUMN_TIMESTAMP = "timestamp";
         public static final String COLUMN_WINNER= "winner";
 
