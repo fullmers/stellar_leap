@@ -26,6 +26,11 @@
 
 
     <!--InputPointsActivity-->
+    <string name="tuskadon_points">Tuskadon Points</string>
+    <string name="starling_points">Starling Points</string>
+    <string name="cosmosaurus_points">Cosmosaurus Points</string>
+    <string name="scoutars_points">Scoutars Points</string>
+    <string name="araklith_points">Araklith Points</string>
     <string name="points">Points</string>
     <string name="missions">Missions</string>
     <string name="player_board">Player Board</string>
@@ -33,4 +38,9 @@
     <string name="resources">Resources</string>
     <string name="select_trait">Select Trait:</string>
     <string name="see_totals">See Totals</string>
+
+    <string name="every_three_resources">Gain 1VP for every three of your resources.</string>
+    <string name="every_four_resources">Gain 1VP for every four of your resources.</string>
+
+    <string name="sample_trait_instructions">Gain either 3 VP for every unique resource that you have 6 or more of OR gain 5 VP for every unique resource that you have 10 or more of.</string>
 </resources>

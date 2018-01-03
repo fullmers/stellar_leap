@@ -6,4 +6,18 @@
 
     <color name="activeButton">#7ed7f7</color>
     <color name="inactiveButton">#f1f18f</color>
+
+    <color name="black">#040605</color>
+
+    <color name="text_blue">#20A2B4</color>
+
+    <color name="nebula_dark_blue">#252AFB</color>
+    <color name="nebula_light_blue">#44CDFD</color>
+
+    <color name="tuskadon">#BF1F51</color>
+    <color name="starling">#ECD344</color>
+    <color name="cosmosaurus">#1FA3B5</color>
+    <color name="scoutars">#FFFFFF</color>
+    <color name="araklith">#723513</color>
+
 </resources>
