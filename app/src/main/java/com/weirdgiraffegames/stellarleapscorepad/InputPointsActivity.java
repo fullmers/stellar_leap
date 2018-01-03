@@ -1,7 +1,9 @@
 package com.weirdgiraffegames.stellarleapscorepad;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -9,6 +11,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.weirdgiraffegames.stellarleapscorepad.data.GameLogContract;
+import com.weirdgiraffegames.stellarleapscorepad.data.GameLogContract.GameLogEntry;
+import com.weirdgiraffegames.stellarleapscorepad.data.GameLogDbHelper;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,13 +30,11 @@ public class InputPointsActivity extends AppCompatActivity {
     private int numSelectedSpecies = -1;
     private int layoutIndex = 0;
     private String gameId;
-    private List<EditText> tuskadonEditTexts;
-    private List<EditText> starlingsEditTexts;
-    private List<EditText> cosmosaurusEditTexts;
-    private List<EditText> scoutarsEditTexts;
-    private List<EditText> araklithEditTexts;
+    private SQLiteDatabase mDb;
 
     private List<EditText> currentEditTexts = null;
+    private List<String> currentInputPointsColumns = null;
+    private String currentTotalPointsColumn = "";
 
     @BindView(R.id.next_btn) Button nextButton;
 
@@ -73,6 +77,8 @@ public class InputPointsActivity extends AppCompatActivity {
         selectedSpecies = getIntent().getExtras().getStringArrayList(getString(R.string.selected_species_key));
         numSelectedSpecies = selectedSpecies.size();
         gameId = getIntent().getExtras().getString(getString(R.string.game_id_key));
+        GameLogDbHelper dbHelper = new GameLogDbHelper(this);
+        mDb = dbHelper.getWritableDatabase();
         setupUI();
     }
 
@@ -88,36 +94,36 @@ public class InputPointsActivity extends AppCompatActivity {
         }
     }
 
+    private int insertSpeciesPoints() {
+    // New value for species columns
+        ContentValues values = new ContentValues();
+        int total = 0;
+        for (int i = 0; i<4; i++) {
+            int pointValue = Integer.parseInt(currentEditTexts.get(i).getText().toString());
+            total = total + pointValue;
+            values.put(currentInputPointsColumns.get(i), pointValue);
+        }
+        values.put(currentTotalPointsColumn,total);
+
+    // Which row to update, based on the gameId
+        String selection = GameLogEntry.COLUMN_GAME_ID + " = ?";
+        String[] selectionArgs = {gameId};
+
+        int count = mDb.update(
+                GameLogContract.GameLogEntry.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+        return count;
+
+    }
+
     private void setupUI() {
         ButterKnife.bind(this);
-        setupEditTexts();
         setupNextButton();
         showLayout();
     }
 
-    private void setupEditTexts() {
-        for(String s:selectedSpecies) {
-            if (s.equals(getString(R.string.tuskadon))) {
-                tuskadonEditTexts = Arrays.asList(tuskadonMissionPointsET, tuskadonPlayerBoardPointsET, tuskadonTraitPointsET, tuskadonResourcePointsET);
-            }
-
-            if (s.equals(getString(R.string.starlings))) {
-                starlingsEditTexts = Arrays.asList(starlingsMissionPointsET, starlingsPlayerBoardPointsET, starlingsTraitPointsET, starlingsResourcePointsET);
-            }
-
-            if (s.equals(getString(R.string.cosmosaurus))) {
-                cosmosaurusEditTexts = Arrays.asList(cosmosaurusMissionPointsET, cosmosauruPslayerBoardPointsET, cosmosaurusTraitPointsET, cosmosaurusResourcePointsET);
-            }
-
-            if (s.equals(getString(R.string.scoutars))) {
-                scoutarsEditTexts = Arrays.asList(scoutarsMissionPointsET, scoutarsPlayerBoardPointsET, scoutarsTraitPointsET, scoutarsResourcePointsET);
-            }
-
-            if (s.equals(getString(R.string.araklith))) {
-                araklithEditTexts = Arrays.asList(araklithMissionPointsET, araklithPlayerBoardPointsET, araklithTraitPointsET, araklithResourcePointsET);
-            }
-        }
-    }
 
     private void setupNextButton() {
         nextButton.setOnClickListener(new View.OnClickListener() {
@@ -128,9 +134,11 @@ public class InputPointsActivity extends AppCompatActivity {
                     layoutIndex++;
                     setNextButtonText();
                     if (layoutIndex == numSelectedSpecies) {
+                        insertSpeciesPoints();
                         Intent i = new Intent(InputPointsActivity.this, FinalScoreActivity.class);
                         startActivity(i);
                     } else {
+                        insertSpeciesPoints();
                         showLayout();
                     }
                 } else {
@@ -161,7 +169,9 @@ public class InputPointsActivity extends AppCompatActivity {
         String currentSpecies = selectedSpecies.get(layoutIndex);
 
         if (currentSpecies.equals(getString(R.string.tuskadon))) {
-            currentEditTexts = tuskadonEditTexts;
+            currentEditTexts = Arrays.asList(tuskadonMissionPointsET, tuskadonPlayerBoardPointsET, tuskadonTraitPointsET, tuskadonResourcePointsET);
+            currentInputPointsColumns = Arrays.asList(GameLogEntry.COLUMN_TUSKADON_MISSION_POINTS,GameLogEntry.COLUMN_TUSKADON_PLAYER_BOARD_POINTS,GameLogEntry.COLUMN_TUSKADON_TRAIT_POINTS,GameLogEntry.COLUMN_TUSKADON_RESOURCE_POINTS);
+            currentTotalPointsColumn = GameLogEntry.COLUMN_TUSKADON_TOTAL_POINTS;
 
             tuskadonLayout.setVisibility(View.VISIBLE);
             starlingsLayout.setVisibility(View.GONE);
@@ -172,7 +182,9 @@ public class InputPointsActivity extends AppCompatActivity {
         }
 
         if (currentSpecies.equals(getString(R.string.starlings))) {
-            currentEditTexts = starlingsEditTexts;
+            currentEditTexts = Arrays.asList(starlingsMissionPointsET, starlingsPlayerBoardPointsET, starlingsTraitPointsET, starlingsResourcePointsET);
+            currentInputPointsColumns = Arrays.asList(GameLogEntry.COLUMN_STARLING_MISSION_POINTS,GameLogEntry.COLUMN_STARLING_PLAYER_BOARD_POINTS,GameLogEntry.COLUMN_STARLING_TRAIT_POINTS,GameLogEntry.COLUMN_STARLING_RESOURCE_POINTS);
+            currentTotalPointsColumn = GameLogEntry.COLUMN_STARLING_TOTAL_POINTS;
 
             tuskadonLayout.setVisibility(View.GONE);
             starlingsLayout.setVisibility(View.VISIBLE);
@@ -183,7 +195,9 @@ public class InputPointsActivity extends AppCompatActivity {
         }
 
         if (currentSpecies.equals(getString(R.string.cosmosaurus))) {
-            currentEditTexts = cosmosaurusEditTexts;
+            currentEditTexts = Arrays.asList(cosmosaurusMissionPointsET, cosmosauruPslayerBoardPointsET, cosmosaurusTraitPointsET, cosmosaurusResourcePointsET);
+            currentInputPointsColumns = Arrays.asList(GameLogEntry.COLUMN_COSMOSAURUS_MISSION_POINTS,GameLogEntry.COLUMN_COSMOSAURUS_PLAYER_BOARD_POINTS,GameLogEntry.COLUMN_COSMOSAURUS_TRAIT_POINTS,GameLogEntry.COLUMN_COSMOSAURUS_RESOURCE_POINTS);
+            currentTotalPointsColumn = GameLogEntry.COLUMN_COSMOSAURUS_TOTAL_POINTS;
 
             tuskadonLayout.setVisibility(View.GONE);
             starlingsLayout.setVisibility(View.GONE);
@@ -194,7 +208,9 @@ public class InputPointsActivity extends AppCompatActivity {
         }
 
         if (currentSpecies.equals(getString(R.string.scoutars))) {
-            currentEditTexts = scoutarsEditTexts;
+            currentEditTexts = Arrays.asList(scoutarsMissionPointsET, scoutarsPlayerBoardPointsET, scoutarsTraitPointsET, scoutarsResourcePointsET);
+            currentInputPointsColumns = Arrays.asList(GameLogEntry.COLUMN_SCOUTARS_MISSION_POINTS,GameLogEntry.COLUMN_SCOUTARS_PLAYER_BOARD_POINTS,GameLogEntry.COLUMN_SCOUTARS_TRAIT_POINTS,GameLogEntry.COLUMN_SCOUTARS_RESOURCE_POINTS);
+            currentTotalPointsColumn = GameLogEntry.COLUMN_SCOUTARS_TOTAL_POINTS;
 
             tuskadonLayout.setVisibility(View.GONE);
             starlingsLayout.setVisibility(View.GONE);
@@ -205,7 +221,9 @@ public class InputPointsActivity extends AppCompatActivity {
         }
 
         if (currentSpecies.equals(getString(R.string.araklith))) {
-            currentEditTexts = araklithEditTexts;
+            currentEditTexts = Arrays.asList(araklithMissionPointsET, araklithPlayerBoardPointsET, araklithTraitPointsET, araklithResourcePointsET);
+            currentInputPointsColumns = Arrays.asList(GameLogEntry.COLUMN_ARAKLITH_MISSION_POINTS,GameLogEntry.COLUMN_ARAKLITH_PLAYER_BOARD_POINTS,GameLogEntry.COLUMN_ARAKLITH_TRAIT_POINTS,GameLogEntry.COLUMN_ARAKLITH_RESOURCE_POINTS);
+            currentTotalPointsColumn = GameLogEntry.COLUMN_ARAKLITH_TOTAL_POINTS;
 
             tuskadonLayout.setVisibility(View.GONE);
             starlingsLayout.setVisibility(View.GONE);

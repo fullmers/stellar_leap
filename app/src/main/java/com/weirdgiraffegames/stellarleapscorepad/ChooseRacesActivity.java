@@ -57,6 +57,7 @@ public class ChooseRacesActivity extends AppCompatActivity {
                     i.putExtra(getString(R.string.selected_species_key),selectedSpecies);
                     String gameId = UUID.randomUUID().toString();
                     initializeGameEntry(gameId);
+                    mDb.close();
                     i.putExtra(getString(R.string.game_id_key),gameId);
                     startActivity(i);
                 }

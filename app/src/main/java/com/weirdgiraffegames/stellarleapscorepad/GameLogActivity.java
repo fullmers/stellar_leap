@@ -9,7 +9,6 @@ import android.support.v7.widget.RecyclerView;
 
 import com.weirdgiraffegames.stellarleapscorepad.data.GameLogContract;
 import com.weirdgiraffegames.stellarleapscorepad.data.GameLogDbHelper;
-import com.weirdgiraffegames.stellarleapscorepad.data.TestUtil;
 
 public class GameLogActivity extends AppCompatActivity {
 
@@ -23,7 +22,7 @@ public class GameLogActivity extends AppCompatActivity {
 
         GameLogDbHelper dbHelper = new GameLogDbHelper(this);
         mDb = dbHelper.getWritableDatabase();
-        TestUtil.insertFakeData(mDb);
+        //TestUtil.insertFakeData(mDb);
 
         RecyclerView gameLogRecyclerView;
         gameLogRecyclerView = (RecyclerView) this.findViewById(R.id.all_game_logs_recycler_view);
