@@ -4,6 +4,7 @@
     <!--WelcomeActivity -->
     <string name="score_game">Score game!</string>
     <string name="about">About</string>
+    <string name="game_logs">Game Logs</string>
 
     <!--AboutActivity-->
     <!--TODO Get text from Weird Giraffe-->

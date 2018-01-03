@@ -10,6 +10,7 @@ public class WelcomeScreenActivity extends AppCompatActivity {
 
     Button btn_about;
     Button btn_start_scoring;
+    Button btn_game_logs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,15 @@ public class WelcomeScreenActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(WelcomeScreenActivity.this,ChooseRacesActivity.class);
+                startActivity(i);
+            }
+        });
+
+        btn_game_logs = findViewById(R.id.game_log_btn);
+        btn_game_logs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(WelcomeScreenActivity.this,GameLogActivity.class);
                 startActivity(i);
             }
         });
