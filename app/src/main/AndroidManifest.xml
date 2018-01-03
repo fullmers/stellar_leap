@@ -32,7 +32,8 @@
         <activity
             android:name=".InputPointsActivity"
             android:screenOrientation="landscape" />
-        <activity android:name=".GameLogActivity"></activity>
+        <activity android:name=".GameLogActivity" />
+        <activity android:name=".FinalScoreActivity"></activity>
     </application>
 
 </manifest>
