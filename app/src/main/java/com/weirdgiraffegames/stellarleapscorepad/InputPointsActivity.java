@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -73,9 +72,25 @@ public class InputPointsActivity extends AppCompatActivity {
         selectedSpecies = getIntent().getExtras().getStringArrayList(getString(R.string.selected_species_key));
         numSelectedSpecies = selectedSpecies.size();
         setupUI();
-        for(String s:selectedSpecies) {
-            Log.d("selected species",s);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (layoutIndex > 0){
+            layoutIndex--;
+            showLayout();
+            setNextButtonText();
+        } else {
+            Intent i = new Intent(InputPointsActivity.this,ChooseRacesActivity.class);
+            startActivity(i);
         }
+    }
+
+    private void setupUI() {
+        ButterKnife.bind(this);
+        setupEditTexts();
+        setupNextButton();
+        showLayout();
     }
 
     private void setupEditTexts() {
@@ -100,13 +115,6 @@ public class InputPointsActivity extends AppCompatActivity {
                 araklithEditTexts = Arrays.asList(araklithMissionPointsET, araklithPlayerBoardPointsET, araklithTraitPointsET, araklithResourcePointsET);
             }
         }
-    }
-
-    private void setupUI() {
-        ButterKnife.bind(this);
-        setupEditTexts();
-        setupNextButton();
-        showLayout();
     }
 
     private void setupNextButton() {
@@ -144,18 +152,6 @@ public class InputPointsActivity extends AppCompatActivity {
             nextButton.setText(getString(R.string.see_totals));
         } else {
             nextButton.setText(getString(R.string.next));
-        }
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (layoutIndex > 0){
-            layoutIndex--;
-            showLayout();
-            setNextButtonText();
-        } else {
-            Intent i = new Intent(InputPointsActivity.this,ChooseRacesActivity.class);
-            startActivity(i);
         }
     }
 
