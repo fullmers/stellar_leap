@@ -24,6 +24,8 @@
     <string name="araklith">Araklith</string>
     <string name="next">Next</string>
 
+    <string name="selected_species_key">selectedSpeciesKey</string>
+
 
     <!--InputPointsActivity-->
     <string name="tuskadon_points">Tuskadon Points</string>

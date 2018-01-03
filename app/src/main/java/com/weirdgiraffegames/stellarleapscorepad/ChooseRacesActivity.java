@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
+import java.util.ArrayList;
+
 public class ChooseRacesActivity extends AppCompatActivity {
 
     CheckBox chkbx_tuskadon;
@@ -26,6 +28,10 @@ public class ChooseRacesActivity extends AppCompatActivity {
 
     boolean isOneRaceSelected = false;
 
+    int numSelected = 0;
+
+    ArrayList<String> selectedSpecies;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,11 +43,36 @@ public class ChooseRacesActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //at least one race must be selected to continue
                 if (isOneRaceSelected) {
+                    defineSelectedSpecies();
                     Intent i = new Intent(view.getContext(),InputPointsActivity.class);
+                    i.putExtra(getString(R.string.selected_species_key),selectedSpecies);
                     startActivity(i);
                 }
             }
         });
+    }
+
+    private void defineSelectedSpecies() {
+        selectedSpecies = new ArrayList<>();
+        if (isTuskadonSelected) {
+            selectedSpecies.add(getString(R.string.tuskadon));
+        }
+
+        if (isStarlingsSelected) {
+            selectedSpecies.add(getString(R.string.starlings));
+        }
+
+        if (isCosmosaurusSelected) {
+            selectedSpecies.add(getString(R.string.cosmosaurus));
+        }
+
+        if (isScoutarsSelected) {
+            selectedSpecies.add(getString(R.string.scoutars));
+        }
+
+        if (isAraklithSelected) {
+            selectedSpecies.add(getString(R.string.araklith));
+        }
     }
 
     private void setupUI() {
@@ -69,7 +100,22 @@ public class ChooseRacesActivity extends AppCompatActivity {
             isScoutarsSelected = chkbx_scoutars.isChecked();
             isAraklithSelected = chkbx_araklith.isChecked();
 
-            if (isTuskadonSelected || isStarlingsSelected || isCosmosaurusSelected || isScoutarsSelected || isAraklithSelected) {
+            boolean[] selected = new boolean[5];
+            selected[0] = isTuskadonSelected;
+            selected[1] = isStarlingsSelected;
+            selected[2] = isCosmosaurusSelected;
+            selected[3] = isScoutarsSelected;
+            selected[4] = isAraklithSelected;
+
+            int temp = 0;
+            for (int i = 0; i<5;i++) {
+                if (selected[i]) {
+                    temp+=1;
+                }
+            }
+            numSelected = temp;
+
+            if (numSelected >= 1) {
                 isOneRaceSelected = true;
                 btn_next.setBackgroundColor(getResources().getColor(R.color.activeButton));
                 btn_next.setEnabled(true);
