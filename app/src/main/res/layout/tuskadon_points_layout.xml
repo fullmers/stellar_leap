@@ -67,7 +67,6 @@
                     android:background="@color/nebula_very_light_blue"
                     android:textColor="@color/nebula_dark_blue"
                     android:paddingLeft="5dp"
-                    tools:text="hint"
                     android:layout_width="@dimen/inputCellWidth"
                     android:layout_height="@dimen/inputCellHeight"
                     android:inputType="number"/>
@@ -103,8 +102,7 @@
                     android:background="@color/nebula_very_light_blue"
                     android:textColor="@color/nebula_dark_blue"
                     android:paddingLeft="5dp"
-                    android:inputType="number"
-                    tools:text="hint"/>
+                    android:inputType="number" />
 
             </LinearLayout>
 
@@ -180,7 +178,7 @@
                         android:textColor="@color/nebula_dark_blue"
                         android:paddingLeft="5dp"
                         android:layout_marginLeft="10dp"
-                        tools:text="hint"
+                        android:inputType="number"
                         android:layout_height="@dimen/inputCellHeight" />
                 </RelativeLayout>
 
@@ -216,7 +214,7 @@
                         android:textColor="@color/nebula_dark_blue"
                         android:layout_marginLeft="10dp"
                         android:paddingLeft="5dp"
-                        tools:text="hint"/>
+                        android:inputType="number" />
                 </RelativeLayout>
             </LinearLayout>
 
