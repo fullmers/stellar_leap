@@ -8,4 +8,6 @@
 
     <dimen name="headerTextSize">22sp</dimen>
 
+
+    <dimen name="gameLogEntryTotalPointWidth">50dp</dimen>
 </resources>
