@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.weirdgiraffegames.stellarleapscorepad.data.GameLogContract;
 import com.weirdgiraffegames.stellarleapscorepad.data.GameLogDbHelper;
+import com.weirdgiraffegames.stellarleapscorepad.data.TestUtil;
 
 public class GameLogActivity extends AppCompatActivity {
 
@@ -20,6 +21,8 @@ public class GameLogActivity extends AppCompatActivity {
         GameLogDbHelper dbHelper = new GameLogDbHelper(this);
 
         mDb = dbHelper.getWritableDatabase();
+
+        TestUtil.insertFakeData(mDb);
     }
 
 
