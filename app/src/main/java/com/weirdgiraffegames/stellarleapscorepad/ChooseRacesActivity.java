@@ -26,8 +26,6 @@ public class ChooseRacesActivity extends AppCompatActivity {
     boolean isScoutarsSelected;
     boolean isAraklithSelected;
 
-    boolean isOneRaceSelected = false;
-
     int numSelected = 0;
 
     ArrayList<String> selectedSpecies;
@@ -42,7 +40,7 @@ public class ChooseRacesActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //at least one race must be selected to continue
-                if (isOneRaceSelected) {
+                if (numSelected >= 1) {
                     defineSelectedSpecies();
                     Intent i = new Intent(view.getContext(),InputPointsActivity.class);
                     i.putExtra(getString(R.string.selected_species_key),selectedSpecies);
@@ -116,11 +114,9 @@ public class ChooseRacesActivity extends AppCompatActivity {
             numSelected = temp;
 
             if (numSelected >= 1) {
-                isOneRaceSelected = true;
                 btn_next.setBackgroundColor(getResources().getColor(R.color.activeButton));
                 btn_next.setEnabled(true);
             } else {
-                isOneRaceSelected = false;
                 btn_next.setBackgroundColor(getResources().getColor(R.color.inactiveButton));
                 btn_next.setEnabled(false);
             }
