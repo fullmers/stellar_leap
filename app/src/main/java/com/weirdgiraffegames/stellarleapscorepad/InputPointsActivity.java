@@ -1,23 +1,36 @@
 package com.weirdgiraffegames.stellarleapscorepad;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class InputPointsActivity extends AppCompatActivity {
 
+    private Context context;
     private ArrayList<String> selectedSpecies;
     private int numSelectedSpecies = -1;
     private int layoutIndex = 0;
+    private List<EditText> tuskadonEditTexts;
+    private List<EditText> starlingsEditTexts;
+    private List<EditText> cosmosaurusEditTexts;
+    private List<EditText> scoutarsEditTexts;
+    private List<EditText> araklithEditTexts;
+
+    private List<EditText> currentEditTexts = null;
 
     @BindView(R.id.next_btn) Button nextButton;
 
@@ -51,36 +64,79 @@ public class InputPointsActivity extends AppCompatActivity {
     @BindView(R.id.araklith_player_board_points_et) EditText araklithPlayerBoardPointsET;
     @BindView(R.id.araklith_trait_points_et) EditText araklithTraitPointsET;
     @BindView(R.id.araklith_resource_points_et) EditText araklithResourcePointsET;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input_points);
-        setupUI();
-
+        context = this;
         selectedSpecies = getIntent().getExtras().getStringArrayList(getString(R.string.selected_species_key));
         numSelectedSpecies = selectedSpecies.size();
-        showLayout();
+        setupUI();
         for(String s:selectedSpecies) {
             Log.d("selected species",s);
         }
     }
 
+    private void setupEditTexts() {
+        for(String s:selectedSpecies) {
+            if (s.equals(getString(R.string.tuskadon))) {
+                tuskadonEditTexts = Arrays.asList(tuskadonMissionPointsET, tuskadonPlayerBoardPointsET, tuskadonTraitPointsET, tuskadonResourcePointsET);
+            }
+
+            if (s.equals(getString(R.string.starlings))) {
+                starlingsEditTexts = Arrays.asList(starlingsMissionPointsET, starlingsPlayerBoardPointsET, starlingsTraitPointsET, starlingsResourcePointsET);
+            }
+
+            if (s.equals(getString(R.string.cosmosaurus))) {
+                cosmosaurusEditTexts = Arrays.asList(cosmosaurusMissionPointsET, cosmosauruPslayerBoardPointsET, cosmosaurusTraitPointsET, cosmosaurusResourcePointsET);
+            }
+
+            if (s.equals(getString(R.string.scoutars))) {
+                scoutarsEditTexts = Arrays.asList(scoutarsMissionPointsET, scoutarsPlayerBoardPointsET, scoutarsTraitPointsET, scoutarsResourcePointsET);
+            }
+
+            if (s.equals(getString(R.string.araklith))) {
+                araklithEditTexts = Arrays.asList(araklithMissionPointsET, araklithPlayerBoardPointsET, araklithTraitPointsET, araklithResourcePointsET);
+            }
+        }
+    }
+
     private void setupUI() {
         ButterKnife.bind(this);
+        setupEditTexts();
+        setupNextButton();
+        showLayout();
+    }
+
+    private void setupNextButton() {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                layoutIndex++;
-                setNextButtonText();
-                if (layoutIndex == numSelectedSpecies) {
-                    Intent i = new Intent(InputPointsActivity.this,FinalScoreActivity.class);
-                    startActivity(i);
+                boolean isValidInput = validateInput(currentEditTexts);
+                if(isValidInput) {
+                    layoutIndex++;
+                    setNextButtonText();
+                    if (layoutIndex == numSelectedSpecies) {
+                        Intent i = new Intent(InputPointsActivity.this, FinalScoreActivity.class);
+                        startActivity(i);
+                    } else {
+                        showLayout();
+                    }
                 } else {
-                    showLayout();
+                    Toast.makeText(context,"All fields must be completed",Toast.LENGTH_SHORT).show();
                 }
             }
         });
+    }
+
+    private boolean validateInput(List<EditText> editTexts) {
+        for (EditText et: editTexts) {
+            if (TextUtils.isEmpty(et.getText().toString())) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private void setNextButtonText(){
@@ -107,6 +163,8 @@ public class InputPointsActivity extends AppCompatActivity {
         String currentSpecies = selectedSpecies.get(layoutIndex);
 
         if (currentSpecies.equals(getString(R.string.tuskadon))) {
+            currentEditTexts = tuskadonEditTexts;
+
             tuskadonLayout.setVisibility(View.VISIBLE);
             starlingsLayout.setVisibility(View.GONE);
             cosmosaurusLayout.setVisibility(View.GONE);
@@ -116,6 +174,8 @@ public class InputPointsActivity extends AppCompatActivity {
         }
 
         if (currentSpecies.equals(getString(R.string.starlings))) {
+            currentEditTexts = starlingsEditTexts;
+
             tuskadonLayout.setVisibility(View.GONE);
             starlingsLayout.setVisibility(View.VISIBLE);
             cosmosaurusLayout.setVisibility(View.GONE);
@@ -125,6 +185,8 @@ public class InputPointsActivity extends AppCompatActivity {
         }
 
         if (currentSpecies.equals(getString(R.string.cosmosaurus))) {
+            currentEditTexts = cosmosaurusEditTexts;
+
             tuskadonLayout.setVisibility(View.GONE);
             starlingsLayout.setVisibility(View.GONE);
             cosmosaurusLayout.setVisibility(View.VISIBLE);
@@ -134,6 +196,8 @@ public class InputPointsActivity extends AppCompatActivity {
         }
 
         if (currentSpecies.equals(getString(R.string.scoutars))) {
+            currentEditTexts = scoutarsEditTexts;
+
             tuskadonLayout.setVisibility(View.GONE);
             starlingsLayout.setVisibility(View.GONE);
             cosmosaurusLayout.setVisibility(View.GONE);
@@ -143,6 +207,8 @@ public class InputPointsActivity extends AppCompatActivity {
         }
 
         if (currentSpecies.equals(getString(R.string.araklith))) {
+            currentEditTexts = araklithEditTexts;
+
             tuskadonLayout.setVisibility(View.GONE);
             starlingsLayout.setVisibility(View.GONE);
             cosmosaurusLayout.setVisibility(View.GONE);
