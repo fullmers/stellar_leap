@@ -4,7 +4,7 @@
     <dimen name="smallMargin">8dp</dimen>
 
     <dimen name="inputCellHeight">35dp</dimen>
-    <dimen name="inputCellWidth">85dp</dimen>
+    <dimen name="inputCellWidth">45dp</dimen>
 
     <dimen name="headerTextSize">30sp</dimen>
 
