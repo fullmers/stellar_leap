@@ -3,6 +3,7 @@ package com.weirdgiraffegames.stellarleapscorepad.data;
 import android.content.ContentValues;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.weirdgiraffegames.stellarleapscorepad.data.GameLogContract.GameLogEntry;
 
@@ -15,6 +16,7 @@ import java.util.List;
 
 public class TestUtil {
     public static void insertFakeData(SQLiteDatabase db){
+        Log.d("TestUtil","insertFakeData");
         if(db == null){
             return;
         }
@@ -80,6 +82,8 @@ public class TestUtil {
         testValues.put(GameLogContract.GameLogEntry.COLUMN_ARAKLITH_TRAIT_POINTS, 75);
         testValues.put(GameLogContract.GameLogEntry.COLUMN_ARAKLITH_TOTAL_POINTS, 262);
 
+        list.add(testValues);
+
         //insert all game logs in one transaction
         try
         {
@@ -88,6 +92,7 @@ public class TestUtil {
             db.delete (GameLogEntry.TABLE_NAME,null,null);
             //go through the list and add one by one
             for(ContentValues c:list){
+                Log.d("TestUtil","inserting item");
                 db.insert(GameLogEntry.TABLE_NAME, null, c);
             }
             db.setTransactionSuccessful();
