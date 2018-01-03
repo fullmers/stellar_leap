@@ -9,18 +9,21 @@ import android.widget.Button;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class InputPointsActivity extends AppCompatActivity {
 
     ArrayList<String> selectedSpecies;
     int numSelectedSpecies = -1;
     int layoutIndex = 0;
 
-    Button nextButton;
-    View tuskadonLayout;
-    View starlingsLayout;
-    View cosmosaurusLayout;
-    View scoutarsLayout;
-    View araklithLayout;
+    @BindView(R.id.next_btn) Button nextButton;
+    @BindView(R.id.tuskadon_layout) View tuskadonLayout;
+    @BindView(R.id.starlings_layout) View starlingsLayout;
+    @BindView(R.id.cosmosaurus_layout) View cosmosaurusLayout;
+    @BindView(R.id.scoutars_layout)  View scoutarsLayout;
+    @BindView(R.id.araklith_layout) View araklithLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,13 +40,7 @@ public class InputPointsActivity extends AppCompatActivity {
     }
 
     private void setupUI() {
-        tuskadonLayout = findViewById(R.id.tuskadon_layout);
-        starlingsLayout = findViewById(R.id.starlings_layout);
-        cosmosaurusLayout = findViewById(R.id.cosmosaurus_layout);
-        scoutarsLayout = findViewById(R.id.scoutars_layout);
-        araklithLayout = findViewById(R.id.araklith_layout);
-
-        nextButton = (Button) findViewById(R.id.next_btn);
+        ButterKnife.bind(this);
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
