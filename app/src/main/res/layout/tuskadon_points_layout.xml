@@ -18,7 +18,7 @@
             android:layout_height="match_parent"
             android:src="@drawable/tuskadon_icon"/>
 
-        <TextView
+        <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/tuskadon"
@@ -45,7 +45,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <TextView
+                <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                     android:layout_width="@dimen/inputCellWidth"
                     android:layout_height="wrap_content"
                     android:gravity="right"
@@ -78,7 +78,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <TextView
+                <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                     android:layout_width="@dimen/inputCellWidth"
                     android:layout_height="wrap_content"
                     style = "@style/InputPointsText"
@@ -92,7 +92,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"/>
-                <!-- TODO Get arrow assets and insert arrow images here -->
 
                 <EditText
                     android:id="@+id/player_board_points_et"
@@ -128,7 +127,7 @@
                 android:layout_height="@dimen/inputCellHeight"
                 android:orientation="horizontal">
 
-                <TextView
+                <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                     style = "@style/InputPointsText"
                     android:textSize="20sp"
                     android:textStyle="bold"
@@ -148,7 +147,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
@@ -156,24 +155,33 @@
                     <TextView
                         style = "@style/InputPointsText"
                         android:id="@+id/trait_points_instructions_tv"
-                        android:layout_width="0dp"
-                        android:layout_weight="3"
+                        android:layout_toLeftOf="@+id/trait_arrow_image"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/sample_trait_instructions" />
 
+                    <ImageView
+                        android:id="@+id/trait_arrow_image"
+                        android:background="@drawable/ic_keyboard_arrow_right_white_36dp"
+                        android:layout_toLeftOf="@+id/trait_points_et"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"/>
+
                     <EditText
                         android:id="@+id/trait_points_et"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
+                        android:layout_alignParentRight="true"
+                        android:layout_width="@dimen/inputCellWidth"
                         android:layout_gravity="center_vertical"
                         android:background="@color/nebula_light_blue"
                         android:textColor="@color/nebula_dark_blue"
                         android:paddingLeft="5dp"
+                        android:layout_marginLeft="10dp"
                         tools:text="hint"
                         android:layout_height="@dimen/inputCellHeight" />
-                </LinearLayout>
+                </RelativeLayout>
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/standarMargin"
@@ -182,21 +190,31 @@
                     <TextView
                         style = "@style/InputPointsText"
                         android:id="@+id/resource_points_instructions_tv"
-                        android:layout_width="0dp"
-                        android:layout_weight="3"
+                        android:layout_toLeftOf="@id/resource_arrow_image"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/every_three_resources" />
 
+                    <ImageView
+                        android:id="@+id/resource_arrow_image"
+                        android:layout_toLeftOf="@id/resource_points_et"
+                        android:background="@drawable/ic_keyboard_arrow_right_white_36dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"/>
+
                     <EditText
                         android:id="@+id/resource_points_et"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
+                        android:layout_alignParentRight="true"
+                        android:layout_width="@dimen/inputCellWidth"
+                        android:layout_gravity="center_vertical"
                         android:layout_height="@dimen/inputCellHeight"
                         android:background="@color/nebula_light_blue"
                         android:textColor="@color/nebula_dark_blue"
+                        android:layout_marginLeft="10dp"
                         android:paddingLeft="5dp"
                         tools:text="hint"/>
-                </LinearLayout>
+                </RelativeLayout>
             </LinearLayout>
 
         </LinearLayout>
