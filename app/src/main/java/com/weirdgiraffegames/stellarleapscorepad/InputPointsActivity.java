@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.weirdgiraffegames.stellarleapscorepad.data.GameLogContract;
@@ -53,6 +54,17 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
     @BindView(R.id.cosmosaurus_trait_spinner) Spinner cosmosaurusSpinner;
     @BindView(R.id.scoutars_trait_spinner) Spinner scoutarsSpinner;
     @BindView(R.id.araklith_trait_spinner) Spinner araklithSpinner;
+
+    @BindView(R.id.tuskadon_trait_points_instructions_tv) TextView tuskadonTraitInstructionsTV;
+    @BindView(R.id.tuskadon_resource_points_instructions_tv) TextView tuskadonResourceInstructionsTV;
+    @BindView(R.id.starlings_trait_points_instructions_tv) TextView starlingsTraitInstructionsTV;
+    @BindView(R.id.starlings_resource_points_instructions_tv) TextView starlingsResourceInstructionsTV;
+    @BindView(R.id.cosmosaurus_trait_points_instructions_tv) TextView cosmosaurusTraitInstructionsTV;
+    @BindView(R.id.cosmosaurus_resource_points_instructions_tv) TextView cosmosaurusResourceInstructionsTV;
+    @BindView(R.id.scoutars_trait_points_instructions_tv) TextView scoutarsTraitInstructionsTV;
+    @BindView(R.id.scoutars_resource_points_instructions_tv) TextView scoutarsResourceInstructionsTV;
+    @BindView(R.id.araklith_trait_points_instructions_tv) TextView araklithTraitInstructionsTV;
+    @BindView(R.id.araklith_resource_points_instructions_tv) TextView araklithResourceInstructionsTV;
 
     @BindView(R.id.tuskadon_mission_points_et) EditText tuskadonMissionPointsET;
     @BindView(R.id.tuskadon_player_board_points_et) EditText tuskadonPlayerBoardPointsET;
