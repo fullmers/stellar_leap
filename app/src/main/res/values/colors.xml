@@ -8,6 +8,7 @@
     <color name="inactiveButton">#f1f18f</color>
 
     <color name="black">#040605</color>
+    <color name="dark_gray">#3c403e</color>
 
     <color name="button_background">#7AD8D7</color>
     <color name="text_blue">#20A2B4</color>

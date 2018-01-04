@@ -43,9 +43,52 @@
     <string name="see_totals">See Totals</string>
 
     <string name="validation_toast">All fields must be completed to proceed.</string>
+    <string name="sample_trait_instructions">Gain either 3 VP for every unique resource that you have 6 or more of OR gain 5 VP for every unique resource that you have 10 or more of.</string>
 
+    <!--Traits-->
+    <string name="adventurer">Adventurer</string>
+    <string name="aggressor">Aggressor</string>
+    <string name="completionist">Completionist</string>
+    <string name="dedicated_column">Dedicated (Column)</string>
+    <string name="dedicated_row">Dedicated (Row)</string>
+    <string name="expansionist">Expansionist</string>
+    <string name="explorer">Explorer</string>
+    <string name="friendly">Friendly</string>
+    <string name="harmless">Harmless</string>
+    <string name="heroic">Heroic</string>
+    <string name="loner1">Loner 1</string>
+    <string name="loner2">Loner 2</string>
+    <string name="mathematician">Mathematician</string>
+    <string name="popular">Popular</string>
+    <string name="resourceful1">Resourceful 1</string>
+    <string name="resourceful2">Resourceful 2</string>
+    <string name="risky">Risky</string>
+    <string name="solar_explorer">Solar Explorer</string>
+    <string name="warmonger">Warmonger</string>
+
+
+    <!--Trait instructions-->
+    <string name="adventurer_trait_instructions">Gain 25 points if no player has more discoveries than you.</string>
+    <string name="aggressor_trait_instructions">Gain 25 points if no player has attacked more than you have.</string>
+    <string name="completionist_trait_instructions">Gain 25 points if no player has competed more missions than you have.</string>
+    <string name="dedicated_column_trait_instructions">Choose a planet column, gain 2 points per your population on a planet  on that column, plus 3 for every planet or asteroid in that column. </string>
+    <string name="dedicated_row_trait_instructions">Choose a planet row, gain 2 points per your population on a planet  on that row, plus 3 for every planet or asteroid in that row. </string>
+    <string name="expansionist_trait_instructions">Gain 3VP for every population you have on a different planet at the end of the game.</string>
+    <string name="explorer_trait_instructions">Gain 3VP for every planet you discover.</string>
+    <string name="friendly_trait_instructions">Gain 4VP for population on a planet that has another player\'s population on it.</string>
+    <string name="harmless_trait_instructions">Gain 3VP for every one of your  populations on a safe planet.</string>
+    <string name="heroic_trait_instructions">Gain 5VP for every mission completed.</string>
+    <string name="loner1_trait_instructions">Gain 8VP for every one of your population on a planet that doesn\'t have another player\'s population on it.</string>
+    <string name="loner2_trait_instructions">Gain 6VP for every one of your population on a planet that doesn\'t have another player\'s population on it.</string>
+    <string name="mathematician_trait_instructions">Gain 3VP for every population you have on a different row and column at the end of the game.</string>
+    <string name="popular_trait_instructions">Gain 3VP for every population you have.</string>
+    <string name="resourceful1_trait_instructions">Gain either 3 VP for every unique resource that you have 10 or more of OR gain 5 VP for every unique resource that you have 15 or more of.</string>
+    <string name="resourceful2_trait_instructions">Gain either 3 VP for every unique resource that you have 6 or more of OR gain 5 VP for every unique resource that you have 10 or more of.</string>
+    <string name="risky_trait_instructions">Gain 6VP for every one of your  populations on a dangerous planet.</string>
+    <string name="solar_explorer_trait_instructions">Choose a Solar System, gain 5 points per your discovery in that solar system.</string>
+    <string name="warmonger_trait_instructions">Gain 3VP for every successful attack.</string>
+
+    <!--Trait resource instructions-->
     <string name="every_three_resources">Gain 1VP for every three of your resources.</string>
     <string name="every_four_resources">Gain 1VP for every four of your resources.</string>
-
-    <string name="sample_trait_instructions">Gain either 3 VP for every unique resource that you have 6 or more of OR gain 5 VP for every unique resource that you have 10 or more of.</string>
 </resources>

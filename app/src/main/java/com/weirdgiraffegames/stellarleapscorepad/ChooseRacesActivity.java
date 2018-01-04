@@ -144,4 +144,10 @@ public class ChooseRacesActivity extends AppCompatActivity {
             }
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(ChooseRacesActivity.this,WelcomeScreenActivity.class);
+        startActivity(i);
+    }
 }

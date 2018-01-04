@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="traits">
+        <item>@string/adventurer</item>
+        <item>@string/aggressor</item>
+        <item>@string/completionist</item>
+        <item>@string/dedicated_column</item>
+        <item>@string/dedicated_row</item>
+        <item>@string/expansionist</item>
+        <item>@string/explorer</item>
+        <item>@string/friendly</item>
+        <item>@string/harmless</item>
+        <item>@string/heroic</item>
+        <item>@string/loner1</item>
+        <item>@string/loner2</item>
+        <item>@string/mathematician</item>
+        <item>@string/popular</item>
+        <item>@string/resourceful1</item>
+        <item>@string/resourceful2</item>
+        <item>@string/risky</item>
+        <item>@string/solar_explorer</item>
+        <item>@string/warmonger</item>
+    </string-array>
+
+    <string-array name="trait_instructions">
+        <item>@string/adventurer_trait_instructions</item>
+        <item>@string/aggressor_trait_instructions</item>
+        <item>@string/completionist_trait_instructions</item>
+        <item>@string/dedicated_column_trait_instructions</item>
+        <item>@string/dedicated_row_trait_instructions</item>
+        <item>@string/expansionist_trait_instructions</item>
+        <item>@string/explorer_trait_instructions</item>
+        <item>@string/friendly_trait_instructions</item>
+        <item>@string/harmless_trait_instructions</item>
+        <item>@string/heroic_trait_instructions</item>
+        <item>@string/loner1_trait_instructions</item>
+        <item>@string/loner2_trait_instructions</item>
+        <item>@string/mathematician_trait_instructions</item>
+        <item>@string/popular_trait_instructions</item>
+        <item>@string/resourceful1_trait_instructions</item>
+        <item>@string/resourceful2_trait_instructions</item>
+        <item>@string/risky_trait_instructions</item>
+        <item>@string/solar_explorer_trait_instructions</item>
+        <item>@string/warmonger_trait_instructions</item>
+    </string-array>
+
+    <string-array name="resource_instructions">
+        <item>@string/every_three_resources</item> <!-- adventurer-->
+        <item>@string/every_three_resources</item> <!-- aggressor-->
+        <item>@string/every_three_resources</item> <!-- completionist-->
+        <item>@string/every_four_resources</item> <!-- dedicated_column-->
+        <item>@string/every_four_resources</item> <!-- dedicated_row-->
+        <item>@string/every_three_resources</item> <!-- expansionist-->
+        <item>@string/every_four_resources</item> <!-- explorer-->
+        <item>@string/every_four_resources</item> <!-- friendly-->
+        <item>@string/every_three_resources</item> <!-- harmless-->
+        <item>@string/every_four_resources</item> <!-- heroic-->
+        <item>@string/every_three_resources</item> <!-- loner1-->
+        <item>@string/every_three_resources</item> <!-- loner2-->
+        <item>@string/every_four_resources</item> <!-- mathematician-->
+        <item>@string/every_three_resources</item> <!-- popular-->
+        <item>@string/every_three_resources</item>  <!-- resourceful1-->
+        <item>@string/every_three_resources</item> <!-- resourceful2-->
+        <item>@string/every_three_resources</item> <!-- risky-->
+        <item>@string/every_three_resources</item> <!-- solar_explorer-->
+        <item>@string/every_three_resources</item> <!-- warmonger-->
+
+    </string-array>
+
+
+</resources>

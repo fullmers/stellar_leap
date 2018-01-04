@@ -8,8 +8,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.weirdgiraffegames.stellarleapscorepad.data.GameLogContract;
@@ -121,9 +123,9 @@ public class InputPointsActivity extends AppCompatActivity {
     private void setupUI() {
         ButterKnife.bind(this);
         setupNextButton();
+        setupSpinners();
         showLayout();
     }
-
 
     private void setupNextButton() {
         nextButton.setOnClickListener(new View.OnClickListener() {
@@ -163,6 +165,18 @@ public class InputPointsActivity extends AppCompatActivity {
         } else {
             nextButton.setText(getString(R.string.next));
         }
+    }
+
+    private void setupSpinners() {
+        Spinner tuskadonSpinner = (Spinner) findViewById(R.id.tuskadon_trait_spinner);
+        Spinner starlingSpinner = (Spinner) findViewById(R.id.starlings_trait_spinner);
+// Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.traits, R.layout.selected_trait);
+// Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(R.layout.spinner_item);
+// Apply the adapter to the spinner
+        tuskadonSpinner.setAdapter(adapter);
+        starlingSpinner.setAdapter(adapter);
     }
 
     public void showLayout() {
