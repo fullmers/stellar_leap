@@ -207,26 +207,29 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+        String[] traitInstructionsArray = getResources().getStringArray(R.array.trait_instructions);
+        String[] resourceInstructionsArray = getResources().getStringArray(R.array.resource_instructions);
+
         switch (parent.getId()) {
             case R.id.tuskadon_trait_spinner:
-                String tuskadonTrait = (String) parent.getItemAtPosition(pos);
-                Log.d("tuskadon trait",tuskadonTrait);
+                tuskadonTraitInstructionsTV.setText(traitInstructionsArray[pos]);
+                tuskadonResourceInstructionsTV.setText(resourceInstructionsArray[pos]);
                 break;
             case R.id.starlings_trait_spinner:
-                String starlingsTrait = (String) parent.getItemAtPosition(pos);
-                Log.d("starlings trait",starlingsTrait);
+                starlingsTraitInstructionsTV.setText(traitInstructionsArray[pos]);
+                starlingsResourceInstructionsTV.setText(resourceInstructionsArray[pos]);
                 break;
             case R.id.cosmosaurus_trait_spinner:
-                String cosmosaurusTrait = (String) parent.getItemAtPosition(pos);
-                Log.d("cosmosaurus trait",cosmosaurusTrait);
+                cosmosaurusTraitInstructionsTV.setText(traitInstructionsArray[pos]);
+                cosmosaurusResourceInstructionsTV.setText(resourceInstructionsArray[pos]);
                 break;
             case R.id.scoutars_trait_spinner:
-                String scoutarsTrait = (String) parent.getItemAtPosition(pos);
-                Log.d("scoutars trait",scoutarsTrait);
+                scoutarsTraitInstructionsTV.setText(traitInstructionsArray[pos]);
+                scoutarsResourceInstructionsTV.setText(resourceInstructionsArray[pos]);
                 break;
             case R.id.araklith_trait_spinner:
-                String araklithTrait = (String) parent.getItemAtPosition(pos);
-                Log.d("araklith trait",araklithTrait);
+                araklithTraitInstructionsTV.setText(traitInstructionsArray[pos]);
+                araklithResourceInstructionsTV.setText(resourceInstructionsArray[pos]);
                 break;
             default:
                 break;

@@ -8,6 +8,8 @@
 
     <dimen name="headerTextSize">30sp</dimen>
 
+    <dimen name="traitSpinnerTextSize">20sp</dimen>
+    <dimen name="traitWidth">200dp</dimen>
 
     <dimen name="gameLogEntryTotalPointWidth">50dp</dimen>
 

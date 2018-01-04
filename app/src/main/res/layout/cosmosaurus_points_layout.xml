@@ -138,6 +138,7 @@
 
                 <Spinner
                     android:id="@+id/cosmosaurus_trait_spinner"
+                    android:layout_marginLeft="@dimen/smallMargin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:autofillHints="@string/select_trait"/>

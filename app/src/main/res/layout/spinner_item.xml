@@ -3,10 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
         style = "@style/InputPointsText"
-        android:textSize="20sp"
+        android:textSize="@dimen/traitSpinnerTextSize"
         android:textStyle="bold"
         android:background="@color/dark_gray"
         android:padding="@dimen/smallMargin"
-        android:layout_width="match_parent"
+        android:layout_width="@dimen/traitWidth"
         android:layout_height="wrap_content"
-        tools:text="@string/adventurer" />
+        tools:text="@string/dedicated_column" />
