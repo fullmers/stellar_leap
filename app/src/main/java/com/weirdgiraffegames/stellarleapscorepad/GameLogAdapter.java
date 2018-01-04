@@ -17,12 +17,21 @@ import com.weirdgiraffegames.stellarleapscorepad.data.GameLogContract;
 public class GameLogAdapter extends RecyclerView.Adapter<GameLogAdapter.GameViewHolder>  {
 
     private Context mContext;
-
     private Cursor mCursor;
 
-    public GameLogAdapter(Context context, Cursor cursor) {
+    final private GameLogAdapterOnClickHandler mClickHandler;
+
+    /**
+     * The interface that receives onClick messages.
+     */
+    public interface GameLogAdapterOnClickHandler {
+        void onClick(String gameId);
+    }
+
+    public GameLogAdapter(Context context, Cursor cursor, GameLogAdapterOnClickHandler clickHandler) {
         this.mContext = context;
         this.mCursor = cursor;
+        this.mClickHandler = clickHandler;
     }
 
     @Override
@@ -43,22 +52,25 @@ public class GameLogAdapter extends RecyclerView.Adapter<GameLogAdapter.GameView
         int scoutarsTotal = mCursor.getInt(mCursor.getColumnIndexOrThrow(GameLogContract.GameLogEntry.COLUMN_SCOUTARS_TOTAL_POINTS));
         int araklithTotal = mCursor.getInt(mCursor.getColumnIndexOrThrow(GameLogContract.GameLogEntry.COLUMN_ARAKLITH_TOTAL_POINTS));
 
+        String gameID = mCursor.getString(mCursor.getColumnIndexOrThrow(GameLogContract.GameLogEntry._ID));
+
         holder.tuskadonTextView.setText(String.valueOf(tuskadonTotal));
         holder.starlingTextView.setText(String.valueOf(starlingTotal));
         holder.cosmosaurusTextView.setText(String.valueOf(cosmosaurusTotal));
         holder.scoutarsTextView.setText(String.valueOf(scoutarsTotal));
         holder.araklithTextView.setText(String.valueOf(araklithTotal));
+        holder.gameIdTextView.setText(gameID);
+
+        holder.itemView.setTag(gameID);
     }
 
     @Override
     public int getItemCount() {
         return mCursor.getCount();
     }
-
-
     //Inner class to hold the views needed to display a single item in the recycler-view
 
-    class GameViewHolder extends RecyclerView.ViewHolder {
+    class GameViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         // Will display the total points for given species
         TextView tuskadonTextView;
@@ -66,16 +78,37 @@ public class GameLogAdapter extends RecyclerView.Adapter<GameLogAdapter.GameView
         TextView cosmosaurusTextView;
         TextView scoutarsTextView;
         TextView araklithTextView;
+        TextView gameIdTextView;
 
         public GameViewHolder(View itemView) {
             super(itemView);
+            gameIdTextView = (TextView) itemView.findViewById(R.id.game_id_tv);
+
             tuskadonTextView = (TextView) itemView.findViewById(R.id.tuskadon_total_tv);
             starlingTextView = (TextView) itemView.findViewById(R.id.starling_total_tv);
             cosmosaurusTextView = (TextView) itemView.findViewById(R.id.cosmosaurus_total_tv);
             scoutarsTextView = (TextView) itemView.findViewById(R.id.scoutars_total_tv);
             araklithTextView = (TextView) itemView.findViewById(R.id.araklith_total_tv);
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            String gameId = (String) v.getTag();
+            mClickHandler.onClick(gameId);
         }
     }
 
+    //Swaps the Cursor currently held in the adapter with a new one and triggers a UI refresh
+    public void swapCursor(Cursor newCursor) {
+        // Always close the previous mCursor first
+        if (mCursor != null) mCursor.close();
+        mCursor = newCursor;
+        if (newCursor != null) {
+            // Force the RecyclerView to refresh
+            this.notifyDataSetChanged();
+        }
+    }
 
 }
