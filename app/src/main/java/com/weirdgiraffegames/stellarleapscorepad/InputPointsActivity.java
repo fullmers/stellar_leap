@@ -7,7 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,7 +27,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class InputPointsActivity extends AppCompatActivity {
+public class InputPointsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     private Context context;
     private ArrayList<String> selectedSpecies;
@@ -45,6 +47,12 @@ public class InputPointsActivity extends AppCompatActivity {
     @BindView(R.id.cosmosaurus_layout) View cosmosaurusLayout;
     @BindView(R.id.scoutars_layout)  View scoutarsLayout;
     @BindView(R.id.araklith_layout) View araklithLayout;
+
+    @BindView(R.id.tuskadon_trait_spinner) Spinner tuskadonSpinner;
+    @BindView(R.id.starlings_trait_spinner) Spinner starlingSpinner;
+    @BindView(R.id.cosmosaurus_trait_spinner) Spinner cosmosaurusSpinner;
+    @BindView(R.id.scoutars_trait_spinner) Spinner scoutarsSpinner;
+    @BindView(R.id.araklith_trait_spinner) Spinner araklithSpinner;
 
     @BindView(R.id.tuskadon_mission_points_et) EditText tuskadonMissionPointsET;
     @BindView(R.id.tuskadon_player_board_points_et) EditText tuskadonPlayerBoardPointsET;
@@ -167,16 +175,55 @@ public class InputPointsActivity extends AppCompatActivity {
         }
     }
 
-    private void setupSpinners() {
-        Spinner tuskadonSpinner = (Spinner) findViewById(R.id.tuskadon_trait_spinner);
-        Spinner starlingSpinner = (Spinner) findViewById(R.id.starlings_trait_spinner);
-// Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.traits, R.layout.selected_trait);
-// Specify the layout to use when the list of choices appears
+    private void setupSpinners() {;
+        tuskadonSpinner.setOnItemSelectedListener(this);
+        starlingSpinner.setOnItemSelectedListener(this);
+        cosmosaurusSpinner.setOnItemSelectedListener(this);
+        scoutarsSpinner.setOnItemSelectedListener(this);
+        araklithSpinner.setOnItemSelectedListener(this);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource
+                (this,R.array.traits, R.layout.selected_trait);
         adapter.setDropDownViewResource(R.layout.spinner_item);
-// Apply the adapter to the spinner
+
         tuskadonSpinner.setAdapter(adapter);
         starlingSpinner.setAdapter(adapter);
+        cosmosaurusSpinner.setAdapter(adapter);
+        scoutarsSpinner.setAdapter(adapter);
+        araklithSpinner.setAdapter(adapter);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+        switch (parent.getId()) {
+            case R.id.tuskadon_trait_spinner:
+                String tuskadonTrait = (String) parent.getItemAtPosition(pos);
+                Log.d("tuskadon trait",tuskadonTrait);
+                break;
+            case R.id.starlings_trait_spinner:
+                String starlingsTrait = (String) parent.getItemAtPosition(pos);
+                Log.d("starlings trait",starlingsTrait);
+                break;
+            case R.id.cosmosaurus_trait_spinner:
+                String cosmosaurusTrait = (String) parent.getItemAtPosition(pos);
+                Log.d("cosmosaurus trait",cosmosaurusTrait);
+                break;
+            case R.id.scoutars_trait_spinner:
+                String scoutarsTrait = (String) parent.getItemAtPosition(pos);
+                Log.d("scoutars trait",scoutarsTrait);
+                break;
+            case R.id.araklith_trait_spinner:
+                String araklithTrait = (String) parent.getItemAtPosition(pos);
+                Log.d("araklith trait",araklithTrait);
+                break;
+            default:
+                break;
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+        // Another interface callback
     }
 
     public void showLayout() {
