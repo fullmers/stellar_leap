@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 
 import com.weirdgiraffegames.stellarleapscorepad.data.GameLogContract;
@@ -36,7 +35,7 @@ public class GameLogActivity extends AppCompatActivity implements GameLogAdapter
         mAdapter = new GameLogAdapter(this, cursor, this);
         gameLogRecyclerView.setAdapter(mAdapter);
 
-        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
+      /*  new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
                 ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
             @Override
             public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
@@ -49,7 +48,7 @@ public class GameLogActivity extends AppCompatActivity implements GameLogAdapter
                 deleteGame(gameId);
                 mAdapter.swapCursor(getAllGameLogs());
             }
-        }).attachToRecyclerView(gameLogRecyclerView);
+        }).attachToRecyclerView(gameLogRecyclerView); */
     }
 
 
