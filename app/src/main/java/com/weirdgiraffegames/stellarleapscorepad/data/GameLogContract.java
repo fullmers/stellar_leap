@@ -9,9 +9,9 @@ import android.provider.BaseColumns;
 
 public class GameLogContract {
     public static final String SCHEME = "content://";
-    public static final String CONTENT_AUTHORITY = "com.weirdgiraffegames.stellarleapscorepad";
+    public static final String AUTHORITY = "com.weirdgiraffegames.stellarleapscorepad";
 
-    public static final Uri BASE_CONTENT_URI = Uri.parse(SCHEME + CONTENT_AUTHORITY);
+    public static final Uri BASE_CONTENT_URI = Uri.parse(SCHEME + AUTHORITY);
     public static final String PATH_GAME_LOGS = "gameLog";
     public static final String NUMBER_WILDCARD = "#";
 
@@ -22,7 +22,7 @@ public class GameLogContract {
 
         public static final Uri CONTENT_URI =
                 BASE_CONTENT_URI.buildUpon().appendPath(PATH_GAME_LOGS).build();
-        
+
         public static final String TABLE_NAME = "gameLog";
 
         public static final String COLUMN_TIMESTAMP = "timestamp";
