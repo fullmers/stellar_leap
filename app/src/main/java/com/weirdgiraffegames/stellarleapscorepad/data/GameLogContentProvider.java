@@ -19,9 +19,9 @@ public class GameLogContentProvider extends ContentProvider {
     public static final int GAME_LOGS = 100;
     public static final int GAME_LOGS_WITH_ID = 101;
 
-    private static UriMatcher sUriMatcher = builUriMatcher();
+    private static UriMatcher sUriMatcher = buildUriMatcher();
 
-    private static UriMatcher builUriMatcher() {
+    public static UriMatcher buildUriMatcher() {
         UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
         uriMatcher.addURI(GameLogContract.AUTHORITY, GameLogContract.PATH_GAME_LOGS, GAME_LOGS);
         uriMatcher.addURI(GameLogContract.AUTHORITY, GameLogContract.PATH_GAME_LOGS + "/#", GAME_LOGS_WITH_ID);
