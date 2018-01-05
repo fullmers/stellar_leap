@@ -1,5 +1,8 @@
 package com.weirdgiraffegames.stellarleapscorepad;
 
+import android.content.ContentResolver;
+import android.content.ContentUris;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.UriMatcher;
 import android.database.sqlite.SQLiteDatabase;
@@ -12,6 +15,8 @@ import com.weirdgiraffegames.stellarleapscorepad.data.GameLogDbHelper;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.UUID;
 
 import static junit.framework.Assert.assertEquals;
 
@@ -74,6 +79,60 @@ public class GameLogsContractProviderTest {
         assertEquals(taskWithIdDoesNotMatch,
                 actualTaskWithIdCode,
                 expectedTaskWithIdCode);
+    }
+
+
+    //================================================================================
+    // Test Insert
+    //================================================================================
+
+
+    /**
+     * Tests inserting a single row of data via a ContentResolver
+     */
+    @Test
+    public void testInsert() {
+
+        /* Create values to insert */
+        ContentValues tesGameLogValues = new ContentValues();
+        String gameId = UUID.randomUUID().toString();
+        tesGameLogValues.put(GameLogContract.GameLogEntry.COLUMN_GAME_ID, gameId);
+        tesGameLogValues.put(GameLogContract.GameLogEntry.COLUMN_WINNER, 1);
+
+        /* TestContentObserver allows us to test if notifyChange was called appropriately */
+        TestUtilities.TestContentObserver taskObserver = TestUtilities.getTestContentObserver();
+
+        ContentResolver contentResolver = mContext.getContentResolver();
+
+        /* Register a content observer to be notified of changes to data at a given URI (tasks) */
+        contentResolver.registerContentObserver(
+                /* URI that we would like to observe changes to */
+                GameLogContract.GameLogEntry.CONTENT_URI,
+                /* Whether or not to notify us if descendants of this URI change */
+                true,
+                /* The observer to register (that will receive notifyChange callbacks) */
+                taskObserver);
+
+
+        Uri uri = contentResolver.insert(GameLogContract.GameLogEntry.CONTENT_URI, tesGameLogValues);
+
+
+        Uri expectedUri = ContentUris.withAppendedId(GameLogContract.GameLogEntry.CONTENT_URI, 33);
+
+        String insertProviderFailed = "Unable to insert item through Provider";
+        assertEquals(insertProviderFailed, uri, expectedUri);
+
+        /*
+         * If this fails, it's likely you didn't call notifyChange in your insert method from
+         * your ContentProvider.
+         */
+        taskObserver.waitForNotificationOrFail();
+
+        /*
+         * waitForNotificationOrFail is synchronous, so after that call, we are done observing
+         * changes to content and should therefore unregister this observer.
+         */
+        contentResolver.unregisterContentObserver(taskObserver);
     }
 
 

@@ -17,6 +17,7 @@ import android.support.annotation.NonNull;
 public class GameLogContentProvider extends ContentProvider {
 
     private GameLogDbHelper mDbHelper;
+    private Context mContext;
 
     public static final int GAME_LOGS = 100;
     public static final int GAME_LOGS_WITH_ID = 101;
@@ -32,8 +33,8 @@ public class GameLogContentProvider extends ContentProvider {
 
     @Override
     public boolean onCreate() {
-        Context context = getContext();
-        mDbHelper = new GameLogDbHelper(context);
+        mContext = getContext();
+        mDbHelper = new GameLogDbHelper(mContext);
         return true;
     }
 
