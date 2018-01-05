@@ -34,6 +34,11 @@
             android:screenOrientation="landscape" />
         <activity android:name=".GameLogActivity" />
         <activity android:name=".FinalScoreActivity"></activity>
+
+        <provider
+            android:authorities="com.weirdgiraffegames.stellarleapscorepad"
+            android:name="com.weirdgiraffegames.stellarleapscorepad.data.GameLogContentProvider"
+            android:exported="false"/>
     </application>
 
 </manifest>
