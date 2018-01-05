@@ -1,10 +1,12 @@
 package com.weirdgiraffegames.stellarleapscorepad.data;
 
 import android.content.ContentProvider;
+import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.UriMatcher;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 
@@ -39,7 +41,27 @@ public class GameLogContentProvider extends ContentProvider {
     @Override
     public Uri insert(@NonNull Uri uri, ContentValues values) {
 
-        throw new UnsupportedOperationException("Not yet implemented");
+        final SQLiteDatabase db = mDbHelper.getWritableDatabase();
+        int match = sUriMatcher.match(uri);
+        Uri returnUri;
+
+        switch (match) {
+            case GAME_LOGS:
+                long id = db.insert(GameLogContract.GameLogEntry.TABLE_NAME, null,values);
+
+                if (id != -1) {
+                    returnUri = ContentUris.withAppendedId(GameLogContract.GameLogEntry.CONTENT_URI,id);
+                } else {
+                    throw new android.database.SQLException("failed to insert row into " + uri);
+                }
+                break;
+            default:
+                throw new UnsupportedOperationException("Unknown uri: " + uri);
+        }
+
+        getContext().getContentResolver().notifyChange(uri,null);
+
+        return returnUri;
     }
 
 
