@@ -70,7 +70,28 @@ public class GameLogContentProvider extends ContentProvider {
     public Cursor query(@NonNull Uri uri, String[] projection, String selection,
                         String[] selectionArgs, String sortOrder) {
 
-        throw new UnsupportedOperationException("Not yet implemented");
+        final SQLiteDatabase db = mDbHelper.getReadableDatabase();
+
+        int match = sUriMatcher.match(uri);
+
+        Cursor cursor;
+        switch (match) {
+            case GAME_LOGS:
+                cursor = db.query(GameLogContract.GameLogEntry.TABLE_NAME,
+                        projection,
+                        selection,
+                        selectionArgs,
+                        null,
+                        null,
+                        sortOrder);
+                break;
+            default:
+                throw new UnsupportedOperationException("Unknown uri: " + uri.toString());
+        }
+
+        cursor.setNotificationUri(getContext().getContentResolver(),uri);
+
+        return cursor;
     }
 
 
