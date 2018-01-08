@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.AsyncTaskLoader;
+import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,10 +16,13 @@ import android.util.Log;
 import com.weirdgiraffegames.stellarleapscorepad.data.GameLogContract;
 import com.weirdgiraffegames.stellarleapscorepad.data.GameLogDbHelper;
 
-public class GameLogActivity extends AppCompatActivity implements GameLogAdapter.GameLogAdapterOnClickHandler{
+public class GameLogActivity extends AppCompatActivity implements GameLogCursorAdapter.GameLogAdapterOnClickHandler, LoaderManager.LoaderCallbacks<Cursor>{
 
     private SQLiteDatabase mDb;
-    private GameLogAdapter mAdapter;
+    private GameLogCursorAdapter mCursorAdapter;
+
+    private static final String TAG = GameLogActivity.class.getSimpleName();
+    private static final int GAME_LOADER_ID = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,36 +37,15 @@ public class GameLogActivity extends AppCompatActivity implements GameLogAdapter
         gameLogRecyclerView = (RecyclerView) this.findViewById(R.id.all_game_logs_recycler_view);
         gameLogRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        Cursor cursor = getAllGameLogs();
-        mAdapter = new GameLogAdapter(this, cursor, this);
-        gameLogRecyclerView.setAdapter(mAdapter);
+        mCursorAdapter = new GameLogCursorAdapter(this, this);
+        gameLogRecyclerView.setAdapter(mCursorAdapter);
 
-      /*  new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
-                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
-            @Override
-            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
-                return false;
-            }
-
-            @Override
-            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
-                String gameId = (String) viewHolder.itemView.getTag();
-                deleteGame(gameId);
-                mAdapter.swapCursor(getAllGameLogs());
-            }
-        }).attachToRecyclerView(gameLogRecyclerView); */
+        getSupportLoaderManager().initLoader(GAME_LOADER_ID, null, this);
     }
 
-
-    public Cursor getAllGameLogs() {
-        return mDb.query(GameLogContract.GameLogEntry.TABLE_NAME,
-                null, //interested in all columns, so just pass in null
-                null,
-                null,
-                null,
-                null,
-                GameLogContract.GameLogEntry.COLUMN_TIMESTAMP //order results by timestamp
-        );
+    protected void onResume() {
+        super.onResume();
+        getSupportLoaderManager().restartLoader(GAME_LOADER_ID,null,this);
     }
 
     private boolean deleteGame(String gameId) {
@@ -78,5 +63,67 @@ public class GameLogActivity extends AppCompatActivity implements GameLogAdapter
         Intent intent = new Intent(context, destinationClass);
         intent.putExtra(getString(R.string.game_id_key), gameId);
         startActivity(intent);
+    }
+
+
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        return new AsyncTaskLoader<Cursor>(this) {
+
+            // Initialize a Cursor, this will hold all the task data
+            Cursor mTaskData = null;
+
+            // onStartLoading() is called when a loader first starts loading data
+            @Override
+            protected void onStartLoading() {
+                if (mTaskData != null) {
+                    // Delivers any previously loaded data immediately
+                    deliverResult(mTaskData);
+                } else {
+                    // Force a new load
+                    forceLoad();
+                }
+            }
+
+            // loadInBackground() performs asynchronous loading of data
+            @Override
+            public Cursor loadInBackground() {
+                String[] projection = {
+                        GameLogContract.GameLogEntry._ID,
+                        GameLogContract.GameLogEntry.COLUMN_TUSKADON_TOTAL_POINTS,
+                        GameLogContract.GameLogEntry.COLUMN_STARLING_TOTAL_POINTS,
+                        GameLogContract.GameLogEntry.COLUMN_COSMOSAURUS_TOTAL_POINTS,
+                        GameLogContract.GameLogEntry.COLUMN_SCOUTARS_TOTAL_POINTS,
+                        GameLogContract.GameLogEntry.COLUMN_ARAKLITH_TOTAL_POINTS
+                };
+
+                try {
+                    return getContentResolver().query(GameLogContract.GameLogEntry.CONTENT_URI,
+                            projection,
+                            null,
+                            null,
+                            GameLogContract.GameLogEntry.COLUMN_TIMESTAMP);
+                }
+                catch (Exception e) {
+                    Log.d(TAG,"Failed to asynchronously load data");
+                    return null;
+                }
+            }
+
+            public void deliverResult(Cursor data) {
+                mTaskData = data;
+                super.deliverResult(data);
+            }
+        };
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+        mCursorAdapter.swapCursor(data);
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+        mCursorAdapter.swapCursor(null);
     }
 }
