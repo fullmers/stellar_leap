@@ -28,6 +28,9 @@
     <string name="game_id_key">gameIdKey</string>
 
 
+    <!--GameLogActivity-->
+    <string name="comes_from_game_log_activity_key">comesFromGameLogActivityKey</string>
+
     <!--InputPointsActivity-->
     <string name="tuskadon_points">Tuskadon Points</string>
     <string name="starling_points">Starling Points</string>

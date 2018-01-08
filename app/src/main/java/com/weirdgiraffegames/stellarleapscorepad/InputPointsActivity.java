@@ -164,6 +164,7 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
                         insertSpeciesPoints();
                         Intent i = new Intent(InputPointsActivity.this, FinalScoreActivity.class);
                         i.setData(mUri);
+                        i.putExtra(getString(R.string.comes_from_game_log_activity_key),false);
                         startActivity(i);
                     } else {
                         insertSpeciesPoints();

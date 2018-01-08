@@ -20,6 +20,7 @@ public class FinalScoreActivity extends AppCompatActivity implements LoaderManag
 
     private Cursor mCursor;
     private Uri mUri;
+    private boolean comesFromGameLogActivity;
     private static final String TAG = FinalScoreActivity.class.getSimpleName();
     private static final int FINAL_GAME_LOADER_ID = 1;
 
@@ -29,9 +30,22 @@ public class FinalScoreActivity extends AppCompatActivity implements LoaderManag
         setContentView(R.layout.activity_final_score);
         ButterKnife.bind(this);
         mUri = getIntent().getData();
+        comesFromGameLogActivity = getIntent().getBooleanExtra(getString(R.string.comes_from_game_log_activity_key),false);
         Log.d("uri","in FinalScoreActivity: " + mUri.toString());
 
         getSupportLoaderManager().initLoader(FINAL_GAME_LOADER_ID, null, this);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i;
+        if (comesFromGameLogActivity) {
+            i = new Intent(FinalScoreActivity.this, GameLogActivity.class);
+        } else {
+            i = new Intent(FinalScoreActivity.this, WelcomeScreenActivity.class);
+        }
+        startActivity(i);
     }
 
     protected void onResume() {

@@ -65,6 +65,7 @@ public class GameLogActivity extends AppCompatActivity implements GameLogCursorA
         Intent intent = new Intent(context, destinationClass);
         Uri uri = ContentUris.withAppendedId(GameLogContract.GameLogEntry.CONTENT_URI,gameId);
         intent.setData(uri);
+        intent.putExtra(getString(R.string.comes_from_game_log_activity_key),true);
         startActivity(intent);
     }
 
