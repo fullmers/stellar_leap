@@ -45,6 +45,7 @@ public class FinalScoreActivity extends AppCompatActivity implements LoaderManag
         } else {
             i = new Intent(FinalScoreActivity.this, WelcomeScreenActivity.class);
         }
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(i);
     }
 

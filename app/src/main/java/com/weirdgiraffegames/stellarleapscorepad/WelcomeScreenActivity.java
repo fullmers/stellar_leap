@@ -43,5 +43,16 @@ public class WelcomeScreenActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        if (getIntent().getBooleanExtra("EXIT", false)) {
+            finish();
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+        moveTaskToBack(true); // exit app
     }
 }
