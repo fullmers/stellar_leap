@@ -115,7 +115,29 @@ public class GameLogContentProvider extends ContentProvider {
     @Override
     public int delete(@NonNull Uri uri, String selection, String[] selectionArgs) {
 
-        throw new UnsupportedOperationException("Not yet implemented");
+        final SQLiteDatabase db = mDbHelper.getWritableDatabase();
+        int match = sUriMatcher.match(uri);
+        int gameLogsDeleted; // starts as 0
+
+        switch (match) {
+            case GAME_LOGS_WITH_ID:
+                //URI: content://<authority>/game_logs/#
+                String id = uri.getPathSegments().get(1);
+                String mSelection = " _id=?";
+                String[] mSelectionArgs = new String[]{id};
+                gameLogsDeleted = db.delete(TABLE_NAME,
+                        mSelection,
+                        mSelectionArgs);
+                break;
+            default:
+                throw new UnsupportedOperationException("Unknown uri: " + uri.toString());
+        }
+
+        if (gameLogsDeleted != 0) {
+            getContext().getContentResolver().notifyChange(uri, null);
+        }
+
+        return gameLogsDeleted;
     }
 
 
