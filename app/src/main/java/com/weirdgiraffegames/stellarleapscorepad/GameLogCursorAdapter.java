@@ -23,7 +23,7 @@ public class GameLogCursorAdapter extends RecyclerView.Adapter<GameLogCursorAdap
     final private GameLogAdapterOnClickHandler mClickHandler;
 
     public interface GameLogAdapterOnClickHandler {
-        void onClick(String gameId);
+        void onClick(Long gameId);
     }
 
     public GameLogCursorAdapter(Context mContext, GameLogAdapterOnClickHandler clickHandler) {
@@ -53,7 +53,7 @@ public class GameLogCursorAdapter extends RecyclerView.Adapter<GameLogCursorAdap
 
         mCursor.moveToPosition(position);
 
-        final int gameID = mCursor.getInt(gameIDIndex);
+        final long gameID = mCursor.getLong(gameIDIndex);
         int tuskadonTotal = mCursor.getInt(tuskadonTotalIndex);
         int starlingTotal = mCursor.getInt(starlingTotalIndex);
         int cosmosaurusTotal = mCursor.getInt(cosmosaurusTotalIndex);
@@ -121,8 +121,8 @@ public class GameLogCursorAdapter extends RecyclerView.Adapter<GameLogCursorAdap
         }
 
         @Override
-        public void onClick(View v) {
-            String gameId = String.valueOf(v.getTag());
+            public void onClick(View v) {
+            long gameId = (Long) v.getTag();
             mClickHandler.onClick(gameId);
         }
     }

@@ -1,9 +1,11 @@
 package com.weirdgiraffegames.stellarleapscorepad;
 
+import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.AsyncTaskLoader;
@@ -48,20 +50,21 @@ public class GameLogActivity extends AppCompatActivity implements GameLogCursorA
         getSupportLoaderManager().restartLoader(GAME_LOADER_ID,null,this);
     }
 
-    private boolean deleteGame(String gameId) {
-        Log.d("deleting ", "game " + gameId);
-        return mDb.delete(GameLogContract.GameLogEntry.TABLE_NAME,
-                GameLogContract.GameLogEntry.COLUMN_GAME_ID + "=" + "\"" + gameId + "\"",
-                null) == 1;
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i = new Intent(GameLogActivity.this,WelcomeScreenActivity.class);
+        startActivity(i);
     }
 
     @Override
-    public void onClick(String gameId) {
+    public void onClick(Long gameId) {
         Context context = this;
         Class destinationClass = FinalScoreActivity.class;
         Log.d("gameId","in GameLogActivity: " + gameId);
         Intent intent = new Intent(context, destinationClass);
-        intent.putExtra(getString(R.string.game_id_key), gameId);
+        Uri uri = ContentUris.withAppendedId(GameLogContract.GameLogEntry.CONTENT_URI,gameId);
+        intent.setData(uri);
         startActivity(intent);
     }
 

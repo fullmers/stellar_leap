@@ -1,18 +1,25 @@
 package com.weirdgiraffegames.stellarleapscorepad;
 
+import android.content.Intent;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.LoaderManager;
 import android.support.v4.content.AsyncTaskLoader;
 import android.support.v4.content.Loader;
-import android.support.v4.app.LoaderManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 
 import com.weirdgiraffegames.stellarleapscorepad.data.GameLogContract;
 
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 public class FinalScoreActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>{
 
-    private String gameId;
+    private Cursor mCursor;
+    private Uri mUri;
     private static final String TAG = FinalScoreActivity.class.getSimpleName();
     private static final int FINAL_GAME_LOADER_ID = 1;
 
@@ -20,8 +27,9 @@ public class FinalScoreActivity extends AppCompatActivity implements LoaderManag
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_final_score);
-        gameId = getIntent().getExtras().getString(getString(R.string.game_id_key));
-        Log.d("gameId","in FinalScoreActivity: " + gameId);
+        ButterKnife.bind(this);
+        mUri = getIntent().getData();
+        Log.d("uri","in FinalScoreActivity: " + mUri.toString());
 
         getSupportLoaderManager().initLoader(FINAL_GAME_LOADER_ID, null, this);
     }
@@ -31,19 +39,28 @@ public class FinalScoreActivity extends AppCompatActivity implements LoaderManag
         getSupportLoaderManager().restartLoader(FINAL_GAME_LOADER_ID,null,this);
     }
 
+    @OnClick(R.id.btn_delete)
+    //TODO add confirmation dialog here
+    public void deleteLog(View view) {
+        getContentResolver().delete(mUri,null,null);
+        Intent i = new Intent(FinalScoreActivity.this,GameLogActivity.class);
+        startActivity(i);
+    }
+
+
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         return new AsyncTaskLoader<Cursor>(this) {
 
             // Initialize a Cursor, this will hold all the task data
-            Cursor mTaskData = null;
+            Cursor mGameLogData = null;
 
             // onStartLoading() is called when a loader first starts loading data
             @Override
             protected void onStartLoading() {
-                if (mTaskData != null) {
+                if (mGameLogData != null) {
                     // Delivers any previously loaded data immediately
-                    deliverResult(mTaskData);
+                    deliverResult(mGameLogData);
                 } else {
                     // Force a new load
                     forceLoad();
@@ -53,12 +70,11 @@ public class FinalScoreActivity extends AppCompatActivity implements LoaderManag
             // loadInBackground() performs asynchronous loading of data
             @Override
             public Cursor loadInBackground() {
-                String[] idSelector = {gameId};
                 try {
-                    return getContentResolver().query(GameLogContract.GameLogEntry.CONTENT_URI,
+                    return getContentResolver().query(mUri,
                             null,
-                            "_id=?",
-                            idSelector,
+                            null,
+                            null,
                             null);
                 }
                 catch (Exception e) {
@@ -68,7 +84,7 @@ public class FinalScoreActivity extends AppCompatActivity implements LoaderManag
             }
 
             public void deliverResult(Cursor data) {
-                mTaskData = data;
+                mGameLogData = data;
                 super.deliverResult(data);
             }
         };
@@ -76,10 +92,14 @@ public class FinalScoreActivity extends AppCompatActivity implements LoaderManag
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
-    cursor.moveToFirst();
-    int tuskadonTotal = cursor.getInt(cursor.getColumnIndex(GameLogContract.GameLogEntry.COLUMN_TUSKADON_TOTAL_POINTS));
-    Log.d("tuskadon total",String.valueOf(tuskadonTotal));
-    cursor.close();
+        //TODO replace below load all data into UI
+        if(cursor != null) {
+            mCursor = cursor;
+            mCursor.moveToFirst();
+            int tuskadonTotal = mCursor.getInt(cursor.getColumnIndex(GameLogContract.GameLogEntry.COLUMN_TUSKADON_TOTAL_POINTS));
+            Log.d("tuskadon total",String.valueOf(tuskadonTotal));
+            mCursor.close();
+        }
     }
 
     @Override
