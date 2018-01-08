@@ -27,7 +27,6 @@ public class GameLogContract {
 
         public static final String COLUMN_TIMESTAMP = "timestamp";
         public static final String COLUMN_WINNER= "winner";
-        public static final String COLUMN_GAME_ID= "gameId";
 
         public static final String COLUMN_TUSKADON_MISSION_POINTS = "tuskadonMissionPoints";
         public static final String COLUMN_TUSKADON_PLAYER_BOARD_POINTS = "tuskadonPlayerBoardPoints";

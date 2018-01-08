@@ -13,7 +13,7 @@ import com.weirdgiraffegames.stellarleapscorepad.data.GameLogContract.GameLogEnt
 public class GameLogDbHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "gameLog.db";
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 2;
 
     public GameLogDbHelper (Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -25,7 +25,6 @@ public class GameLogDbHelper extends SQLiteOpenHelper {
         String SQL_CREATE_GAME_LOG_TABLE = "CREATE TABLE " + GameLogEntry.TABLE_NAME
                 + "("  +
                 GameLogEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                GameLogEntry.COLUMN_GAME_ID + " TEXT NOT NULL," +
                 GameLogEntry.COLUMN_TIMESTAMP + " TIMESTAMP DEFAULT CURRENT_TIMESTAMP," +
                 GameLogEntry.COLUMN_WINNER + " INTEGER NOT NULL," +
 
