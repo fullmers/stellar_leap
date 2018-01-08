@@ -1,6 +1,5 @@
 package com.weirdgiraffegames.stellarleapscorepad;
 
-import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -56,8 +55,8 @@ public class ChooseRacesActivity extends AppCompatActivity {
                     defineSelectedSpecies();
                     Intent i = new Intent(view.getContext(),InputPointsActivity.class);
                     i.putExtra(getString(R.string.selected_species_key),selectedSpecies);
-                    long gameId = initializeGameEntry();
-                    Uri uri = ContentUris.withAppendedId(GameLogContract.GameLogEntry.CONTENT_URI,gameId);
+                    Uri uri= initializeGameEntry();
+                    long gameId = Long.valueOf(uri.getPathSegments().get(1));
                     i.setData(uri);
                     mDb.close();
                     i.putExtra(getString(R.string.game_id_key),gameId);
@@ -67,11 +66,10 @@ public class ChooseRacesActivity extends AppCompatActivity {
         });
     }
 
-    private long initializeGameEntry() {
+    private Uri initializeGameEntry() {
         ContentValues cv = new ContentValues();
-        //cv.put(GameLogContract.GameLogEntry.COLUMN_GAME_ID, gameId);
         cv.put(GameLogContract.GameLogEntry.COLUMN_WINNER, -1);
-        return mDb.insert(GameLogContract.GameLogEntry.TABLE_NAME, null, cv);
+        return getContentResolver().insert(GameLogContract.GameLogEntry.CONTENT_URI,cv);
     }
 
     private void defineSelectedSpecies() {
