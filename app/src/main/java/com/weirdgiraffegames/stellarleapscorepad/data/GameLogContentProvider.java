@@ -10,6 +10,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 
+import static com.weirdgiraffegames.stellarleapscorepad.data.GameLogContract.GameLogEntry.TABLE_NAME;
+
 /**
  * Created by sarah on 05/01/2018.
  */
@@ -48,7 +50,7 @@ public class GameLogContentProvider extends ContentProvider {
 
         switch (match) {
             case GAME_LOGS:
-                long id = db.insert(GameLogContract.GameLogEntry.TABLE_NAME, null,values);
+                long id = db.insert(TABLE_NAME, null,values);
 
                 if (id != -1) {
                     returnUri = ContentUris.withAppendedId(GameLogContract.GameLogEntry.CONTENT_URI,id);
@@ -77,10 +79,25 @@ public class GameLogContentProvider extends ContentProvider {
         Cursor cursor;
         switch (match) {
             case GAME_LOGS:
-                cursor = db.query(GameLogContract.GameLogEntry.TABLE_NAME,
+                cursor = db.query(TABLE_NAME,
                         projection,
                         selection,
                         selectionArgs,
+                        null,
+                        null,
+                        sortOrder);
+                break;
+
+            case GAME_LOGS_WITH_ID:
+                //URI: content://<authority>/game_logs/#
+                String id = uri.getPathSegments().get(1);
+
+                String mSelection = " _id=?";
+                String[] mSelectionArgs = new String[]{id};
+                cursor = db.query(TABLE_NAME,
+                        projection,
+                        mSelection,
+                        mSelectionArgs,
                         null,
                         null,
                         sortOrder);

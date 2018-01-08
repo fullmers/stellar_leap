@@ -88,6 +88,8 @@ public class GameLogActivity extends AppCompatActivity implements GameLogCursorA
             // loadInBackground() performs asynchronous loading of data
             @Override
             public Cursor loadInBackground() {
+
+                //only query for total points column and id column
                 String[] projection = {
                         GameLogContract.GameLogEntry._ID,
                         GameLogContract.GameLogEntry.COLUMN_TUSKADON_TOTAL_POINTS,
