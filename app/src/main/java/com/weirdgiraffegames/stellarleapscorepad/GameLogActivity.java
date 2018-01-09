@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
-import android.support.v4.content.AsyncTaskLoader;
+import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -72,28 +72,8 @@ public class GameLogActivity extends AppCompatActivity implements GameLogCursorA
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        return new AsyncTaskLoader<Cursor>(this) {
-
-            // Initialize a Cursor, this will hold all the task data
-            Cursor mTaskData = null;
-
-            // onStartLoading() is called when a loader first starts loading data
-            @Override
-            protected void onStartLoading() {
-                if (mTaskData != null) {
-                    // Delivers any previously loaded data immediately
-                    deliverResult(mTaskData);
-                } else {
-                    // Force a new load
-                    forceLoad();
-                }
-            }
-
-            // loadInBackground() performs asynchronous loading of data
-            @Override
-            public Cursor loadInBackground() {
-
-                //only query for total points column and id column
+        switch(id) {
+            case GAME_LOADER_ID:
                 String[] projection = {
                         GameLogContract.GameLogEntry._ID,
                         GameLogContract.GameLogEntry.COLUMN_TUSKADON_TOTAL_POINTS,
@@ -102,25 +82,15 @@ public class GameLogActivity extends AppCompatActivity implements GameLogCursorA
                         GameLogContract.GameLogEntry.COLUMN_SCOUTARS_TOTAL_POINTS,
                         GameLogContract.GameLogEntry.COLUMN_ARAKLITH_TOTAL_POINTS
                 };
-
-                try {
-                    return getContentResolver().query(GameLogContract.GameLogEntry.CONTENT_URI,
-                            projection,
-                            null,
-                            null,
-                            GameLogContract.GameLogEntry.COLUMN_TIMESTAMP);
-                }
-                catch (Exception e) {
-                    Log.d(TAG,"Failed to asynchronously load data");
-                    return null;
-                }
-            }
-
-            public void deliverResult(Cursor data) {
-                mTaskData = data;
-                super.deliverResult(data);
-            }
-        };
+                return new CursorLoader(this,
+                        GameLogContract.GameLogEntry.CONTENT_URI,
+                        projection,
+                        null,
+                        null,
+                        GameLogContract.GameLogEntry.COLUMN_TIMESTAMP);
+            default:
+                throw new RuntimeException("Loader Not Implemented: " + id);
+        }
     }
 
     @Override
