@@ -2,7 +2,6 @@ package com.weirdgiraffegames.stellarleapscorepad;
 
 import android.content.ContentValues;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,7 +11,6 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
 import com.weirdgiraffegames.stellarleapscorepad.data.GameLogContract;
-import com.weirdgiraffegames.stellarleapscorepad.data.GameLogDbHelper;
 
 import java.util.ArrayList;
 
@@ -23,10 +21,7 @@ public class ChooseRacesActivity extends AppCompatActivity {
     CheckBox chkbx_cosmosaurus;
     CheckBox chkbx_scoutars;
     CheckBox chkbx_araklith;
-
     Button btn_next;
-
-    private SQLiteDatabase mDb;
 
     boolean isTuskadonSelected;
     boolean isStarlingsSelected;
@@ -44,9 +39,6 @@ public class ChooseRacesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_choose_races);
         setupUI();
 
-        GameLogDbHelper dbHelper = new GameLogDbHelper(this);
-        mDb = dbHelper.getWritableDatabase();
-
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,10 +48,7 @@ public class ChooseRacesActivity extends AppCompatActivity {
                     Intent i = new Intent(view.getContext(),InputPointsActivity.class);
                     i.putExtra(getString(R.string.selected_species_key),selectedSpecies);
                     Uri uri= initializeGameEntry();
-                    long gameId = Long.valueOf(uri.getPathSegments().get(1));
                     i.setData(uri);
-                    mDb.close();
-                    i.putExtra(getString(R.string.game_id_key),gameId);
                     startActivity(i);
                 }
             }

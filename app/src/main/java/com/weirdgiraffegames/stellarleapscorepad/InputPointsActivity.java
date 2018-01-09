@@ -3,7 +3,6 @@ package com.weirdgiraffegames.stellarleapscorepad;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -18,9 +17,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.weirdgiraffegames.stellarleapscorepad.data.GameLogContract;
 import com.weirdgiraffegames.stellarleapscorepad.data.GameLogContract.GameLogEntry;
-import com.weirdgiraffegames.stellarleapscorepad.data.GameLogDbHelper;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -36,7 +33,6 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
     private int numSelectedSpecies = -1;
     private int layoutIndex = 0;
     private long gameId;
-    private SQLiteDatabase mDb;
     private Uri mUri;
 
     private List<EditText> currentEditTexts = null;
@@ -100,12 +96,10 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
         context = this;
         selectedSpecies = getIntent().getExtras().getStringArrayList(getString(R.string.selected_species_key));
         numSelectedSpecies = selectedSpecies.size();
-        gameId = getIntent().getExtras().getLong(getString(R.string.game_id_key));
-        Log.d("InputPointsActivity","gameId: " + gameId);
         mUri = getIntent().getData();
         Log.d("InputPointsActivity",mUri.toString());
-        GameLogDbHelper dbHelper = new GameLogDbHelper(this);
-        mDb = dbHelper.getWritableDatabase();
+        gameId = Long.valueOf(mUri.getPathSegments().get(1));
+        Log.d("InputPointsActivity","gameId: " + gameId);
         setupUI();
     }
 
@@ -132,17 +126,7 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
         }
         values.put(currentTotalPointsColumn,total);
 
-    // Which row to update, based on the gameId
-        String selection = GameLogEntry._ID + " = ?";
-        String[] selectionArgs = {String.valueOf(gameId)};
-
-        int count = mDb.update(
-                GameLogContract.GameLogEntry.TABLE_NAME,
-                values,
-                selection,
-                selectionArgs);
-        return count;
-
+        return getContentResolver().update(mUri,values,null,null);
     }
 
     private void setupUI() {
