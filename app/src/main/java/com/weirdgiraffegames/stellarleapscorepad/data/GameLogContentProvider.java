@@ -142,10 +142,26 @@ public class GameLogContentProvider extends ContentProvider {
 
 
     @Override
-    public int update(@NonNull Uri uri, ContentValues values, String selection,
-                      String[] selectionArgs) {
+    public int update(@NonNull Uri uri, ContentValues values, String selection, String[] selectionArgs) {
 
-        throw new UnsupportedOperationException("Not yet implemented");
+        //Keep track of if an update occurs
+        int gameLogsUpdated;
+        int match = sUriMatcher.match(uri);
+
+        switch (match) {
+            case GAME_LOGS_WITH_ID:
+                String id = uri.getPathSegments().get(1);
+                gameLogsUpdated = mDbHelper.getWritableDatabase().update(TABLE_NAME, values, "_id=?", new String[]{id});
+                break;
+            default:
+                throw new UnsupportedOperationException("Unknown uri: " + uri);
+        }
+
+        if (gameLogsUpdated != 0) {
+            //set notifications if a task was updated
+            getContext().getContentResolver().notifyChange(uri, null);
+        }
+        return gameLogsUpdated;
     }
 
 
