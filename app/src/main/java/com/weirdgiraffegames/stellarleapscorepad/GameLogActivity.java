@@ -15,7 +15,6 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import com.weirdgiraffegames.stellarleapscorepad.data.GameLogContract;
-import com.weirdgiraffegames.stellarleapscorepad.data.GameLogDbHelper;
 
 public class GameLogActivity extends AppCompatActivity implements GameLogCursorAdapter.GameLogAdapterOnClickHandler, LoaderManager.LoaderCallbacks<Cursor>{
 
@@ -29,8 +28,6 @@ public class GameLogActivity extends AppCompatActivity implements GameLogCursorA
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_log);
-        GameLogDbHelper dbHelper = new GameLogDbHelper(this);
-
         RecyclerView gameLogRecyclerView;
         gameLogRecyclerView = (RecyclerView) this.findViewById(R.id.all_game_logs_recycler_view);
         gameLogRecyclerView.setLayoutManager(new LinearLayoutManager(this));

@@ -5,7 +5,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
-import android.support.v4.content.AsyncTaskLoader;
+import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -65,44 +65,18 @@ public class FinalScoreActivity extends AppCompatActivity implements LoaderManag
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        return new AsyncTaskLoader<Cursor>(this) {
+        switch(id) {
+            case FINAL_GAME_LOADER_ID:
 
-            // Initialize a Cursor, this will hold all the task data
-            Cursor mGameLogData = null;
-
-            // onStartLoading() is called when a loader first starts loading data
-            @Override
-            protected void onStartLoading() {
-                if (mGameLogData != null) {
-                    // Delivers any previously loaded data immediately
-                    deliverResult(mGameLogData);
-                } else {
-                    // Force a new load
-                    forceLoad();
-                }
-            }
-
-            // loadInBackground() performs asynchronous loading of data
-            @Override
-            public Cursor loadInBackground() {
-                try {
-                    return getContentResolver().query(mUri,
-                            null,
-                            null,
-                            null,
-                            null);
-                }
-                catch (Exception e) {
-                    Log.d(TAG,"Failed to asynchronously load data");
-                    return null;
-                }
-            }
-
-            public void deliverResult(Cursor data) {
-                mGameLogData = data;
-                super.deliverResult(data);
-            }
-        };
+                return new CursorLoader(this,
+                        mUri,
+                        null,
+                        null,
+                        null,
+                        null);
+            default:
+                throw new RuntimeException("Loader Not Implemented: " + id);
+        }
     }
 
     @Override
