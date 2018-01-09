@@ -4,7 +4,6 @@ import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
@@ -20,7 +19,7 @@ import com.weirdgiraffegames.stellarleapscorepad.data.GameLogDbHelper;
 
 public class GameLogActivity extends AppCompatActivity implements GameLogCursorAdapter.GameLogAdapterOnClickHandler, LoaderManager.LoaderCallbacks<Cursor>{
 
-    private SQLiteDatabase mDb;
+
     private GameLogCursorAdapter mCursorAdapter;
 
     private static final String TAG = GameLogActivity.class.getSimpleName();
@@ -30,10 +29,7 @@ public class GameLogActivity extends AppCompatActivity implements GameLogCursorA
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_log);
-
         GameLogDbHelper dbHelper = new GameLogDbHelper(this);
-        mDb = dbHelper.getWritableDatabase();
-        //TestUtil.insertFakeData(mDb);
 
         RecyclerView gameLogRecyclerView;
         gameLogRecyclerView = (RecyclerView) this.findViewById(R.id.all_game_logs_recycler_view);
