@@ -10,7 +10,6 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -130,7 +129,6 @@ public class FinalScoreActivity extends AppCompatActivity implements LoaderManag
     }
 
     @OnClick(R.id.btn_delete)
-    //TODO add confirmation dialog here
     public void deleteLog(View view) {
         showDeleteConfirmationDialog();
     }
@@ -161,7 +159,6 @@ public class FinalScoreActivity extends AppCompatActivity implements LoaderManag
         Intent i = new Intent(FinalScoreActivity.this,WelcomeScreenActivity.class);
         startActivity(i);
     }
-
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
@@ -304,7 +301,6 @@ public class FinalScoreActivity extends AppCompatActivity implements LoaderManag
                             public void onClick(View view) {
                                 Intent i = new Intent(FinalScoreActivity.this, InputPointsActivity.class);
                                 i.putExtra(getString(R.string.layout_index_key), tempIndex);
-                                Log.d("layout Index", "in FinalScoreActivity"+ tempIndex);
                                 i.putExtra(getString(R.string.selected_species_key),selectedSpecies);
                                 i.putExtra(getString(R.string.comes_from_final_score_activity_key),true);
                                 i.setData(mUri);
@@ -317,7 +313,6 @@ public class FinalScoreActivity extends AppCompatActivity implements LoaderManag
                     speciesIndex++;
                 }
             }
-
             mCursor.close();
         }
     }

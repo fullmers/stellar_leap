@@ -125,10 +125,10 @@ public class ChooseRacesActivity extends AppCompatActivity {
             numSelected = temp;
 
             if (numSelected >= 1) {
-                btn_next.setBackgroundColor(getResources().getColor(R.color.activeButton));
+                btn_next.setBackground(getResources().getDrawable(R.drawable.button_background));
                 btn_next.setEnabled(true);
             } else {
-                btn_next.setBackgroundColor(getResources().getColor(R.color.inactiveButton));
+                btn_next.setBackground(getResources().getDrawable(R.drawable.disabled_button_background));
                 btn_next.setEnabled(false);
             }
         }

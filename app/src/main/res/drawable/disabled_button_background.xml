@@ -7,8 +7,9 @@
 
     <solid android:color="@color/nebula_very_light_blue" />
 
-    <stroke android:color="@color/text_blue"
-        android:width="6dp" />
+    <stroke android:color="@color/nebula_light_blue"
+        android:width="6dp"
+        />
 
 
 </shape>

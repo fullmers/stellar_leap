@@ -4,80 +4,84 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/star_background_temp"
     android:padding="@dimen/standarMargin"
     tools:context="com.weirdgiraffegames.stellarleapscorepad.ChooseRacesActivity">
 
-    <TextView
-        android:id="@+id/header"
+    <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+    android:id="@+id/header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="@string/select_races"
-        android:textSize="20sp"/>
+        android:textColor="@color/checkbox_text"
+        android:textStyle="bold"
+        android:textSize="26sp" />
 
-    <!--TODO fix checkbox alignment. grid layout maybe? -->
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/header"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:orientation="vertical">
-    <CheckBox
-        android:id="@+id/tuskadon_chkbx"
-        android:layout_marginTop="@dimen/standarMargin"
-        android:layout_gravity="center_horizontal"
-        android:paddingLeft="@dimen/standarMargin"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:text="@string/tuskadon" />
+        android:orientation="horizontal">
 
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.65"
+            android:orientation="horizontal"></LinearLayout>
 
-    <CheckBox
-        android:id="@+id/starling_chkbx"
-        android:layout_marginTop="@dimen/standarMargin"
-        android:layout_gravity="center_horizontal"
-        android:paddingLeft="@dimen/standarMargin"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:text="@string/starlings" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="left"
+            android:background="@color/semi_transparent_black"
+            android:orientation="vertical">
 
-    <CheckBox
-        android:id="@+id/cosmosaurus_chkbx"
-        android:layout_marginTop="@dimen/standarMargin"
-        android:layout_gravity="center_horizontal"
-        android:paddingLeft="@dimen/standarMargin"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:text="@string/cosmosaurus" />
+            <CheckBox
+                android:id="@+id/tuskadon_chkbx"
+                style="@style/CustomCheckBox"
+                android:text="@string/tuskadon" />
 
-    <CheckBox
-        android:id="@+id/scoutars_chkbx"
-        android:layout_marginTop="@dimen/standarMargin"
-        android:layout_gravity="center_horizontal"
-        android:paddingLeft="@dimen/standarMargin"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:text="@string/scoutars" />
+            <CheckBox
+                android:id="@+id/starling_chkbx"
+                style="@style/CustomCheckBox"
+                android:text="@string/starlings" />
 
-    <CheckBox
-        android:id="@+id/araklith_chkbx"
-        android:layout_marginTop="@dimen/standarMargin"
-        android:layout_gravity="center_horizontal"
-        android:paddingLeft="@dimen/standarMargin"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:text="@string/araklith" />
+            <CheckBox
+                android:id="@+id/cosmosaurus_chkbx"
+                style="@style/CustomCheckBox"
+                android:text="@string/cosmosaurus" />
+
+            <CheckBox
+                android:id="@+id/scoutars_chkbx"
+                style="@style/CustomCheckBox"
+                android:text="@string/scoutars" />
+
+            <CheckBox
+                android:id="@+id/araklith_chkbx"
+                style="@style/CustomCheckBox"
+                android:text="@string/araklith" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"></LinearLayout>
     </LinearLayout>
 
     <Button
         android:id="@+id/next_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:background="@color/inactiveButton"
-        android:text="@string/next"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_marginBottom="@dimen/smallMargin"
+        android:layout_marginRight="@dimen/standarMargin"
+        android:background="@drawable/disabled_button_background"
+        android:text="@string/next" />
 
 </RelativeLayout>

@@ -26,5 +26,8 @@
     <color name="araklith">#E8692E</color>
 
     <color name="transparent">#80000000</color>
+    <color name="semi_transparent_black">#96000000</color>
+
+    <color name="checkbox_text">#e7f5fc</color>
 
 </resources>
