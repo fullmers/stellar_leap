@@ -148,7 +148,6 @@ public class FinalScoreActivity extends AppCompatActivity implements LoaderManag
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
-        //TODO replace below load all data into UI
         if(cursor != null) {
             ArrayList<String> selectedSpecies = new ArrayList<>();
             mCursor = cursor;
@@ -216,18 +215,14 @@ public class FinalScoreActivity extends AppCompatActivity implements LoaderManag
             int scoutarsTotal = mCursor.getInt(columnIndices[SCOUTAR_INDEX][TOTAL_POINTS_INDEX]);
             int araklithTotal = mCursor.getInt(columnIndices[ARAKLITH_INDEX][TOTAL_POINTS_INDEX]);
 
-            String[] species = {getString(R.string.tuskadon),
-                    getString(R.string.starlings),
-                    getString(R.string.cosmosaurus),
-                    getString(R.string.scoutars),
-                    getString(R.string.araklith)};
             int[] totals = {tuskadonTotal, starlingTotal, cosmosaurusTotal, scoutarsTotal, araklithTotal};
-                        int index = 0;
+
+            int index = 0;
+            int lastIndex = 0;
             for (int pointTotal : totals) {
                 if (pointTotal != 0) {
                     pointsColumnLayouts[index].setVisibility(View.VISIBLE);
                     headerImages[index].setVisibility(View.VISIBLE);
-                    selectedSpecies.add(species[index]);
 
                     TextView[] mTextViews = pointsTextViews[index];
                     int missionPoints = mCursor.getInt(columnIndices[index][MISSION_POINTS_INDEX]);
@@ -240,6 +235,8 @@ public class FinalScoreActivity extends AppCompatActivity implements LoaderManag
                     mTextViews[RESOURCES_POINTS_INDEX].setText(String.valueOf(resourcesPoints));
 
                     mTextViews[TOTAL_POINTS_INDEX].setText(String.valueOf(pointTotal));
+
+                    lastIndex = index;
                 } else {
                     pointsColumnLayouts[index].setVisibility(View.GONE);
                     headerImages[index].setVisibility(View.GONE);
@@ -247,13 +244,9 @@ public class FinalScoreActivity extends AppCompatActivity implements LoaderManag
                 index++;
             }
 
-            int numSpecies = selectedSpecies.size();
-            String lastSpecies = selectedSpecies.get(numSpecies-1);
-            if (!lastSpecies.equals(getString(R.string.araklith))) {
-                endLineImages[numSpecies-1].setVisibility(View.GONE);
+            if (lastIndex != ARAKLITH_INDEX) {
+                endLineImages[lastIndex].setVisibility(View.GONE);
             }
-
-
             mCursor.close();
         }
     }
