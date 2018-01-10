@@ -49,7 +49,7 @@
         android:layout_width="wrap_content"
         android:paddingLeft="@dimen/smallMargin"
         android:paddingRight="@dimen/smallMargin"
-        android:background="@color/nebula_light_blue"
+        android:background="@drawable/button_background"
         android:textColor="@color/nebula_dark_blue"
         android:layout_height="40dp"
         android:layout_gravity="right"
