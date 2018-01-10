@@ -102,4 +102,7 @@
 
     <!--FinalScoreActivity-->
     <string name="total">Total</string>
+    <string name="delete_dialog_msg">Are you sure you want to delete this game log?</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">cancel</string>
 </resources>

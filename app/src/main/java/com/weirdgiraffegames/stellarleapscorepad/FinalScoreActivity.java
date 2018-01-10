@@ -1,5 +1,7 @@
 package com.weirdgiraffegames.stellarleapscorepad;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -106,9 +108,6 @@ public class FinalScoreActivity extends AppCompatActivity implements LoaderManag
             newGameButton.setVisibility(View.VISIBLE);
             deleteButton.setVisibility(View.GONE);
         }
-
-        Log.d("uri","in FinalScoreActivity: " + mUri.toString());
-
         getSupportLoaderManager().initLoader(FINAL_GAME_LOADER_ID, null, this);
     }
 
@@ -133,9 +132,28 @@ public class FinalScoreActivity extends AppCompatActivity implements LoaderManag
     @OnClick(R.id.btn_delete)
     //TODO add confirmation dialog here
     public void deleteLog(View view) {
-        getContentResolver().delete(mUri,null,null);
-        Intent i = new Intent(FinalScoreActivity.this,GameLogActivity.class);
-        startActivity(i);
+        showDeleteConfirmationDialog();
+    }
+
+    private void showDeleteConfirmationDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(getString(R.string.delete_dialog_msg));
+        builder.setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                getContentResolver().delete(mUri,null,null);
+                Intent i = new Intent(FinalScoreActivity.this,GameLogActivity.class);
+                startActivity(i);
+            }
+        });
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                if (dialog != null) {
+                    dialog.dismiss();
+                }
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 
     @OnClick(R.id.btn_new_game)
