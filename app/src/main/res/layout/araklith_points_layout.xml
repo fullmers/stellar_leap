@@ -64,12 +64,7 @@
 
                 <EditText
                     android:id="@+id/araklith_mission_points_et"
-                    android:background="@color/nebula_very_light_blue"
-                    android:textColor="@color/nebula_dark_blue"
-                    android:paddingLeft="5dp"
-                    android:layout_width="@dimen/inputCellWidth"
-                    android:layout_height="@dimen/inputCellHeight"
-                    android:inputType="number"/>
+                    style="@style/InputPointsEditText"/>
             </LinearLayout>
 
 
@@ -97,12 +92,7 @@
 
                 <EditText
                     android:id="@+id/araklith_player_board_points_et"
-                    android:layout_width="@dimen/inputCellWidth"
-                    android:layout_height="@dimen/inputCellHeight"
-                    android:background="@color/nebula_very_light_blue"
-                    android:textColor="@color/nebula_dark_blue"
-                    android:paddingLeft="5dp"
-                    android:inputType="number" />
+style="@style/InputPointsEditText" />
 
             </LinearLayout>
 
@@ -173,15 +163,7 @@
 
                     <EditText
                         android:id="@+id/araklith_trait_points_et"
-                        android:layout_alignParentRight="true"
-                        android:layout_width="@dimen/inputCellWidth"
-                        android:layout_gravity="center_vertical"
-                        android:background="@color/nebula_very_light_blue"
-                        android:textColor="@color/nebula_dark_blue"
-                        android:paddingLeft="5dp"
-                        android:layout_marginLeft="10dp"
-                        android:inputType="number"
-                        android:layout_height="@dimen/inputCellHeight" />
+                        style="@style/InputPointsEditText"/>
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -208,15 +190,7 @@
 
                     <EditText
                         android:id="@+id/araklith_resource_points_et"
-                        android:layout_alignParentRight="true"
-                        android:layout_width="@dimen/inputCellWidth"
-                        android:layout_gravity="center_vertical"
-                        android:layout_height="@dimen/inputCellHeight"
-                        android:background="@color/nebula_very_light_blue"
-                        android:textColor="@color/nebula_dark_blue"
-                        android:layout_marginLeft="10dp"
-                        android:paddingLeft="5dp"
-                        android:inputType="number" />
+                        style="@style/InputPointsEditText" />
                 </RelativeLayout>
             </LinearLayout>
 

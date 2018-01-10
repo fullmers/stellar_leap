@@ -6,32 +6,42 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
+    android:background="@drawable/star_background_temp"
     tools:context="com.weirdgiraffegames.stellarleapscorepad.WelcomeScreenActivity">
 
-    <!---TODO put logo asset here
     <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-        -->
+        android:layout_height="100dp"
+        android:layout_marginTop="@dimen/standarMargin"
+        android:src="@drawable/stellar_leap_logo"/>
 
     <Button
         android:id="@+id/score_new_game_btn"
-        android:layout_marginTop="16dp"
-        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/standarMargin"
+        android:background="@drawable/button_background"
+        android:paddingLeft="@dimen/standarMargin"
+        android:paddingRight="@dimen/standarMargin"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:text="@string/score_game" />
 
     <Button
         android:id="@+id/about_app_btn"
-        android:layout_marginTop="16dp"
-        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/standarMargin"
+        android:background="@drawable/button_background"
+        android:paddingLeft="@dimen/standarMargin"
+        android:paddingRight="@dimen/standarMargin"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:text="@string/about" />
 
     <Button
         android:id="@+id/game_log_btn"
-        android:layout_marginTop="16dp"
-        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/standarMargin"
+        android:background="@drawable/button_background"
+        android:paddingLeft="@dimen/standarMargin"
+        android:paddingRight="@dimen/standarMargin"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:text="@string/game_logs" />
 
