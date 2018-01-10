@@ -14,4 +14,13 @@
     <dimen name="gameLogEntryTotalPointWidth">50dp</dimen>
 
     <dimen name="inputPointHeaderIconSide">80sp</dimen>
+
+    <dimen name="scoreColumnWidth">70dp</dimen>
+    <dimen name="scoreColumnHeight">40dp</dimen>
+    <dimen name="scoreLabelHeight">30dp</dimen>
+
+    <dimen name="scoreLineWidth">5dp</dimen>
+
+    <dimen name="scoreHeaderWidth">75dp</dimen>
+    <dimen name="scoreHeaderHeight">45dp</dimen>
 </resources>

@@ -94,4 +94,7 @@
     <!--Trait resource instructions-->
     <string name="every_three_resources">Gain 1VP for every three of your resources.</string>
     <string name="every_four_resources">Gain 1VP for every four of your resources.</string>
+
+    <!--FinalScoreActivity-->
+    <string name="total">Total</string>
 </resources>

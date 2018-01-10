@@ -4,12 +4,499 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="horizontal"
     tools:context="com.weirdgiraffegames.stellarleapscorepad.FinalScoreActivity">
 
-    <Button
-        android:id="@+id/btn_delete"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="delete"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/scoreHeaderHeight"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btn_delete"
+                android:background="@drawable/button_background"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+
+                android:text="delete"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btn_new_game"
+                android:background="@drawable/button_background"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:textColor="@color/nebula_dark_blue"
+                android:textSize="12sp"
+                android:text="New Game"
+                android:visibility="visible" />
+
+        </LinearLayout>
+
+        <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+            style="@style/ScorePadLabel"
+            android:layout_marginTop="15dp"
+            android:text="@string/missions" />
+
+        <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+            style="@style/ScorePadLabel"
+            android:text="@string/player_board" />
+
+        <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+            style="@style/ScorePadLabel"
+            android:text="@string/trait" />
+
+        <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+            style="@style/ScorePadLabel"
+            android:text="@string/resources" />
+
+        <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+            style="@style/ScorePadLabel"
+            android:text="@string/total" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/species_headers"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/scoreHeaderHeight"
+            android:layout_marginLeft="@dimen/smallMargin"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/tuskadon_header"
+                android:layout_width="@dimen/scoreHeaderWidth"
+                android:layout_height="match_parent"
+                android:src="@drawable/tuskadon_icon"/>
+            <ImageView
+                android:id="@+id/starling_header"
+                android:layout_width="@dimen/scoreHeaderWidth"
+                android:layout_height="match_parent"
+                android:src="@drawable/starlings_icon"/>
+            <ImageView
+                android:id="@+id/cosmosaurus_header"
+                android:layout_width="@dimen/scoreHeaderWidth"
+                android:layout_height="match_parent"
+                android:src="@drawable/cosmosaurus_icon"/>
+            <ImageView
+                android:id="@+id/scoutars_header"
+                android:layout_width="@dimen/scoreHeaderWidth"
+                android:layout_height="match_parent"
+                android:src="@drawable/scoutar_icon"/>
+            <ImageView
+                android:id="@+id/araklith_header"
+                android:layout_width="@dimen/scoreColumnWidth"
+                android:layout_height="match_parent"
+                android:src="@drawable/araklith_icon"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/scoreboard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/smallMargin"
+            android:background="@drawable/scorepad_background"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/tuskadon_column"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#FFF"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="@dimen/scoreColumnWidth"
+                    android:layout_height="match_parent"
+                    android:background="#FFF"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tuskadon_mission_points_tv"
+                        android:layout_width="@dimen/scoreColumnWidth"
+                        android:layout_height="@dimen/scoreColumnHeight"
+                        android:gravity="center"
+                        tools:text="50" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/scoreLineWidth"
+                        android:src="@drawable/glowing_line" />
+
+                    <TextView
+                        android:id="@+id/tuskadon_player_board_points_tv"
+                        android:layout_width="@dimen/scoreColumnWidth"
+                        android:layout_height="@dimen/scoreColumnHeight"
+                        android:gravity="center"
+                        tools:text="50" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/scoreLineWidth"
+                        android:src="@drawable/glowing_line" />
+
+                    <TextView
+                        android:id="@+id/tuskadon_trait_points_tv"
+                        android:layout_width="@dimen/scoreColumnWidth"
+                        android:layout_height="@dimen/scoreColumnHeight"
+                        android:gravity="center"
+                        tools:text="50" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/scoreLineWidth"
+                        android:src="@drawable/glowing_line" />
+
+                    <TextView
+                        android:id="@+id/tuskadon_resources_points_tv"
+                        android:layout_width="@dimen/scoreColumnWidth"
+                        android:layout_height="@dimen/scoreColumnHeight"
+                        android:gravity="center"
+                        tools:text="50" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/scoreLineWidth"
+                        android:src="@drawable/glowing_line" />
+
+                    <TextView
+                        android:id="@+id/tuskadon_total_points_tv"
+                        android:layout_width="@dimen/scoreColumnWidth"
+                        android:layout_height="@dimen/scoreColumnHeight"
+                        android:gravity="center"
+                        tools:text="50" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="@dimen/scoreLineWidth"
+                    android:layout_height="match_parent"
+                    android:background="#FFF"
+                    android:src="@drawable/vertical_glowing_line" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/starling_column"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#FFF"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="@dimen/scoreColumnWidth"
+                    android:layout_height="match_parent"
+                    android:background="#FFF"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/starling_mission_points_tv"
+                        android:layout_width="@dimen/scoreColumnWidth"
+                        android:layout_height="@dimen/scoreColumnHeight"
+                        android:gravity="center"
+                        tools:text="50" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/scoreLineWidth"
+                        android:src="@drawable/glowing_line" />
+
+                    <TextView
+                        android:id="@+id/starling_player_board_points_tv"
+                        android:layout_width="@dimen/scoreColumnWidth"
+                        android:layout_height="@dimen/scoreColumnHeight"
+                        android:gravity="center"
+                        tools:text="50" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/scoreLineWidth"
+                        android:src="@drawable/glowing_line" />
+
+                    <TextView
+                        android:id="@+id/starling_trait_points_tv"
+                        android:layout_width="@dimen/scoreColumnWidth"
+                        android:layout_height="@dimen/scoreColumnHeight"
+                        android:gravity="center"
+                        tools:text="50" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/scoreLineWidth"
+                        android:src="@drawable/glowing_line" />
+
+                    <TextView
+                        android:id="@+id/starling_resources_points_tv"
+                        android:layout_width="@dimen/scoreColumnWidth"
+                        android:layout_height="@dimen/scoreColumnHeight"
+                        android:gravity="center"
+                        tools:text="50" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/scoreLineWidth"
+                        android:src="@drawable/glowing_line" />
+
+                    <TextView
+                        android:id="@+id/starling_total_points_tv"
+                        android:layout_width="@dimen/scoreColumnWidth"
+                        android:layout_height="@dimen/scoreColumnHeight"
+                        android:gravity="center"
+                        tools:text="50" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="@dimen/scoreLineWidth"
+                    android:layout_height="match_parent"
+                    android:background="#FFF"
+                    android:src="@drawable/vertical_glowing_line" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/cosmosaurus_column"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#FFF"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="@dimen/scoreColumnWidth"
+                    android:layout_height="match_parent"
+                    android:background="#FFF"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/cosmosaurus_mission_points_tv"
+                        android:layout_width="@dimen/scoreColumnWidth"
+                        android:layout_height="@dimen/scoreColumnHeight"
+                        android:gravity="center"
+                        tools:text="50" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/scoreLineWidth"
+                        android:src="@drawable/glowing_line" />
+
+                    <TextView
+                        android:id="@+id/cosmosaurus_player_board_points_tv"
+                        android:layout_width="@dimen/scoreColumnWidth"
+                        android:layout_height="@dimen/scoreColumnHeight"
+                        android:gravity="center"
+                        tools:text="50" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/scoreLineWidth"
+                        android:src="@drawable/glowing_line" />
+
+                    <TextView
+                        android:id="@+id/cosmosaurus_trait_points_tv"
+                        android:layout_width="@dimen/scoreColumnWidth"
+                        android:layout_height="@dimen/scoreColumnHeight"
+                        android:gravity="center"
+                        tools:text="50" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/scoreLineWidth"
+                        android:src="@drawable/glowing_line" />
+
+                    <TextView
+                        android:id="@+id/cosmosaurus_resources_points_tv"
+                        android:layout_width="@dimen/scoreColumnWidth"
+                        android:layout_height="@dimen/scoreColumnHeight"
+                        android:gravity="center"
+                        tools:text="50" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/scoreLineWidth"
+                        android:src="@drawable/glowing_line" />
+
+                    <TextView
+                        android:id="@+id/cosmosaurus_total_points_tv"
+                        android:layout_width="@dimen/scoreColumnWidth"
+                        android:layout_height="@dimen/scoreColumnHeight"
+                        android:gravity="center"
+                        tools:text="50" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="@dimen/scoreLineWidth"
+                    android:layout_height="match_parent"
+                    android:background="#FFF"
+                    android:src="@drawable/vertical_glowing_line" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/scoutars_column"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#FFF"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="@dimen/scoreColumnWidth"
+                    android:layout_height="match_parent"
+                    android:background="#FFF"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/scoutars_mission_points_tv"
+                        android:layout_width="@dimen/scoreColumnWidth"
+                        android:layout_height="@dimen/scoreColumnHeight"
+                        android:gravity="center"
+                        tools:text="50" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/scoreLineWidth"
+                        android:src="@drawable/glowing_line" />
+
+                    <TextView
+                        android:id="@+id/scoutars_player_board_points_tv"
+                        android:layout_width="@dimen/scoreColumnWidth"
+                        android:layout_height="@dimen/scoreColumnHeight"
+                        android:gravity="center"
+                        tools:text="50" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/scoreLineWidth"
+                        android:src="@drawable/glowing_line" />
+
+                    <TextView
+                        android:id="@+id/scoutars_trait_points_tv"
+                        android:layout_width="@dimen/scoreColumnWidth"
+                        android:layout_height="@dimen/scoreColumnHeight"
+                        android:gravity="center"
+                        tools:text="50" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/scoreLineWidth"
+                        android:src="@drawable/glowing_line" />
+
+                    <TextView
+                        android:id="@+id/scoutars_resources_points_tv"
+                        android:layout_width="@dimen/scoreColumnWidth"
+                        android:layout_height="@dimen/scoreColumnHeight"
+                        android:gravity="center"
+                        tools:text="50" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/scoreLineWidth"
+                        android:src="@drawable/glowing_line" />
+
+                    <TextView
+                        android:id="@+id/scoutars_total_points_tv"
+                        android:layout_width="@dimen/scoreColumnWidth"
+                        android:layout_height="@dimen/scoreColumnHeight"
+                        android:gravity="center"
+                        tools:text="50" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="@dimen/scoreLineWidth"
+                    android:layout_height="match_parent"
+                    android:background="#FFF"
+                    android:src="@drawable/vertical_glowing_line" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/araklith_column"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#FFF"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="@dimen/scoreColumnWidth"
+                    android:layout_height="match_parent"
+                    android:background="#FFF"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/araklith_mission_points_tv"
+                        android:layout_width="@dimen/scoreColumnWidth"
+                        android:layout_height="@dimen/scoreColumnHeight"
+                        android:gravity="center"
+                        tools:text="50" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/scoreLineWidth"
+                        android:src="@drawable/glowing_line" />
+
+                    <TextView
+                        android:id="@+id/araklith_player_board_points_tv"
+                        android:layout_width="@dimen/scoreColumnWidth"
+                        android:layout_height="@dimen/scoreColumnHeight"
+                        android:gravity="center"
+                        tools:text="50" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/scoreLineWidth"
+                        android:src="@drawable/glowing_line" />
+
+                    <TextView
+                        android:id="@+id/araklith_trait_points_tv"
+                        android:layout_width="@dimen/scoreColumnWidth"
+                        android:layout_height="@dimen/scoreColumnHeight"
+                        android:gravity="center"
+                        tools:text="50" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/scoreLineWidth"
+                        android:src="@drawable/glowing_line" />
+
+                    <TextView
+                        android:id="@+id/araklith_resources_points_tv"
+                        android:layout_width="@dimen/scoreColumnWidth"
+                        android:layout_height="@dimen/scoreColumnHeight"
+                        android:gravity="center"
+                        tools:text="50" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/scoreLineWidth"
+                        android:src="@drawable/glowing_line" />
+
+                    <TextView
+                        android:id="@+id/araklith_total_points_tv"
+                        android:layout_width="@dimen/scoreColumnWidth"
+                        android:layout_height="@dimen/scoreColumnHeight"
+                        android:gravity="center"
+                        tools:text="50" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
 
 </LinearLayout>

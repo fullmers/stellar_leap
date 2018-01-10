@@ -50,7 +50,6 @@ public class GameLogCursorAdapter extends RecyclerView.Adapter<GameLogCursorAdap
         int scoutarsTotalIndex = mCursor.getColumnIndex(GameLogContract.GameLogEntry.COLUMN_SCOUTARS_TOTAL_POINTS);
         int araklithTotalIndex = mCursor.getColumnIndex(GameLogContract.GameLogEntry.COLUMN_ARAKLITH_TOTAL_POINTS);
 
-
         mCursor.moveToPosition(position);
 
         final long gameID = mCursor.getLong(gameIDIndex);
