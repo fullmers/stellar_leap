@@ -43,7 +43,8 @@ public class FinalScoreActivity extends AppCompatActivity implements LoaderManag
     private static final int SCOUTAR_INDEX = 3;
     private static final int ARAKLITH_INDEX = 4;
 
-    @BindView(R.id.btn_new_game) Button button;
+    @BindView(R.id.btn_new_game) Button newGameButton;
+    @BindView(R.id.btn_delete) Button deleteButton;
 
     @BindView(R.id.tuskadon_column) LinearLayout tuskadonPointsLayout;
     @BindView(R.id.tuskadon_header) ImageView tuskadonHeaderImage;
@@ -98,6 +99,14 @@ public class FinalScoreActivity extends AppCompatActivity implements LoaderManag
 
         mUri = getIntent().getData();
         comesFromGameLogActivity = getIntent().getBooleanExtra(getString(R.string.comes_from_game_log_activity_key),false);
+        if (comesFromGameLogActivity) {
+            newGameButton.setVisibility(View.GONE);
+            deleteButton.setVisibility(View.VISIBLE);
+        } else {
+            newGameButton.setVisibility(View.VISIBLE);
+            deleteButton.setVisibility(View.GONE);
+        }
+
         Log.d("uri","in FinalScoreActivity: " + mUri.toString());
 
         getSupportLoaderManager().initLoader(FINAL_GAME_LOADER_ID, null, this);
@@ -126,6 +135,12 @@ public class FinalScoreActivity extends AppCompatActivity implements LoaderManag
     public void deleteLog(View view) {
         getContentResolver().delete(mUri,null,null);
         Intent i = new Intent(FinalScoreActivity.this,GameLogActivity.class);
+        startActivity(i);
+    }
+
+    @OnClick(R.id.btn_new_game)
+    public void newGame(View view) {
+        Intent i = new Intent(FinalScoreActivity.this,WelcomeScreenActivity.class);
         startActivity(i);
     }
 
@@ -252,9 +267,5 @@ public class FinalScoreActivity extends AppCompatActivity implements LoaderManag
     }
 
     @Override
-    public void onLoaderReset(Loader<Cursor> loader) {
-
-    }
-
-
+    public void onLoaderReset(Loader<Cursor> loader) {}
 }
