@@ -177,6 +177,7 @@
                 </LinearLayout>
 
                 <ImageView
+                    android:id="@+id/tuskadon_end_line"
                     android:layout_width="@dimen/scoreLineWidth"
                     android:layout_height="match_parent"
                     android:background="#FFF"
@@ -244,6 +245,7 @@
                 </LinearLayout>
 
                 <ImageView
+                    android:id="@+id/starling_end_line"
                     android:layout_width="@dimen/scoreLineWidth"
                     android:layout_height="match_parent"
                     android:background="#FFF"
@@ -311,6 +313,7 @@
                 </LinearLayout>
 
                 <ImageView
+                    android:id="@+id/cosmosaurus_end_line"
                     android:layout_width="@dimen/scoreLineWidth"
                     android:layout_height="match_parent"
                     android:background="#FFF"
@@ -378,6 +381,7 @@
                 </LinearLayout>
 
                 <ImageView
+                    android:id="@+id/scoutars_end_line"
                     android:layout_width="@dimen/scoreLineWidth"
                     android:layout_height="match_parent"
                     android:background="#FFF"
