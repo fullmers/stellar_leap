@@ -6,34 +6,50 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
+    android:background="@drawable/star_background_temp"
     android:paddingLeft="@dimen/standarMargin"
     android:paddingRight="@dimen/standarMargin"
     tools:context="com.weirdgiraffegames.stellarleapscorepad.AboutActivity">
 
-
-    <TextView
+    <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
         android:layout_marginTop="@dimen/standarMargin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/text_blue"
         android:textSize="20sp"
         android:text="@string/about"/>
 
     <TextView
-        android:layout_marginTop="@dimen/standarMargin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#FFF"
+        android:background="@color/semi_transparent_black"
         android:text="@string/about_the_game"/>
 
-    <TextView
+    <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
         android:layout_marginTop="@dimen/standarMargin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/see_rules"/>
+        android:textColor="@color/text_blue"
+        android:textSize="18sp"
+        android:text="@string/about_amiculous_apps_title"/>
 
     <TextView
+        android:layout_marginTop="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFF"
+        android:background="@color/semi_transparent_black"
+        android:text="@string/about_amiculous_apps"/>
+
+    <!--TODO get link for rules-->
+    <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
         android:layout_marginTop="@dimen/standarMargin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/about_amiculous_apps"/>
+        android:textSize="18sp"
+        android:textColor="@color/text_blue"
+        android:background="@color/semi_transparent_black"
+        android:text="@string/see_rules"/>
 
 </LinearLayout>

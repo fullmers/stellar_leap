@@ -3,7 +3,8 @@
 
     <!--WelcomeActivity -->
     <string name="score_game">Score game!</string>
-    <string name="about">About</string>
+    <string name="about">About Weird Giraffe Games</string>
+    <string name="about_amiculous_apps_title">About Amiculous Apps</string>
     <string name="game_logs">Game Logs</string>
 
     <!--AboutActivity-->
