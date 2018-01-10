@@ -25,4 +25,13 @@
         <item name="android:gravity">right|center_vertical</item>
     </style>
 
+    <style name="ScorePadCell" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/dark_gray</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_width">@dimen/scoreColumnWidth</item>
+        <item name="android:layout_height">@dimen/scoreColumnHeight</item>
+        <item name="android:gravity">center</item>
+    </style>
+
 </resources>

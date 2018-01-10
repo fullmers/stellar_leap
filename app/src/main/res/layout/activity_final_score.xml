@@ -129,11 +129,9 @@
                     android:background="#FFF"
                     android:orientation="vertical">
 
-                    <TextView
+                    <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                         android:id="@+id/tuskadon_mission_points_tv"
-                        android:layout_width="@dimen/scoreColumnWidth"
-                        android:layout_height="@dimen/scoreColumnHeight"
-                        android:gravity="center"
+                        style="@style/ScorePadCell"
                         tools:text="50" />
 
                     <ImageView
@@ -141,11 +139,9 @@
                         android:layout_height="@dimen/scoreLineWidth"
                         android:src="@drawable/glowing_line" />
 
-                    <TextView
+                    <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                         android:id="@+id/tuskadon_player_board_points_tv"
-                        android:layout_width="@dimen/scoreColumnWidth"
-                        android:layout_height="@dimen/scoreColumnHeight"
-                        android:gravity="center"
+                        style="@style/ScorePadCell"
                         tools:text="50" />
 
                     <ImageView
@@ -153,11 +149,9 @@
                         android:layout_height="@dimen/scoreLineWidth"
                         android:src="@drawable/glowing_line" />
 
-                    <TextView
+                    <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                         android:id="@+id/tuskadon_trait_points_tv"
-                        android:layout_width="@dimen/scoreColumnWidth"
-                        android:layout_height="@dimen/scoreColumnHeight"
-                        android:gravity="center"
+                        style="@style/ScorePadCell"
                         tools:text="50" />
 
                     <ImageView
@@ -165,11 +159,9 @@
                         android:layout_height="@dimen/scoreLineWidth"
                         android:src="@drawable/glowing_line" />
 
-                    <TextView
+                    <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                         android:id="@+id/tuskadon_resources_points_tv"
-                        android:layout_width="@dimen/scoreColumnWidth"
-                        android:layout_height="@dimen/scoreColumnHeight"
-                        android:gravity="center"
+                        style="@style/ScorePadCell"
                         tools:text="50" />
 
                     <ImageView
@@ -177,11 +169,9 @@
                         android:layout_height="@dimen/scoreLineWidth"
                         android:src="@drawable/glowing_line" />
 
-                    <TextView
+                    <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                         android:id="@+id/tuskadon_total_points_tv"
-                        android:layout_width="@dimen/scoreColumnWidth"
-                        android:layout_height="@dimen/scoreColumnHeight"
-                        android:gravity="center"
+                        style="@style/ScorePadCell"
                         tools:text="50" />
 
                 </LinearLayout>
@@ -206,11 +196,9 @@
                     android:background="#FFF"
                     android:orientation="vertical">
 
-                    <TextView
+                    <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                         android:id="@+id/starling_mission_points_tv"
-                        android:layout_width="@dimen/scoreColumnWidth"
-                        android:layout_height="@dimen/scoreColumnHeight"
-                        android:gravity="center"
+                        style="@style/ScorePadCell"
                         tools:text="50" />
 
                     <ImageView
@@ -218,11 +206,9 @@
                         android:layout_height="@dimen/scoreLineWidth"
                         android:src="@drawable/glowing_line" />
 
-                    <TextView
+                    <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                         android:id="@+id/starling_player_board_points_tv"
-                        android:layout_width="@dimen/scoreColumnWidth"
-                        android:layout_height="@dimen/scoreColumnHeight"
-                        android:gravity="center"
+                        style="@style/ScorePadCell"
                         tools:text="50" />
 
                     <ImageView
@@ -230,11 +216,9 @@
                         android:layout_height="@dimen/scoreLineWidth"
                         android:src="@drawable/glowing_line" />
 
-                    <TextView
+                    <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                         android:id="@+id/starling_trait_points_tv"
-                        android:layout_width="@dimen/scoreColumnWidth"
-                        android:layout_height="@dimen/scoreColumnHeight"
-                        android:gravity="center"
+                        style="@style/ScorePadCell"
                         tools:text="50" />
 
                     <ImageView
@@ -242,11 +226,9 @@
                         android:layout_height="@dimen/scoreLineWidth"
                         android:src="@drawable/glowing_line" />
 
-                    <TextView
+                    <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                         android:id="@+id/starling_resources_points_tv"
-                        android:layout_width="@dimen/scoreColumnWidth"
-                        android:layout_height="@dimen/scoreColumnHeight"
-                        android:gravity="center"
+                        style="@style/ScorePadCell"
                         tools:text="50" />
 
                     <ImageView
@@ -254,11 +236,9 @@
                         android:layout_height="@dimen/scoreLineWidth"
                         android:src="@drawable/glowing_line" />
 
-                    <TextView
+                    <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                         android:id="@+id/starling_total_points_tv"
-                        android:layout_width="@dimen/scoreColumnWidth"
-                        android:layout_height="@dimen/scoreColumnHeight"
-                        android:gravity="center"
+                        style="@style/ScorePadCell"
                         tools:text="50" />
 
                 </LinearLayout>
@@ -283,11 +263,9 @@
                     android:background="#FFF"
                     android:orientation="vertical">
 
-                    <TextView
+                    <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                         android:id="@+id/cosmosaurus_mission_points_tv"
-                        android:layout_width="@dimen/scoreColumnWidth"
-                        android:layout_height="@dimen/scoreColumnHeight"
-                        android:gravity="center"
+                        style="@style/ScorePadCell"
                         tools:text="50" />
 
                     <ImageView
@@ -295,11 +273,9 @@
                         android:layout_height="@dimen/scoreLineWidth"
                         android:src="@drawable/glowing_line" />
 
-                    <TextView
+                    <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                         android:id="@+id/cosmosaurus_player_board_points_tv"
-                        android:layout_width="@dimen/scoreColumnWidth"
-                        android:layout_height="@dimen/scoreColumnHeight"
-                        android:gravity="center"
+                        style="@style/ScorePadCell"
                         tools:text="50" />
 
                     <ImageView
@@ -307,11 +283,9 @@
                         android:layout_height="@dimen/scoreLineWidth"
                         android:src="@drawable/glowing_line" />
 
-                    <TextView
+                    <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                         android:id="@+id/cosmosaurus_trait_points_tv"
-                        android:layout_width="@dimen/scoreColumnWidth"
-                        android:layout_height="@dimen/scoreColumnHeight"
-                        android:gravity="center"
+                        style="@style/ScorePadCell"
                         tools:text="50" />
 
                     <ImageView
@@ -319,11 +293,9 @@
                         android:layout_height="@dimen/scoreLineWidth"
                         android:src="@drawable/glowing_line" />
 
-                    <TextView
+                    <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                         android:id="@+id/cosmosaurus_resources_points_tv"
-                        android:layout_width="@dimen/scoreColumnWidth"
-                        android:layout_height="@dimen/scoreColumnHeight"
-                        android:gravity="center"
+                        style="@style/ScorePadCell"
                         tools:text="50" />
 
                     <ImageView
@@ -331,11 +303,9 @@
                         android:layout_height="@dimen/scoreLineWidth"
                         android:src="@drawable/glowing_line" />
 
-                    <TextView
+                    <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                         android:id="@+id/cosmosaurus_total_points_tv"
-                        android:layout_width="@dimen/scoreColumnWidth"
-                        android:layout_height="@dimen/scoreColumnHeight"
-                        android:gravity="center"
+                        style="@style/ScorePadCell"
                         tools:text="50" />
 
                 </LinearLayout>
@@ -360,11 +330,9 @@
                     android:background="#FFF"
                     android:orientation="vertical">
 
-                    <TextView
+                    <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                         android:id="@+id/scoutars_mission_points_tv"
-                        android:layout_width="@dimen/scoreColumnWidth"
-                        android:layout_height="@dimen/scoreColumnHeight"
-                        android:gravity="center"
+                        style="@style/ScorePadCell"
                         tools:text="50" />
 
                     <ImageView
@@ -372,11 +340,9 @@
                         android:layout_height="@dimen/scoreLineWidth"
                         android:src="@drawable/glowing_line" />
 
-                    <TextView
+                    <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                         android:id="@+id/scoutars_player_board_points_tv"
-                        android:layout_width="@dimen/scoreColumnWidth"
-                        android:layout_height="@dimen/scoreColumnHeight"
-                        android:gravity="center"
+                        style="@style/ScorePadCell"
                         tools:text="50" />
 
                     <ImageView
@@ -384,11 +350,9 @@
                         android:layout_height="@dimen/scoreLineWidth"
                         android:src="@drawable/glowing_line" />
 
-                    <TextView
+                    <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                         android:id="@+id/scoutars_trait_points_tv"
-                        android:layout_width="@dimen/scoreColumnWidth"
-                        android:layout_height="@dimen/scoreColumnHeight"
-                        android:gravity="center"
+                        style="@style/ScorePadCell"
                         tools:text="50" />
 
                     <ImageView
@@ -396,11 +360,9 @@
                         android:layout_height="@dimen/scoreLineWidth"
                         android:src="@drawable/glowing_line" />
 
-                    <TextView
+                    <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                         android:id="@+id/scoutars_resources_points_tv"
-                        android:layout_width="@dimen/scoreColumnWidth"
-                        android:layout_height="@dimen/scoreColumnHeight"
-                        android:gravity="center"
+                        style="@style/ScorePadCell"
                         tools:text="50" />
 
                     <ImageView
@@ -408,11 +370,9 @@
                         android:layout_height="@dimen/scoreLineWidth"
                         android:src="@drawable/glowing_line" />
 
-                    <TextView
+                    <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                         android:id="@+id/scoutars_total_points_tv"
-                        android:layout_width="@dimen/scoreColumnWidth"
-                        android:layout_height="@dimen/scoreColumnHeight"
-                        android:gravity="center"
+                        style="@style/ScorePadCell"
                         tools:text="50" />
 
                 </LinearLayout>
@@ -437,11 +397,9 @@
                     android:background="#FFF"
                     android:orientation="vertical">
 
-                    <TextView
+                    <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                         android:id="@+id/araklith_mission_points_tv"
-                        android:layout_width="@dimen/scoreColumnWidth"
-                        android:layout_height="@dimen/scoreColumnHeight"
-                        android:gravity="center"
+                        style="@style/ScorePadCell"
                         tools:text="50" />
 
                     <ImageView
@@ -449,11 +407,9 @@
                         android:layout_height="@dimen/scoreLineWidth"
                         android:src="@drawable/glowing_line" />
 
-                    <TextView
+                    <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                         android:id="@+id/araklith_player_board_points_tv"
-                        android:layout_width="@dimen/scoreColumnWidth"
-                        android:layout_height="@dimen/scoreColumnHeight"
-                        android:gravity="center"
+                        style="@style/ScorePadCell"
                         tools:text="50" />
 
                     <ImageView
@@ -461,11 +417,9 @@
                         android:layout_height="@dimen/scoreLineWidth"
                         android:src="@drawable/glowing_line" />
 
-                    <TextView
+                    <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                         android:id="@+id/araklith_trait_points_tv"
-                        android:layout_width="@dimen/scoreColumnWidth"
-                        android:layout_height="@dimen/scoreColumnHeight"
-                        android:gravity="center"
+                        style="@style/ScorePadCell"
                         tools:text="50" />
 
                     <ImageView
@@ -473,11 +427,9 @@
                         android:layout_height="@dimen/scoreLineWidth"
                         android:src="@drawable/glowing_line" />
 
-                    <TextView
+                    <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                         android:id="@+id/araklith_resources_points_tv"
-                        android:layout_width="@dimen/scoreColumnWidth"
-                        android:layout_height="@dimen/scoreColumnHeight"
-                        android:gravity="center"
+                        style="@style/ScorePadCell"
                         tools:text="50" />
 
                     <ImageView
@@ -485,11 +437,9 @@
                         android:layout_height="@dimen/scoreLineWidth"
                         android:src="@drawable/glowing_line" />
 
-                    <TextView
+                    <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                         android:id="@+id/araklith_total_points_tv"
-                        android:layout_width="@dimen/scoreColumnWidth"
-                        android:layout_height="@dimen/scoreColumnHeight"
-                        android:gravity="center"
+                        style="@style/ScorePadCell"
                         tools:text="50" />
 
                 </LinearLayout>
