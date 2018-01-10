@@ -3,8 +3,12 @@ package com.weirdgiraffegames.stellarleapscorepad;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
@@ -26,7 +30,19 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class InputPointsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+public class InputPointsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, LoaderManager.LoaderCallbacks<Cursor>{
+
+    private static final int INPUT_POINTS_LOADER_ID = 2;
+    private static final int MISSION_POINTS_INDEX = 0;
+    private static final int PLAYER_BOARD_POINTS_INDEX = 1;
+    private static final int TRAIT_POINTS_INDEX = 2;
+    private static final int RESOURCES_POINTS_INDEX = 3;
+
+    private static final int TUSKADON_INDEX = 0;
+    private static final int STARLING_INDEX = 1;
+    private static final int COSMOSAURUS_INDEX = 2;
+    private static final int SCOUTAR_INDEX = 3;
+    private static final int ARAKLITH_INDEX = 4;
 
     private Context context;
     private ArrayList<String> selectedSpecies;
@@ -76,7 +92,7 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
     @BindView(R.id.starlings_resource_points_et) EditText starlingsResourcePointsET;
 
     @BindView(R.id.cosmosaurus_mission_points_et) EditText cosmosaurusMissionPointsET;
-    @BindView(R.id.cosmosaurus_player_board_points_et) EditText cosmosauruPslayerBoardPointsET;
+    @BindView(R.id.cosmosaurus_player_board_points_et) EditText cosmosaurusPlayerBoardPointsET;
     @BindView(R.id.cosmosaurus_trait_points_et) EditText cosmosaurusTraitPointsET;
     @BindView(R.id.cosmosaurus_resource_points_et) EditText cosmosaurusResourcePointsET;
 
@@ -104,13 +120,13 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
         } else {
             Log.d("comes","from ChooseRacesActivity");
         }
-        Log.d("layout Index", " "+ layoutIndex);
 
         mUri = getIntent().getData();
         Log.d("InputPointsActivity",mUri.toString());
         gameId = Long.valueOf(mUri.getPathSegments().get(1));
         Log.d("InputPointsActivity","gameId: " + gameId);
         setupUI();
+        getSupportLoaderManager().initLoader(INPUT_POINTS_LOADER_ID, null, this);
     }
 
     @Override
@@ -287,7 +303,7 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
         }
 
         if (currentSpecies.equals(getString(R.string.cosmosaurus))) {
-            currentEditTexts = Arrays.asList(cosmosaurusMissionPointsET, cosmosauruPslayerBoardPointsET, cosmosaurusTraitPointsET, cosmosaurusResourcePointsET);
+            currentEditTexts = Arrays.asList(cosmosaurusMissionPointsET, cosmosaurusPlayerBoardPointsET, cosmosaurusTraitPointsET, cosmosaurusResourcePointsET);
             currentInputPointsColumns = Arrays.asList(GameLogEntry.COLUMN_COSMOSAURUS_MISSION_POINTS,GameLogEntry.COLUMN_COSMOSAURUS_PLAYER_BOARD_POINTS,GameLogEntry.COLUMN_COSMOSAURUS_TRAIT_POINTS,GameLogEntry.COLUMN_COSMOSAURUS_RESOURCE_POINTS);
             currentTotalPointsColumn = GameLogEntry.COLUMN_COSMOSAURUS_TOTAL_POINTS;
 
@@ -324,6 +340,94 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
             araklithLayout.setVisibility(View.VISIBLE);
             return;
         }
-
     }
+
+
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        if (comesFromFinalScoreActivity) {
+            switch(id) {
+                case INPUT_POINTS_LOADER_ID:
+                    return new CursorLoader(this,
+                            mUri,
+                            null,
+                            null,
+                            null,
+                            null);
+                default:
+                    throw new RuntimeException("Loader Not Implemented: " + id);
+            }
+        } else {
+            return null;
+        }
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
+        if(cursor != null && cursor.moveToFirst()) {
+            String[] species = {
+                    getString(R.string.tuskadon),
+                    getString(R.string.starlings),
+                    getString(R.string.cosmosaurus),
+                    getString(R.string.scoutars),
+                    getString(R.string.araklith)
+            };
+
+            EditText[][] pointsEditTextViews = {
+                    {tuskadonMissionPointsET,tuskadonPlayerBoardPointsET,tuskadonTraitPointsET,tuskadonResourcePointsET},
+                    {starlingsMissionPointsET,starlingsPlayerBoardPointsET,starlingsTraitPointsET,starlingsResourcePointsET},
+                    {cosmosaurusMissionPointsET,cosmosaurusPlayerBoardPointsET,cosmosaurusTraitPointsET,cosmosaurusResourcePointsET},
+                    {scoutarsMissionPointsET,scoutarsPlayerBoardPointsET,scoutarsTraitPointsET,scoutarsResourcePointsET},
+                    {araklithMissionPointsET,araklithPlayerBoardPointsET,araklithTraitPointsET,araklithResourcePointsET}
+            };
+
+            int[][] columnIndices = {
+                    {cursor.getColumnIndex(GameLogEntry.COLUMN_TUSKADON_MISSION_POINTS),
+                            cursor.getColumnIndex(GameLogEntry.COLUMN_TUSKADON_PLAYER_BOARD_POINTS),
+                            cursor.getColumnIndex(GameLogEntry.COLUMN_TUSKADON_TRAIT_POINTS),
+                            cursor.getColumnIndex(GameLogEntry.COLUMN_TUSKADON_RESOURCE_POINTS),
+                            cursor.getColumnIndex(GameLogEntry.COLUMN_TUSKADON_TOTAL_POINTS)},
+                    {cursor.getColumnIndex(GameLogEntry.COLUMN_STARLING_MISSION_POINTS),
+                            cursor.getColumnIndex(GameLogEntry.COLUMN_STARLING_PLAYER_BOARD_POINTS),
+                            cursor.getColumnIndex(GameLogEntry.COLUMN_STARLING_TRAIT_POINTS),
+                            cursor.getColumnIndex(GameLogEntry.COLUMN_STARLING_RESOURCE_POINTS),
+                            cursor.getColumnIndex(GameLogEntry.COLUMN_STARLING_TOTAL_POINTS)},
+                    {cursor.getColumnIndex(GameLogEntry.COLUMN_COSMOSAURUS_MISSION_POINTS),
+                            cursor.getColumnIndex(GameLogEntry.COLUMN_COSMOSAURUS_PLAYER_BOARD_POINTS),
+                            cursor.getColumnIndex(GameLogEntry.COLUMN_COSMOSAURUS_TRAIT_POINTS),
+                            cursor.getColumnIndex(GameLogEntry.COLUMN_COSMOSAURUS_RESOURCE_POINTS),
+                            cursor.getColumnIndex(GameLogEntry.COLUMN_COSMOSAURUS_TOTAL_POINTS)},
+                    {cursor.getColumnIndex(GameLogEntry.COLUMN_SCOUTARS_MISSION_POINTS),
+                            cursor.getColumnIndex(GameLogEntry.COLUMN_SCOUTARS_PLAYER_BOARD_POINTS),
+                            cursor.getColumnIndex(GameLogEntry.COLUMN_SCOUTARS_TRAIT_POINTS),
+                            cursor.getColumnIndex(GameLogEntry.COLUMN_SCOUTARS_RESOURCE_POINTS),
+                            cursor.getColumnIndex(GameLogEntry.COLUMN_SCOUTARS_TOTAL_POINTS)},
+                    {cursor.getColumnIndex(GameLogEntry.COLUMN_ARAKLITH_MISSION_POINTS),
+                            cursor.getColumnIndex(GameLogEntry.COLUMN_ARAKLITH_PLAYER_BOARD_POINTS),
+                            cursor.getColumnIndex(GameLogEntry.COLUMN_ARAKLITH_TRAIT_POINTS),
+                            cursor.getColumnIndex(GameLogEntry.COLUMN_ARAKLITH_RESOURCE_POINTS),
+                            cursor.getColumnIndex(GameLogEntry.COLUMN_ARAKLITH_TOTAL_POINTS)}
+            };
+
+            String currentSpecies = selectedSpecies.get(layoutIndex);
+            for (int i =0; i<=4;i++) {
+                if (currentSpecies.equals(species[i])) {
+                    EditText[] mEditTextViews = pointsEditTextViews[i];
+                    int missionPoints = cursor.getInt(columnIndices[i][MISSION_POINTS_INDEX]);
+                    mEditTextViews[MISSION_POINTS_INDEX].setText(String.valueOf(missionPoints));
+                    int playerBoardPoints = cursor.getInt(columnIndices[i][PLAYER_BOARD_POINTS_INDEX]);
+                    mEditTextViews[PLAYER_BOARD_POINTS_INDEX].setText(String.valueOf(playerBoardPoints));
+                    int traitPoints = cursor.getInt(columnIndices[i][TRAIT_POINTS_INDEX]);
+                    mEditTextViews[TRAIT_POINTS_INDEX].setText(String.valueOf(traitPoints));
+                    int resourcesPoints = cursor.getInt(columnIndices[i][RESOURCES_POINTS_INDEX]);
+                    mEditTextViews[RESOURCES_POINTS_INDEX].setText(String.valueOf(resourcesPoints));
+                }
+            }
+
+            cursor.close();
+        }
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {}
 }

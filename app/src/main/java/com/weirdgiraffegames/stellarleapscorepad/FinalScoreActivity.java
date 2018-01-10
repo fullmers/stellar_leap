@@ -272,6 +272,7 @@ public class FinalScoreActivity extends AppCompatActivity implements LoaderManag
                 endLineImages[lastIndex].setVisibility(View.GONE);
             }
 
+            //When just finishing inputting game points, let user edit values if they spot a mistake
             if (!comesFromGameLogActivity) {
                 int speciesIndex = 0;
                 for (String thisSpecies: species) {
