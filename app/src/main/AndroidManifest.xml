@@ -32,8 +32,10 @@
         <activity
             android:name=".InputPointsActivity"
             android:screenOrientation="landscape" />
-        <activity android:name=".GameLogActivity" />
-        <activity android:name=".FinalScoreActivity"></activity>
+        <activity android:name=".GameLogActivity"
+            android:screenOrientation="landscape"/>
+        <activity android:name=".FinalScoreActivity"
+            android:screenOrientation="landscape"></activity>
 
         <provider
             android:authorities="com.weirdgiraffegames.stellarleapscorepad"

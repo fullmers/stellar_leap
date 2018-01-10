@@ -15,7 +15,7 @@
 
     <style name="ScorePadLabel" parent="@android:style/TextAppearance.Medium">
         <item name="android:textColor">#FFF</item>
-        <item name="android:textSize">13sp</item>
+        <item name="android:textSize">17sp</item>
         <item name="android:paddingBottom">5dp</item>
         <item name="android:paddingRight">20dp</item>
         <item name="android:background">@drawable/scorepad_label_background</item>
