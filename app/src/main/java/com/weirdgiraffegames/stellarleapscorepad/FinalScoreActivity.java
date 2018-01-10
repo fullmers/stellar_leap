@@ -17,6 +17,8 @@ import android.widget.TextView;
 
 import com.weirdgiraffegames.stellarleapscorepad.data.GameLogContract.GameLogEntry;
 
+import java.util.ArrayList;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -163,6 +165,15 @@ public class FinalScoreActivity extends AppCompatActivity implements LoaderManag
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
         if(cursor != null && cursor.moveToFirst()) {
             mCursor = cursor;
+
+            String[] species = {
+                    getString(R.string.tuskadon),
+                    getString(R.string.starlings),
+                    getString(R.string.cosmosaurus),
+                    getString(R.string.scoutars),
+                    getString(R.string.araklith)
+            };
+
             LinearLayout[] pointsColumnLayouts =
                     {tuskadonPointsLayout,
                             starlingPointsLayout,
@@ -226,11 +237,14 @@ public class FinalScoreActivity extends AppCompatActivity implements LoaderManag
             int araklithTotal = mCursor.getInt(columnIndices[ARAKLITH_INDEX][TOTAL_POINTS_INDEX]);
 
             int[] totals = {tuskadonTotal, starlingTotal, cosmosaurusTotal, scoutarsTotal, araklithTotal};
+            final ArrayList<String> selectedSpecies = new ArrayList<>();
 
             int index = 0;
             int lastIndex = 0;
             for (int pointTotal : totals) {
                 if (pointTotal != 0) {
+                    selectedSpecies.add(species[index]);
+
                     pointsColumnLayouts[index].setVisibility(View.VISIBLE);
                     headerImages[index].setVisibility(View.VISIBLE);
 
@@ -257,6 +271,34 @@ public class FinalScoreActivity extends AppCompatActivity implements LoaderManag
             if (lastIndex != ARAKLITH_INDEX) {
                 endLineImages[lastIndex].setVisibility(View.GONE);
             }
+
+            if (!comesFromGameLogActivity) {
+                int speciesIndex = 0;
+                for (String thisSpecies: species) {
+                    int selectedSpeciesIndex = 0;
+                    for (String thisSelectedSpecies : selectedSpecies) {
+                        if (thisSpecies.equals(thisSelectedSpecies)) {
+                        pointsColumnLayouts[speciesIndex].setClickable(true);
+                        final int tempIndex = selectedSpeciesIndex;
+                        pointsColumnLayouts[speciesIndex].setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Intent i = new Intent(FinalScoreActivity.this, InputPointsActivity.class);
+                                i.putExtra(getString(R.string.layout_index_key), tempIndex);
+                                Log.d("layout Index", "in FinalScoreActivity"+ tempIndex);
+                                i.putExtra(getString(R.string.selected_species_key),selectedSpecies);
+                                i.putExtra(getString(R.string.comes_from_final_score_activity_key),true);
+                                i.setData(mUri);
+                                startActivity(i);
+                            }
+                        });
+                    }
+                        selectedSpeciesIndex++;
+                    }
+                    speciesIndex++;
+                }
+            }
+
             mCursor.close();
         }
     }

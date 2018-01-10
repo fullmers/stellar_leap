@@ -32,6 +32,8 @@
     <string name="comes_from_game_log_activity_key">comesFromGameLogActivityKey</string>
 
     <!--InputPointsActivity-->
+    <string name="comes_from_final_score_activity_key">comesFromFinalScoreActivityKey</string>
+
     <string name="tuskadon_points">Tuskadon Points</string>
     <string name="starling_points">Starling Points</string>
     <string name="cosmosaurus_points">Cosmosaurus Points</string>
@@ -43,10 +45,13 @@
     <string name="trait">Trait</string>
     <string name="resources">Resources</string>
     <string name="select_trait">Select Trait:</string>
+
     <string name="see_totals">See Totals</string>
+    <string name="done">Done</string>
 
     <string name="validation_toast">All fields must be completed to proceed.</string>
     <string name="sample_trait_instructions">Gain either 3 VP for every unique resource that you have 6 or more of OR gain 5 VP for every unique resource that you have 10 or more of.</string>
+    <string name="layout_index_key">layoutIndexKey</string>
 
     <!--Traits-->
     <string name="adventurer">Adventurer</string>

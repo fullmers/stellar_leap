@@ -34,6 +34,7 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
     private int layoutIndex = 0;
     private long gameId;
     private Uri mUri;
+    public boolean comesFromFinalScoreActivity = false;
 
     private List<EditText> currentEditTexts = null;
     private List<String> currentInputPointsColumns = null;
@@ -96,6 +97,15 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
         context = this;
         selectedSpecies = getIntent().getExtras().getStringArrayList(getString(R.string.selected_species_key));
         numSelectedSpecies = selectedSpecies.size();
+        comesFromFinalScoreActivity = getIntent().getExtras().getBoolean(getString(R.string.comes_from_final_score_activity_key));
+        if (comesFromFinalScoreActivity) {
+            layoutIndex = getIntent().getExtras().getInt(getString(R.string.layout_index_key));
+            Log.d("comes","from FinalScoreActivity");
+        } else {
+            Log.d("comes","from ChooseRacesActivity");
+        }
+        Log.d("layout Index", " "+ layoutIndex);
+
         mUri = getIntent().getData();
         Log.d("InputPointsActivity",mUri.toString());
         gameId = Long.valueOf(mUri.getPathSegments().get(1));
@@ -105,13 +115,20 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
 
     @Override
     public void onBackPressed() {
-        if (layoutIndex > 0){
-            layoutIndex--;
-            showLayout();
-            setNextButtonText();
-        } else {
-            Intent i = new Intent(InputPointsActivity.this,ChooseRacesActivity.class);
+        if (comesFromFinalScoreActivity) {
+            Intent i = new Intent(InputPointsActivity.this, FinalScoreActivity.class);
+            i.setData(mUri);
+            i.putExtra(getString(R.string.comes_from_game_log_activity_key), false);
             startActivity(i);
+        } else {
+            if (layoutIndex > 0) {
+                layoutIndex--;
+                showLayout();
+                setNextButtonText();
+            } else {
+                Intent i = new Intent(InputPointsActivity.this, ChooseRacesActivity.class);
+                startActivity(i);
+            }
         }
     }
 
@@ -137,23 +154,24 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
     }
 
     private void setupNextButton() {
+        setNextButtonText();
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 boolean isValidInput = validateInput(currentEditTexts);
                 if(isValidInput) {
-                    layoutIndex++;
-                    setNextButtonText();
-                    if (layoutIndex == numSelectedSpecies) {
-                        insertSpeciesPoints();
-                        Intent i = new Intent(InputPointsActivity.this, FinalScoreActivity.class);
-                        i.setData(mUri);
-                        i.putExtra(getString(R.string.comes_from_game_log_activity_key),false);
-                        startActivity(i);
-                    } else {
-                        insertSpeciesPoints();
-                        showLayout();
-                    }
+                        layoutIndex++;
+                        setNextButtonText();
+                        if ((layoutIndex == numSelectedSpecies) || comesFromFinalScoreActivity ) {
+                            insertSpeciesPoints();
+                            Intent i = new Intent(InputPointsActivity.this, FinalScoreActivity.class);
+                            i.setData(mUri);
+                            i.putExtra(getString(R.string.comes_from_game_log_activity_key), false);
+                            startActivity(i);
+                        } else {
+                            insertSpeciesPoints();
+                            showLayout();
+                        }
                 } else {
                     Toast.makeText(context,getString(R.string.validation_toast),Toast.LENGTH_SHORT).show();
                 }
@@ -171,10 +189,18 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
     }
 
     private void setNextButtonText(){
-        if(layoutIndex == numSelectedSpecies - 1) {
-            nextButton.setText(getString(R.string.see_totals));
+        Log.d("setting","next button text as");
+        if (comesFromFinalScoreActivity) {
+            Log.d("text",getString(R.string.done));
+            nextButton.setText(getString(R.string.done));
         } else {
-            nextButton.setText(getString(R.string.next));
+            if (layoutIndex == numSelectedSpecies - 1) {
+                nextButton.setText(getString(R.string.see_totals));
+                Log.d("text",getString(R.string.see_totals));
+            } else {
+                nextButton.setText(getString(R.string.next));
+                Log.d("text",getString(R.string.next));
+            }
         }
     }
 
@@ -228,11 +254,10 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
     }
 
     @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-        // Another interface callback
-    }
+    public void onNothingSelected(AdapterView<?> parent) {}
 
     public void showLayout() {
+        Log.d("layout Index", " "+ layoutIndex);
         String currentSpecies = selectedSpecies.get(layoutIndex);
 
         if (currentSpecies.equals(getString(R.string.tuskadon))) {
