@@ -43,12 +43,12 @@ public class GameLogActivity extends AppCompatActivity implements GameLogCursorA
         getSupportLoaderManager().restartLoader(GAME_LOADER_ID,null,this);
     }
 
-   /* @Override
+   @Override
     public void onBackPressed() {
         super.onBackPressed();
         Intent i = new Intent(GameLogActivity.this,WelcomeScreenActivity.class);
         startActivity(i);
-    }*/
+    }
 
     @Override
     public void onClick(Long gameId) {

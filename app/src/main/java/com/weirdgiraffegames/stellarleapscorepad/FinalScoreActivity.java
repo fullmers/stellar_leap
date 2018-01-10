@@ -17,8 +17,6 @@ import android.widget.TextView;
 
 import com.weirdgiraffegames.stellarleapscorepad.data.GameLogContract.GameLogEntry;
 
-import java.util.ArrayList;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -163,11 +161,8 @@ public class FinalScoreActivity extends AppCompatActivity implements LoaderManag
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
-        if(cursor != null) {
-            ArrayList<String> selectedSpecies = new ArrayList<>();
+        if(cursor != null && cursor.moveToFirst()) {
             mCursor = cursor;
-            mCursor.moveToFirst();
-
             LinearLayout[] pointsColumnLayouts =
                     {tuskadonPointsLayout,
                             starlingPointsLayout,

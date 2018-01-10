@@ -32,10 +32,17 @@
         <activity
             android:name=".InputPointsActivity"
             android:screenOrientation="landscape" />
+
         <activity android:name=".GameLogActivity"
-            android:screenOrientation="landscape"/>
+            android:parentActivityName=".WelcomeScreenActivity"
+            android:screenOrientation="landscape">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".WelcomeScreenActivity" />
+        </activity>
+
         <activity android:name=".FinalScoreActivity"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="landscape"/>
 
         <provider
             android:authorities="com.weirdgiraffegames.stellarleapscorepad"
