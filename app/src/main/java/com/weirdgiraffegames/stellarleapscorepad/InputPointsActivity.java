@@ -11,7 +11,6 @@ import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -55,6 +54,8 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
     private List<EditText> currentEditTexts = null;
     private List<String> currentInputPointsColumns = null;
     private String currentTotalPointsColumn = "";
+
+    EditText[][] pointsEditTextViews;
 
     @BindView(R.id.next_btn) Button nextButton;
 
@@ -116,15 +117,9 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
         comesFromFinalScoreActivity = getIntent().getExtras().getBoolean(getString(R.string.comes_from_final_score_activity_key));
         if (comesFromFinalScoreActivity) {
             layoutIndex = getIntent().getExtras().getInt(getString(R.string.layout_index_key));
-            Log.d("comes","from FinalScoreActivity");
-        } else {
-            Log.d("comes","from ChooseRacesActivity");
         }
-
         mUri = getIntent().getData();
-        Log.d("InputPointsActivity",mUri.toString());
         gameId = Long.valueOf(mUri.getPathSegments().get(1));
-        Log.d("InputPointsActivity","gameId: " + gameId);
         setupUI();
         getSupportLoaderManager().initLoader(INPUT_POINTS_LOADER_ID, null, this);
     }
@@ -164,6 +159,13 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
 
     private void setupUI() {
         ButterKnife.bind(this);
+        pointsEditTextViews = new EditText[][] {
+                {tuskadonMissionPointsET,tuskadonPlayerBoardPointsET,tuskadonTraitPointsET,tuskadonResourcePointsET},
+                {starlingsMissionPointsET,starlingsPlayerBoardPointsET,starlingsTraitPointsET,starlingsResourcePointsET},
+                {cosmosaurusMissionPointsET,cosmosaurusPlayerBoardPointsET,cosmosaurusTraitPointsET,cosmosaurusResourcePointsET},
+                {scoutarsMissionPointsET,scoutarsPlayerBoardPointsET,scoutarsTraitPointsET,scoutarsResourcePointsET},
+                {araklithMissionPointsET,araklithPlayerBoardPointsET,araklithTraitPointsET,araklithResourcePointsET}
+        };
         setupNextButton();
         setupSpinners();
         showLayout();
@@ -205,17 +207,13 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
     }
 
     private void setNextButtonText(){
-        Log.d("setting","next button text as");
         if (comesFromFinalScoreActivity) {
-            Log.d("text",getString(R.string.done));
             nextButton.setText(getString(R.string.done));
         } else {
             if (layoutIndex == numSelectedSpecies - 1) {
                 nextButton.setText(getString(R.string.see_totals));
-                Log.d("text",getString(R.string.see_totals));
             } else {
                 nextButton.setText(getString(R.string.next));
-                Log.d("text",getString(R.string.next));
             }
         }
     }
@@ -273,11 +271,10 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
     public void onNothingSelected(AdapterView<?> parent) {}
 
     public void showLayout() {
-        Log.d("layout Index", " "+ layoutIndex);
         String currentSpecies = selectedSpecies.get(layoutIndex);
 
         if (currentSpecies.equals(getString(R.string.tuskadon))) {
-            currentEditTexts = Arrays.asList(tuskadonMissionPointsET, tuskadonPlayerBoardPointsET, tuskadonTraitPointsET, tuskadonResourcePointsET);
+            currentEditTexts = Arrays.asList(pointsEditTextViews[TUSKADON_INDEX]);
             currentInputPointsColumns = Arrays.asList(GameLogEntry.COLUMN_TUSKADON_MISSION_POINTS,GameLogEntry.COLUMN_TUSKADON_PLAYER_BOARD_POINTS,GameLogEntry.COLUMN_TUSKADON_TRAIT_POINTS,GameLogEntry.COLUMN_TUSKADON_RESOURCE_POINTS);
             currentTotalPointsColumn = GameLogEntry.COLUMN_TUSKADON_TOTAL_POINTS;
 
@@ -290,7 +287,7 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
         }
 
         if (currentSpecies.equals(getString(R.string.starlings))) {
-            currentEditTexts = Arrays.asList(starlingsMissionPointsET, starlingsPlayerBoardPointsET, starlingsTraitPointsET, starlingsResourcePointsET);
+            currentEditTexts = Arrays.asList(pointsEditTextViews[STARLING_INDEX]);
             currentInputPointsColumns = Arrays.asList(GameLogEntry.COLUMN_STARLING_MISSION_POINTS,GameLogEntry.COLUMN_STARLING_PLAYER_BOARD_POINTS,GameLogEntry.COLUMN_STARLING_TRAIT_POINTS,GameLogEntry.COLUMN_STARLING_RESOURCE_POINTS);
             currentTotalPointsColumn = GameLogEntry.COLUMN_STARLING_TOTAL_POINTS;
 
@@ -303,7 +300,7 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
         }
 
         if (currentSpecies.equals(getString(R.string.cosmosaurus))) {
-            currentEditTexts = Arrays.asList(cosmosaurusMissionPointsET, cosmosaurusPlayerBoardPointsET, cosmosaurusTraitPointsET, cosmosaurusResourcePointsET);
+            currentEditTexts = Arrays.asList(pointsEditTextViews[COSMOSAURUS_INDEX]);
             currentInputPointsColumns = Arrays.asList(GameLogEntry.COLUMN_COSMOSAURUS_MISSION_POINTS,GameLogEntry.COLUMN_COSMOSAURUS_PLAYER_BOARD_POINTS,GameLogEntry.COLUMN_COSMOSAURUS_TRAIT_POINTS,GameLogEntry.COLUMN_COSMOSAURUS_RESOURCE_POINTS);
             currentTotalPointsColumn = GameLogEntry.COLUMN_COSMOSAURUS_TOTAL_POINTS;
 
@@ -316,7 +313,7 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
         }
 
         if (currentSpecies.equals(getString(R.string.scoutars))) {
-            currentEditTexts = Arrays.asList(scoutarsMissionPointsET, scoutarsPlayerBoardPointsET, scoutarsTraitPointsET, scoutarsResourcePointsET);
+            currentEditTexts = Arrays.asList(pointsEditTextViews[SCOUTAR_INDEX]);
             currentInputPointsColumns = Arrays.asList(GameLogEntry.COLUMN_SCOUTARS_MISSION_POINTS,GameLogEntry.COLUMN_SCOUTARS_PLAYER_BOARD_POINTS,GameLogEntry.COLUMN_SCOUTARS_TRAIT_POINTS,GameLogEntry.COLUMN_SCOUTARS_RESOURCE_POINTS);
             currentTotalPointsColumn = GameLogEntry.COLUMN_SCOUTARS_TOTAL_POINTS;
 
@@ -329,7 +326,7 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
         }
 
         if (currentSpecies.equals(getString(R.string.araklith))) {
-            currentEditTexts = Arrays.asList(araklithMissionPointsET, araklithPlayerBoardPointsET, araklithTraitPointsET, araklithResourcePointsET);
+            currentEditTexts = Arrays.asList(pointsEditTextViews[ARAKLITH_INDEX]);
             currentInputPointsColumns = Arrays.asList(GameLogEntry.COLUMN_ARAKLITH_MISSION_POINTS,GameLogEntry.COLUMN_ARAKLITH_PLAYER_BOARD_POINTS,GameLogEntry.COLUMN_ARAKLITH_TRAIT_POINTS,GameLogEntry.COLUMN_ARAKLITH_RESOURCE_POINTS);
             currentTotalPointsColumn = GameLogEntry.COLUMN_ARAKLITH_TOTAL_POINTS;
 
@@ -371,14 +368,6 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
                     getString(R.string.cosmosaurus),
                     getString(R.string.scoutars),
                     getString(R.string.araklith)
-            };
-
-            EditText[][] pointsEditTextViews = {
-                    {tuskadonMissionPointsET,tuskadonPlayerBoardPointsET,tuskadonTraitPointsET,tuskadonResourcePointsET},
-                    {starlingsMissionPointsET,starlingsPlayerBoardPointsET,starlingsTraitPointsET,starlingsResourcePointsET},
-                    {cosmosaurusMissionPointsET,cosmosaurusPlayerBoardPointsET,cosmosaurusTraitPointsET,cosmosaurusResourcePointsET},
-                    {scoutarsMissionPointsET,scoutarsPlayerBoardPointsET,scoutarsTraitPointsET,scoutarsResourcePointsET},
-                    {araklithMissionPointsET,araklithPlayerBoardPointsET,araklithTraitPointsET,araklithResourcePointsET}
             };
 
             int[][] columnIndices = {
