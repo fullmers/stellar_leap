@@ -15,6 +15,9 @@ import android.widget.TextView;
 
 import com.weirdgiraffegames.stellarleapscorepad.data.GameLogContract;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class GameLogCursorAdapter extends RecyclerView.Adapter<GameLogCursorAdapter.GameViewHolder> {
 
     // Class variables for the Cursor that holds task data and the Context
@@ -98,24 +101,17 @@ public class GameLogCursorAdapter extends RecyclerView.Adapter<GameLogCursorAdap
 
     class GameViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        // Will display the total points for given species
-        TextView tuskadonTextView;
-        TextView starlingTextView;
-        TextView cosmosaurusTextView;
-        TextView scoutarsTextView;
-        TextView araklithTextView;
-        TextView gameIdTextView;
+        @BindView(R.id.game_id_tv) TextView gameIdTextView;
+
+        @BindView(R.id.tuskadon_total_tv) TextView tuskadonTextView;
+        @BindView(R.id.starling_total_tv) TextView starlingTextView;
+        @BindView(R.id.cosmosaurus_total_tv) TextView cosmosaurusTextView;
+        @BindView(R.id.scoutars_total_tv) TextView scoutarsTextView;
+        @BindView(R.id.araklith_total_tv) TextView araklithTextView;
 
         public GameViewHolder(View itemView) {
             super(itemView);
-            gameIdTextView = (TextView) itemView.findViewById(R.id.game_id_tv);
-
-            tuskadonTextView = (TextView) itemView.findViewById(R.id.tuskadon_total_tv);
-            starlingTextView = (TextView) itemView.findViewById(R.id.starling_total_tv);
-            cosmosaurusTextView = (TextView) itemView.findViewById(R.id.cosmosaurus_total_tv);
-            scoutarsTextView = (TextView) itemView.findViewById(R.id.scoutars_total_tv);
-            araklithTextView = (TextView) itemView.findViewById(R.id.araklith_total_tv);
-
+            ButterKnife.bind(this,itemView);
             itemView.setOnClickListener(this);
         }
 
