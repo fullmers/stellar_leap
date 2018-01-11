@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/star_background_temp"
+    android:background="@drawable/star_background_temp_vertical"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context="com.weirdgiraffegames.stellarleapscorepad.GameLogActivity">

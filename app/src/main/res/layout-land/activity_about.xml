@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    android:background="@drawable/star_background_temp_vertical"
+    android:background="@drawable/star_background_temp_landscape"
     android:paddingLeft="@dimen/standarMargin"
     android:paddingRight="@dimen/standarMargin"
     tools:context="com.weirdgiraffegames.stellarleapscorepad.AboutActivity">
