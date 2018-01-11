@@ -12,26 +12,25 @@ import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 import com.weirdgiraffegames.stellarleapscorepad.data.GameLogContract;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class GameLogActivity extends AppCompatActivity implements GameLogCursorAdapter.GameLogAdapterOnClickHandler, LoaderManager.LoaderCallbacks<Cursor>{
 
-
     private GameLogCursorAdapter mCursorAdapter;
-
-    private static final String TAG = GameLogActivity.class.getSimpleName();
+    @BindView(R.id.all_game_logs_recycler_view) RecyclerView gameLogRecyclerView;
     private static final int GAME_LOADER_ID = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_log);
-        RecyclerView gameLogRecyclerView;
-        gameLogRecyclerView = (RecyclerView) this.findViewById(R.id.all_game_logs_recycler_view);
+        ButterKnife.bind(this);
+        
         gameLogRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
         mCursorAdapter = new GameLogCursorAdapter(this, this);
         gameLogRecyclerView.setAdapter(mCursorAdapter);
 
@@ -54,7 +53,6 @@ public class GameLogActivity extends AppCompatActivity implements GameLogCursorA
     public void onClick(Long gameId) {
         Context context = this;
         Class destinationClass = FinalScoreActivity.class;
-        Log.d("gameId","in GameLogActivity: " + gameId);
         Intent intent = new Intent(context, destinationClass);
         Uri uri = ContentUris.withAppendedId(GameLogContract.GameLogEntry.CONTENT_URI,gameId);
         intent.setData(uri);
