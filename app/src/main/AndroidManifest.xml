@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".WelcomeScreenActivity"
-            android:screenOrientation="landscape">
+           >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,14 +23,14 @@
         <activity
             android:name=".AboutActivity"
             android:parentActivityName=".WelcomeScreenActivity"
-            android:screenOrientation="landscape">
+            >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".WelcomeScreenActivity" />
         </activity>
         <activity
             android:name=".ChooseRacesActivity"
-            android:screenOrientation="landscape" />
+            />
         <activity
             android:name=".InputPointsActivity"
             android:screenOrientation="landscape" />
