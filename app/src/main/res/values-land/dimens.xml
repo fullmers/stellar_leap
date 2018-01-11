@@ -15,13 +15,13 @@
 
     <dimen name="inputPointHeaderIconSide">80sp</dimen>
 
-    <dimen name="scoreColumnWidth">50dp</dimen>
-    <dimen name="scoreColumnHeight">55dp</dimen>
-    <dimen name="scoreLabelHeight">50dp</dimen>
-    <dimen name="scoreLabelWidth">80dp</dimen>
+    <dimen name="scoreColumnWidth">70dp</dimen>
+    <dimen name="scoreColumnHeight">40dp</dimen>
+    <dimen name="scoreLabelHeight">30dp</dimen>
+    <dimen name="scoreLabelWidth">120dp</dimen>
 
     <dimen name="scoreLineWidth">5dp</dimen>
 
-    <dimen name="scoreHeaderWidth">55dp</dimen>
+    <dimen name="scoreHeaderWidth">75dp</dimen>
     <dimen name="scoreHeaderHeight">45dp</dimen>
 </resources>

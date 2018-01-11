@@ -313,7 +313,7 @@ public class FinalScoreActivity extends AppCompatActivity implements LoaderManag
                     speciesIndex++;
                 }
             }
-            mCursor.close();
+            //mCursor.close();
         }
     }
 
