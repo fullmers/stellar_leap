@@ -29,7 +29,7 @@ public class GameLogActivity extends AppCompatActivity implements GameLogCursorA
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_log);
         ButterKnife.bind(this);
-        
+
         gameLogRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mCursorAdapter = new GameLogCursorAdapter(this, this);
         gameLogRecyclerView.setAdapter(mCursorAdapter);

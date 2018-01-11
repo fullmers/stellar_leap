@@ -14,14 +14,17 @@ import com.weirdgiraffegames.stellarleapscorepad.data.GameLogContract;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class ChooseRacesActivity extends AppCompatActivity {
 
-    CheckBox chkbx_tuskadon;
-    CheckBox chkbx_starlings;
-    CheckBox chkbx_cosmosaurus;
-    CheckBox chkbx_scoutars;
-    CheckBox chkbx_araklith;
-    Button btn_next;
+    @BindView(R.id.tuskadon_chkbx) CheckBox chkbx_tuskadon;
+    @BindView(R.id.starling_chkbx) CheckBox chkbx_starlings;
+    @BindView(R.id.cosmosaurus_chkbx) CheckBox chkbx_cosmosaurus;
+    @BindView(R.id.scoutars_chkbx) CheckBox chkbx_scoutars;
+    @BindView(R.id.araklith_chkbx) CheckBox chkbx_araklith;
+    @BindView(R.id.next_btn) Button btn_next;
 
     boolean isTuskadonSelected;
     boolean isStarlingsSelected;
@@ -37,6 +40,7 @@ public class ChooseRacesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_races);
+        ButterKnife.bind(this);
         setupUI();
 
         btn_next.setOnClickListener(new View.OnClickListener() {
@@ -85,19 +89,11 @@ public class ChooseRacesActivity extends AppCompatActivity {
     }
 
     private void setupUI() {
-        chkbx_tuskadon = findViewById(R.id.tuskadon_chkbx);
-        chkbx_starlings = findViewById(R.id.starling_chkbx);
-        chkbx_cosmosaurus = findViewById(R.id.cosmosaurus_chkbx);
-        chkbx_scoutars = findViewById(R.id.scoutars_chkbx);
-        chkbx_araklith = findViewById(R.id.araklith_chkbx);
-
         chkbx_tuskadon.setOnCheckedChangeListener(new RaceCheckedChangeListener());
         chkbx_starlings.setOnCheckedChangeListener(new RaceCheckedChangeListener());
         chkbx_cosmosaurus.setOnCheckedChangeListener(new RaceCheckedChangeListener());
         chkbx_scoutars.setOnCheckedChangeListener(new RaceCheckedChangeListener());
         chkbx_araklith.setOnCheckedChangeListener(new RaceCheckedChangeListener());
-
-        btn_next = findViewById(R.id.next_btn);
     }
 
     private class RaceCheckedChangeListener implements CompoundButton.OnCheckedChangeListener {
