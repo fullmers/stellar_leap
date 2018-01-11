@@ -32,6 +32,7 @@
 
     <!--GameLogActivity-->
     <string name="comes_from_game_log_activity_key">comesFromGameLogActivityKey</string>
+    <string name="date">Date</string>
 
     <!--InputPointsActivity-->
     <string name="comes_from_final_score_activity_key">comesFromFinalScoreActivityKey</string>

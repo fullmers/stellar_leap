@@ -59,4 +59,20 @@
         <item name="android:background">@color/nebula_very_light_blue</item>
     </style>
 
+    <style name="GameLogEntry" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/text_blue</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_width">@dimen/gameLogEntryTotalPointWidth</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="GameLogHeader" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/text_blue</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_width">@dimen/gameLogEntryTotalPointWidth</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+    </style>
+
 </resources>
