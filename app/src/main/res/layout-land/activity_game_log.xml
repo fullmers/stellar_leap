@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/star_background_temp_landscape"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context="com.weirdgiraffegames.stellarleapscorepad.GameLogActivity">
+
+    <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/standarMargin"
+        android:background="@color/semi_transparent_black"
+        android:text="@string/game_logs"
+        android:textColor="@color/text_blue"
+        android:textSize="28sp" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/game_log_header"
+            android:layout_alignParentTop="true"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginTop="@dimen/standarMargin"
+            android:background="@color/semi_transparent_black"
+            android:orientation="horizontal">
+
+            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+                android:layout_width="@dimen/gameLogEntryTotalPointWidth"
+                android:layout_height="match_parent"
+                android:textColor="@color/text_blue"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:text="@string/date" />
+
+            <ImageView
+                android:id="@+id/tuskadon_header"
+                android:layout_width="@dimen/gameLogEntryTotalPointWidth"
+                android:layout_height="match_parent"
+
+                android:src="@drawable/tuskadon_icon" />
+
+            <ImageView
+                android:id="@+id/starling_header"
+                android:layout_width="@dimen/gameLogEntryTotalPointWidth"
+                android:layout_height="match_parent"
+                android:src="@drawable/starlings_icon" />
+
+            <ImageView
+                android:id="@+id/cosmosaurus_header"
+                android:layout_width="@dimen/gameLogEntryTotalPointWidth"
+                android:layout_height="match_parent"
+                android:src="@drawable/cosmosaurus_icon" />
+
+            <ImageView
+                android:id="@+id/scoutars_header"
+                android:layout_width="@dimen/gameLogEntryTotalPointWidth"
+                android:layout_height="match_parent"
+                android:src="@drawable/scoutar_icon" />
+
+            <ImageView
+                android:id="@+id/araklith_header"
+                android:layout_width="@dimen/gameLogEntryTotalPointWidth"
+                android:layout_height="match_parent"
+                android:src="@drawable/araklith_icon" />
+            <!--
+            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+                style="@style/GameLogHeader"
+                android:text="@string/tuskadon" />
+
+            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+                style="@style/GameLogHeader"
+                android:text="@string/starlings" />
+
+            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+                style="@style/GameLogHeader"
+                android:text="@string/cosmosaurus" />
+
+            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+                style="@style/GameLogHeader"
+                android:text="@string/scoutars" />
+
+            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+                style="@style/GameLogHeader"
+                android:text="@string/araklith" />
+                -->
+
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/all_game_logs_recycler_view"
+            android:layout_below="@id/game_log_header"
+            android:layout_alignLeft="@id/game_log_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/standarMargin" />
+    </RelativeLayout>
+
+</LinearLayout>

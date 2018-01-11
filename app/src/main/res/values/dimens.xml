@@ -11,7 +11,8 @@
     <dimen name="traitSpinnerTextSize">20sp</dimen>
     <dimen name="traitWidth">200dp</dimen>
 
-    <dimen name="gameLogEntryTotalPointWidth">100dp</dimen>
+    <dimen name="gameLogEntryTotalPointWidth">50dp</dimen>
+    <dimen name="gameLogEntryTextSize">14sp</dimen>
 
     <dimen name="inputPointHeaderIconSide">80sp</dimen>
 

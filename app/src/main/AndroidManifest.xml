@@ -36,8 +36,7 @@
             android:screenOrientation="landscape" />
 
         <activity android:name=".GameLogActivity"
-            android:parentActivityName=".WelcomeScreenActivity"
-            android:screenOrientation="landscape">
+            android:parentActivityName=".WelcomeScreenActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".WelcomeScreenActivity" />

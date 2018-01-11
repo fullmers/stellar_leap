@@ -14,11 +14,11 @@
         android:background="@color/black"
         android:gravity="center_vertical"
         android:orientation="horizontal">
-    <TextView
+    <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
         android:id="@+id/game_date_tv"
         style= "@style/GameLogEntry"
         android:layout_width="wrap_content"
-        tools:text = "1/11/2017"/>
+        tools:text = "1-11-2018"/>
 
     <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
         android:id="@+id/tuskadon_total_tv"
