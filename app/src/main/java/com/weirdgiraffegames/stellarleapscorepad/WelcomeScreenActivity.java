@@ -4,18 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class WelcomeScreenActivity extends AppCompatActivity {
-
-    @BindView(R.id.score_new_game_btn) Button btn_start_scoring;
-    @BindView(R.id.about_app_btn) Button btn_about;
-    @BindView(R.id.game_log_btn) Button btn_game_logs;
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
