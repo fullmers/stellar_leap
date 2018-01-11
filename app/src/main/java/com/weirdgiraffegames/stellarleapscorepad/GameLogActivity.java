@@ -69,6 +69,7 @@ public class GameLogActivity extends AppCompatActivity implements GameLogCursorA
             case GAME_LOADER_ID:
                 String[] projection = {
                         GameLogContract.GameLogEntry._ID,
+                        GameLogContract.GameLogEntry.COLUMN_TIMESTAMP,
                         GameLogContract.GameLogEntry.COLUMN_TUSKADON_TOTAL_POINTS,
                         GameLogContract.GameLogEntry.COLUMN_STARLING_TOTAL_POINTS,
                         GameLogContract.GameLogEntry.COLUMN_COSMOSAURUS_TOTAL_POINTS,
@@ -80,7 +81,7 @@ public class GameLogActivity extends AppCompatActivity implements GameLogCursorA
                         projection,
                         null,
                         null,
-                        GameLogContract.GameLogEntry.COLUMN_TIMESTAMP);
+                        GameLogContract.GameLogEntry.COLUMN_TIMESTAMP + " DESC"); //most recent game on top
             default:
                 throw new RuntimeException("Loader Not Implemented: " + id);
         }
