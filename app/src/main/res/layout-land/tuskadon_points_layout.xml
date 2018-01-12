@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/black"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/inputPointHeaderIconSide"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/standarMargin"
+        android:paddingTop="@dimen/standarMargin">
+
+        <ImageView
+            android:layout_width="@dimen/inputPointHeaderIconSide"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/tuskadon_icon"/>
+
+        <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/tuskadon"
+            android:textStyle="bold"
+            android:layout_marginLeft="5dp"
+            android:text="@string/tuskadon_points"
+            android:textSize="@dimen/headerTextSize" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/inputCellHeight"
+            android:layout_marginLeft="@dimen/standarMargin"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    style = "@style/InputPointsText"
+                    android:text="@string/missions" />
+
+                <ImageView
+                    android:background="@drawable/ic_keyboard_arrow_right_white_36dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <EditText
+                    android:id="@+id/tuskadon_mission_points_et"
+                    style="@style/InputPointsEditText"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/standarMargin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    style = "@style/InputPointsText"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:gravity="right"
+                    android:text="@string/player_board" />
+
+                <ImageView
+                    android:background="@drawable/ic_keyboard_arrow_right_white_36dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"/>
+
+                <EditText
+                    android:id="@+id/tuskadon_player_board_points_et"
+                    style="@style/InputPointsEditText" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="3dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/standarMargin"
+            android:layout_marginBottom="@dimen/standarMargin"
+            android:background="@color/tuskadon"></View>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/standarMargin"
+            android:layout_marginRight="@dimen/standarMargin"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/inputCellHeight"
+                android:orientation="horizontal">
+
+                <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+                    style = "@style/InputPointsText"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/select_trait" />
+
+                <Spinner
+                    android:id="@+id/tuskadon_trait_spinner"
+                    android:layout_marginLeft="@dimen/smallMargin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="@string/select_trait"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/trait_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style = "@style/InputPointsText"
+                        android:id="@+id/tuskadon_trait_points_instructions_tv"
+                        android:layout_toLeftOf="@+id/trait_arrow_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sample_trait_instructions" />
+
+                    <ImageView
+                        android:id="@+id/trait_arrow_image"
+                        android:background="@drawable/ic_keyboard_arrow_right_white_36dp"
+                        android:layout_toLeftOf="@+id/tuskadon_trait_points_et"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"/>
+
+                    <EditText
+                        android:id="@+id/tuskadon_trait_points_et"
+                        style="@style/InputPointsEditText" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/standarMargin"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style = "@style/InputPointsText"
+                        android:id="@+id/tuskadon_resource_points_instructions_tv"
+                        android:layout_toLeftOf="@id/resource_arrow_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/every_three_resources" />
+
+                    <ImageView
+                        android:id="@+id/resource_arrow_image"
+                        android:layout_toLeftOf="@id/tuskadon_resource_points_et"
+                        android:background="@drawable/ic_keyboard_arrow_right_white_36dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"/>
+
+                    <EditText
+                        android:id="@+id/tuskadon_resource_points_et"
+                        style="@style/InputPointsEditText"/>
+                </RelativeLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

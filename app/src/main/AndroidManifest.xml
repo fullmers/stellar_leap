@@ -32,8 +32,7 @@
             android:name=".ChooseRacesActivity"
             />
         <activity
-            android:name=".InputPointsActivity"
-            android:screenOrientation="landscape" />
+            android:name=".InputPointsActivity" />
 
         <activity android:name=".GameLogActivity"
             android:parentActivityName=".WelcomeScreenActivity">

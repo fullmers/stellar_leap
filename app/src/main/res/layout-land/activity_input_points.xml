@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/black"
+    tools:context="com.weirdgiraffegames.stellarleapscorepad.InputPointsActivity">
+
+    <include layout="@layout/tuskadon_points_layout"
+        android:id="@+id/tuskadon_layout"
+        android:layout_above="@+id/next_btn"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"/>
+
+    <include layout="@layout/starlings_points_layout"
+        android:id="@+id/starlings_layout"
+        android:layout_above="@+id/next_btn"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+
+    <include layout="@layout/cosmosaurus_points_layout"
+        android:id="@+id/cosmosaurus_layout"
+        android:layout_above="@+id/next_btn"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+
+    <include layout="@layout/scoutars_points_layout"
+        android:id="@+id/scoutars_layout"
+        android:layout_above="@+id/next_btn"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+
+    <include layout="@layout/araklith_points_layout"
+        android:id="@+id/araklith_layout"
+        android:layout_above="@+id/next_btn"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+
+    <Button
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/next_btn"
+        android:layout_width="wrap_content"
+        android:paddingLeft="@dimen/smallMargin"
+        android:paddingRight="@dimen/smallMargin"
+        android:background="@drawable/button_background"
+        android:textColor="@color/nebula_dark_blue"
+        android:layout_height="40dp"
+        android:layout_gravity="right"
+        android:layout_marginTop="@dimen/standarMargin"
+        android:layout_marginRight="@dimen/standarMargin"
+        android:layout_marginBottom="@dimen/smallMargin"
+        android:text="@string/next" />
+
+</RelativeLayout>
