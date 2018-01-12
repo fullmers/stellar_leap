@@ -30,6 +30,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.weirdgiraffegames.stellarleapscorepad.util.Constants.Columns;
+
 public class InputPointsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, LoaderManager.LoaderCallbacks<Cursor> {
     private Context context;
     private ArrayList<String> selectedSpecies;
@@ -40,10 +42,6 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
     private boolean wasBackPressed = false;
 
     private static final int INPUT_POINTS_LOADER_ID = 2;
-    private static final int MISSION_POINTS_INDEX = 0;
-    private static final int PLAYER_BOARD_POINTS_INDEX = 1;
-    private static final int TRAIT_POINTS_INDEX = 2;
-    private static final int RESOURCES_POINTS_INDEX = 3;
 
     private List<String> currentInputPointsColumns = null;
     private String currentTotalPointsColumn = "";
@@ -160,7 +158,7 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
             speciesIcon.setBackground(getResources().getDrawable(R.drawable.tuskadon_icon));
             speciesHeaderTV.setText(getString(R.string.tuskadon_points));
             speciesHeaderTV.setTextColor(getResources().getColor(R.color.tuskadon));
-            currentInputPointsColumns = Arrays.asList(GameLogEntry.COLUMN_TUSKADON_MISSION_POINTS, GameLogEntry.COLUMN_TUSKADON_PLAYER_BOARD_POINTS, GameLogEntry.COLUMN_TUSKADON_TRAIT_POINTS, GameLogEntry.COLUMN_TUSKADON_RESOURCE_POINTS);
+            currentInputPointsColumns = Arrays.asList(Columns.tuskadonColumns);
             currentTotalPointsColumn = GameLogEntry.COLUMN_TUSKADON_TOTAL_POINTS;
             return;
         }
@@ -169,7 +167,7 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
             speciesIcon.setBackground(getResources().getDrawable(R.drawable.starlings_icon));
             speciesHeaderTV.setText(getString(R.string.starling_points));
             speciesHeaderTV.setTextColor(getResources().getColor(R.color.starlings));
-            currentInputPointsColumns = Arrays.asList(GameLogEntry.COLUMN_STARLING_MISSION_POINTS, GameLogEntry.COLUMN_STARLING_PLAYER_BOARD_POINTS, GameLogEntry.COLUMN_STARLING_TRAIT_POINTS, GameLogEntry.COLUMN_STARLING_RESOURCE_POINTS);
+            currentInputPointsColumns = Arrays.asList(Columns.starlingColumns);
             currentTotalPointsColumn = GameLogEntry.COLUMN_STARLING_TOTAL_POINTS;
             return;
         }
@@ -178,7 +176,7 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
             speciesIcon.setBackground(getResources().getDrawable(R.drawable.cosmosaurus_icon));
             speciesHeaderTV.setText(getString(R.string.cosmosaurus_points));
             speciesHeaderTV.setTextColor(getResources().getColor(R.color.cosmosaurus));
-            currentInputPointsColumns = Arrays.asList(GameLogEntry.COLUMN_COSMOSAURUS_MISSION_POINTS, GameLogEntry.COLUMN_COSMOSAURUS_PLAYER_BOARD_POINTS, GameLogEntry.COLUMN_COSMOSAURUS_TRAIT_POINTS, GameLogEntry.COLUMN_COSMOSAURUS_RESOURCE_POINTS);
+            currentInputPointsColumns = Arrays.asList(Columns.cosmosaurusColumns);
             currentTotalPointsColumn = GameLogEntry.COLUMN_COSMOSAURUS_TOTAL_POINTS;
             return;
         }
@@ -187,7 +185,7 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
             speciesIcon.setBackground(getResources().getDrawable(R.drawable.scoutar_icon));
             speciesHeaderTV.setText(getString(R.string.scoutars_points));
             speciesHeaderTV.setTextColor(getResources().getColor(R.color.scoutars));
-            currentInputPointsColumns = Arrays.asList(GameLogEntry.COLUMN_SCOUTARS_MISSION_POINTS, GameLogEntry.COLUMN_SCOUTARS_PLAYER_BOARD_POINTS, GameLogEntry.COLUMN_SCOUTARS_TRAIT_POINTS, GameLogEntry.COLUMN_SCOUTARS_RESOURCE_POINTS);
+            currentInputPointsColumns = Arrays.asList(Columns.scoutarColumns);
             currentTotalPointsColumn = GameLogEntry.COLUMN_SCOUTARS_TOTAL_POINTS;
         }
 
@@ -195,7 +193,7 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
             speciesIcon.setBackground(getResources().getDrawable(R.drawable.araklith_icon));
             speciesHeaderTV.setText(getString(R.string.araklith_points));
             speciesHeaderTV.setTextColor(getResources().getColor(R.color.araklith));
-            currentInputPointsColumns = Arrays.asList(GameLogEntry.COLUMN_ARAKLITH_MISSION_POINTS, GameLogEntry.COLUMN_ARAKLITH_PLAYER_BOARD_POINTS, GameLogEntry.COLUMN_ARAKLITH_TRAIT_POINTS, GameLogEntry.COLUMN_ARAKLITH_RESOURCE_POINTS);
+            currentInputPointsColumns = Arrays.asList(Columns.araklithColumns);
             currentTotalPointsColumn = GameLogEntry.COLUMN_ARAKLITH_TOTAL_POINTS;
             return;
         }
@@ -245,6 +243,8 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
+        //load values into edit texts if the user came to the view by pressing back or
+        //navigating from the FinalScoreActivity, to edit the values
         if (comesFromFinalScoreActivity || wasBackPressed) {
             String currentSpecies = selectedSpecies.get(layoutIndex);
             if (cursor != null && cursor.moveToFirst()) {
@@ -255,46 +255,33 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
                         getString(R.string.scoutars),
                         getString(R.string.araklith)
                 };
+                int numSpecies = species.length;
 
-                int[][] columnIndices = {
-                        {cursor.getColumnIndex(GameLogEntry.COLUMN_TUSKADON_MISSION_POINTS),
-                                cursor.getColumnIndex(GameLogEntry.COLUMN_TUSKADON_PLAYER_BOARD_POINTS),
-                                cursor.getColumnIndex(GameLogEntry.COLUMN_TUSKADON_TRAIT_POINTS),
-                                cursor.getColumnIndex(GameLogEntry.COLUMN_TUSKADON_RESOURCE_POINTS),
-                                cursor.getColumnIndex(GameLogEntry.COLUMN_TUSKADON_TOTAL_POINTS)},
-                        {cursor.getColumnIndex(GameLogEntry.COLUMN_STARLING_MISSION_POINTS),
-                                cursor.getColumnIndex(GameLogEntry.COLUMN_STARLING_PLAYER_BOARD_POINTS),
-                                cursor.getColumnIndex(GameLogEntry.COLUMN_STARLING_TRAIT_POINTS),
-                                cursor.getColumnIndex(GameLogEntry.COLUMN_STARLING_RESOURCE_POINTS),
-                                cursor.getColumnIndex(GameLogEntry.COLUMN_STARLING_TOTAL_POINTS)},
-                        {cursor.getColumnIndex(GameLogEntry.COLUMN_COSMOSAURUS_MISSION_POINTS),
-                                cursor.getColumnIndex(GameLogEntry.COLUMN_COSMOSAURUS_PLAYER_BOARD_POINTS),
-                                cursor.getColumnIndex(GameLogEntry.COLUMN_COSMOSAURUS_TRAIT_POINTS),
-                                cursor.getColumnIndex(GameLogEntry.COLUMN_COSMOSAURUS_RESOURCE_POINTS),
-                                cursor.getColumnIndex(GameLogEntry.COLUMN_COSMOSAURUS_TOTAL_POINTS)},
-                        {cursor.getColumnIndex(GameLogEntry.COLUMN_SCOUTARS_MISSION_POINTS),
-                                cursor.getColumnIndex(GameLogEntry.COLUMN_SCOUTARS_PLAYER_BOARD_POINTS),
-                                cursor.getColumnIndex(GameLogEntry.COLUMN_SCOUTARS_TRAIT_POINTS),
-                                cursor.getColumnIndex(GameLogEntry.COLUMN_SCOUTARS_RESOURCE_POINTS),
-                                cursor.getColumnIndex(GameLogEntry.COLUMN_SCOUTARS_TOTAL_POINTS)},
-                        {cursor.getColumnIndex(GameLogEntry.COLUMN_ARAKLITH_MISSION_POINTS),
-                                cursor.getColumnIndex(GameLogEntry.COLUMN_ARAKLITH_PLAYER_BOARD_POINTS),
-                                cursor.getColumnIndex(GameLogEntry.COLUMN_ARAKLITH_TRAIT_POINTS),
-                                cursor.getColumnIndex(GameLogEntry.COLUMN_ARAKLITH_RESOURCE_POINTS),
-                                cursor.getColumnIndex(GameLogEntry.COLUMN_ARAKLITH_TOTAL_POINTS)}
+                String[][] allColumns = {
+                        Columns.tuskadonColumns,
+                        Columns.starlingColumns,
+                        Columns.cosmosaurusColumns,
+                        Columns.scoutarColumns,
+                        Columns.araklithColumns
                 };
 
-
-                for (int i = 0; i <= 4; i++) {
+                for (int i = 0; i < numSpecies; i++) {
                     if (currentSpecies.equals(species[i])) {
-                        int missionPoints = cursor.getInt(columnIndices[i][MISSION_POINTS_INDEX]);
-                        pointsEditTextViews[MISSION_POINTS_INDEX].setText(String.valueOf(missionPoints));
-                        int playerBoardPoints = cursor.getInt(columnIndices[i][PLAYER_BOARD_POINTS_INDEX]);
-                        pointsEditTextViews[PLAYER_BOARD_POINTS_INDEX].setText(String.valueOf(playerBoardPoints));
-                        int traitPoints = cursor.getInt(columnIndices[i][TRAIT_POINTS_INDEX]);
-                        pointsEditTextViews[TRAIT_POINTS_INDEX].setText(String.valueOf(traitPoints));
-                        int resourcesPoints = cursor.getInt(columnIndices[i][RESOURCES_POINTS_INDEX]);
-                        pointsEditTextViews[RESOURCES_POINTS_INDEX].setText(String.valueOf(resourcesPoints));
+                        int missionColumnIndex = cursor.getColumnIndex(allColumns[i][Columns.MISSION_POINTS_INDEX]);
+                        int missionPoints = cursor.getInt(missionColumnIndex);
+                        pointsEditTextViews[Columns.MISSION_POINTS_INDEX].setText(String.valueOf(missionPoints));
+
+                        int playerBoardColumnIndex = cursor.getColumnIndex(allColumns[i][Columns.PLAYER_BOARD_POINTS_INDEX]);
+                        int playerBoardPoints = cursor.getInt(playerBoardColumnIndex);
+                        pointsEditTextViews[Columns.PLAYER_BOARD_POINTS_INDEX].setText(String.valueOf(playerBoardPoints));
+
+                        int traitPointsColumnIndex = cursor.getColumnIndex(allColumns[i][Columns.TRAIT_POINTS_INDEX]);
+                        int traitPoints = cursor.getInt(traitPointsColumnIndex);
+                        pointsEditTextViews[Columns.TRAIT_POINTS_INDEX].setText(String.valueOf(traitPoints));
+
+                        int resourcePointsColumnIndex = cursor.getColumnIndex(allColumns[i][Columns.RESOURCES_POINTS_INDEX]);
+                        int resourcesPoints = cursor.getInt(resourcePointsColumnIndex);
+                        pointsEditTextViews[Columns.RESOURCES_POINTS_INDEX].setText(String.valueOf(resourcesPoints));
                     }
                 }
             }
