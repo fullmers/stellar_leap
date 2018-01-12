@@ -7,8 +7,8 @@ package com.weirdgiraffegames.stellarleapscorepad;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +21,6 @@ import butterknife.ButterKnife;
 
 public class GameLogCursorAdapter extends RecyclerView.Adapter<GameLogCursorAdapter.GameViewHolder> {
 
-    // Class variables for the Cursor that holds task data and the Context
     private Cursor mCursor;
     private Context mContext;
     final private GameLogAdapterOnClickHandler mClickHandler;
@@ -37,8 +36,6 @@ public class GameLogCursorAdapter extends RecyclerView.Adapter<GameLogCursorAdap
 
     @Override
     public GameViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
-        // Inflate the task_layout to a view
         View view = LayoutInflater.from(mContext)
                 .inflate(R.layout.game_log_item, parent, false);
 
@@ -66,6 +63,12 @@ public class GameLogCursorAdapter extends RecyclerView.Adapter<GameLogCursorAdap
         int scoutarsTotal = mCursor.getInt(scoutarsTotalIndex);
         int araklithTotal = mCursor.getInt(araklithTotalIndex);
 
+        //clean out game logs that were started but never completed
+        if (tuskadonTotal == 0 && starlingTotal == 0 && cosmosaurusTotal == 0 && scoutarsTotal == 0 && araklithTotal == 0) {
+            Uri uri = Uri.withAppendedPath(GameLogContract.GameLogEntry.CONTENT_URI,Long.toString(gameID));
+            mContext.getContentResolver().delete(uri,null,null);
+        }
+
         holder.gameDateTextView.setText(date);
         holder.tuskadonTextView.setText(String.valueOf(tuskadonTotal));
         holder.starlingTextView.setText(String.valueOf(starlingTotal));
@@ -73,8 +76,6 @@ public class GameLogCursorAdapter extends RecyclerView.Adapter<GameLogCursorAdap
         holder.scoutarsTextView.setText(String.valueOf(scoutarsTotal));
         holder.araklithTextView.setText(String.valueOf(araklithTotal));
         holder.itemView.setTag(gameID);
-
-        Log.d("date",date);
     }
 
     @Override
