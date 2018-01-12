@@ -11,7 +11,6 @@ import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -39,7 +38,6 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
     private Uri mUri;
     private boolean comesFromFinalScoreActivity = false;
     private boolean wasBackPressed = false;
-    private Cursor mCursor;
 
     private static final int INPUT_POINTS_LOADER_ID = 2;
     private static final int MISSION_POINTS_INDEX = 0;
@@ -51,26 +49,16 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
     private String currentTotalPointsColumn = "";
     private EditText[] pointsEditTextViews;
 
-    @BindView(R.id.next_btn)
-    Button nextButton;
-    @BindView(R.id.selected_species_icon)
-    ImageView speciesIcon;
-    @BindView(R.id.selected_species_header_tv)
-    TextView speciesHeaderTV;
-    @BindView(R.id.mission_points_et)
-    EditText missionPointsET;
-    @BindView(R.id.player_board_points_et)
-    EditText playerBoardPointsET;
-    @BindView(R.id.trait_points_et)
-    EditText traitPointsET;
-    @BindView(R.id.resource_points_et)
-    EditText resourcePointsET;
-    @BindView(R.id.trait_spinner)
-    Spinner traitSpinner;
-    @BindView(R.id.trait_points_instructions_tv)
-    TextView traitInstructionsTV;
-    @BindView(R.id.resource_points_instructions_tv)
-    TextView resourceInstructionsTV;
+    @BindView(R.id.next_btn) Button nextButton;
+    @BindView(R.id.selected_species_icon) ImageView speciesIcon;
+    @BindView(R.id.selected_species_header_tv) TextView speciesHeaderTV;
+    @BindView(R.id.mission_points_et) EditText missionPointsET;
+    @BindView(R.id.player_board_points_et) EditText playerBoardPointsET;
+    @BindView(R.id.trait_points_et) EditText traitPointsET;
+    @BindView(R.id.resource_points_et) EditText resourcePointsET;
+    @BindView(R.id.trait_spinner) Spinner traitSpinner;
+    @BindView(R.id.trait_points_instructions_tv) TextView traitInstructionsTV;
+    @BindView(R.id.resource_points_instructions_tv) TextView resourceInstructionsTV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,13 +84,11 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
             i.setData(mUri);
             i.putExtra(getString(R.string.comes_from_game_log_activity_key), false);
             startActivity(i);
-            mCursor.close();
         } else {
             if (layoutIndex > 0) {
                 layoutIndex--;
                 setupCurrentSpecies();
                 getSupportLoaderManager().restartLoader(INPUT_POINTS_LOADER_ID, null, this);
-                loadSpecies();
             } else {
                 Intent i = new Intent(InputPointsActivity.this, ChooseRacesActivity.class);
                 startActivity(i);
@@ -122,7 +108,6 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("layoutIndex","on next button click: " + layoutIndex);
                 boolean isValidInput = isValidInput();
                 if (isValidInput) {
                     layoutIndex++;
@@ -131,14 +116,12 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
                         Intent i = new Intent(InputPointsActivity.this, FinalScoreActivity.class);
                         i.setData(mUri);
                         i.putExtra(getString(R.string.comes_from_game_log_activity_key), false);
-                        mCursor.close();
                         startActivity(i);
                     } else {
                         updateSpeciesPoints();
                         clearInputs();
                         setupCurrentSpecies();
                     }
-                    Log.d("layoutIndex","after checking if input is valid: " + layoutIndex);
                 } else {
                     Toast.makeText(context, getString(R.string.validation_toast), Toast.LENGTH_SHORT).show();
                 }
@@ -262,70 +245,65 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
-        mCursor = cursor;
         if (comesFromFinalScoreActivity || wasBackPressed) {
-            loadSpecies();
+            String currentSpecies = selectedSpecies.get(layoutIndex);
+            if (cursor != null && cursor.moveToFirst()) {
+                String[] species = {
+                        getString(R.string.tuskadon),
+                        getString(R.string.starlings),
+                        getString(R.string.cosmosaurus),
+                        getString(R.string.scoutars),
+                        getString(R.string.araklith)
+                };
+
+                int[][] columnIndices = {
+                        {cursor.getColumnIndex(GameLogEntry.COLUMN_TUSKADON_MISSION_POINTS),
+                                cursor.getColumnIndex(GameLogEntry.COLUMN_TUSKADON_PLAYER_BOARD_POINTS),
+                                cursor.getColumnIndex(GameLogEntry.COLUMN_TUSKADON_TRAIT_POINTS),
+                                cursor.getColumnIndex(GameLogEntry.COLUMN_TUSKADON_RESOURCE_POINTS),
+                                cursor.getColumnIndex(GameLogEntry.COLUMN_TUSKADON_TOTAL_POINTS)},
+                        {cursor.getColumnIndex(GameLogEntry.COLUMN_STARLING_MISSION_POINTS),
+                                cursor.getColumnIndex(GameLogEntry.COLUMN_STARLING_PLAYER_BOARD_POINTS),
+                                cursor.getColumnIndex(GameLogEntry.COLUMN_STARLING_TRAIT_POINTS),
+                                cursor.getColumnIndex(GameLogEntry.COLUMN_STARLING_RESOURCE_POINTS),
+                                cursor.getColumnIndex(GameLogEntry.COLUMN_STARLING_TOTAL_POINTS)},
+                        {cursor.getColumnIndex(GameLogEntry.COLUMN_COSMOSAURUS_MISSION_POINTS),
+                                cursor.getColumnIndex(GameLogEntry.COLUMN_COSMOSAURUS_PLAYER_BOARD_POINTS),
+                                cursor.getColumnIndex(GameLogEntry.COLUMN_COSMOSAURUS_TRAIT_POINTS),
+                                cursor.getColumnIndex(GameLogEntry.COLUMN_COSMOSAURUS_RESOURCE_POINTS),
+                                cursor.getColumnIndex(GameLogEntry.COLUMN_COSMOSAURUS_TOTAL_POINTS)},
+                        {cursor.getColumnIndex(GameLogEntry.COLUMN_SCOUTARS_MISSION_POINTS),
+                                cursor.getColumnIndex(GameLogEntry.COLUMN_SCOUTARS_PLAYER_BOARD_POINTS),
+                                cursor.getColumnIndex(GameLogEntry.COLUMN_SCOUTARS_TRAIT_POINTS),
+                                cursor.getColumnIndex(GameLogEntry.COLUMN_SCOUTARS_RESOURCE_POINTS),
+                                cursor.getColumnIndex(GameLogEntry.COLUMN_SCOUTARS_TOTAL_POINTS)},
+                        {cursor.getColumnIndex(GameLogEntry.COLUMN_ARAKLITH_MISSION_POINTS),
+                                cursor.getColumnIndex(GameLogEntry.COLUMN_ARAKLITH_PLAYER_BOARD_POINTS),
+                                cursor.getColumnIndex(GameLogEntry.COLUMN_ARAKLITH_TRAIT_POINTS),
+                                cursor.getColumnIndex(GameLogEntry.COLUMN_ARAKLITH_RESOURCE_POINTS),
+                                cursor.getColumnIndex(GameLogEntry.COLUMN_ARAKLITH_TOTAL_POINTS)}
+                };
+
+
+                for (int i = 0; i <= 4; i++) {
+                    if (currentSpecies.equals(species[i])) {
+                        int missionPoints = cursor.getInt(columnIndices[i][MISSION_POINTS_INDEX]);
+                        pointsEditTextViews[MISSION_POINTS_INDEX].setText(String.valueOf(missionPoints));
+                        int playerBoardPoints = cursor.getInt(columnIndices[i][PLAYER_BOARD_POINTS_INDEX]);
+                        pointsEditTextViews[PLAYER_BOARD_POINTS_INDEX].setText(String.valueOf(playerBoardPoints));
+                        int traitPoints = cursor.getInt(columnIndices[i][TRAIT_POINTS_INDEX]);
+                        pointsEditTextViews[TRAIT_POINTS_INDEX].setText(String.valueOf(traitPoints));
+                        int resourcesPoints = cursor.getInt(columnIndices[i][RESOURCES_POINTS_INDEX]);
+                        pointsEditTextViews[RESOURCES_POINTS_INDEX].setText(String.valueOf(resourcesPoints));
+                    }
+                }
+            }
         }
         wasBackPressed = false;
+        cursor.close();
     }
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
     }
-
-    private void loadSpecies() {
-        String currentSpecies = selectedSpecies.get(layoutIndex);
-        if (mCursor != null && mCursor.moveToFirst()) {
-            String[] species = {
-                    getString(R.string.tuskadon),
-                    getString(R.string.starlings),
-                    getString(R.string.cosmosaurus),
-                    getString(R.string.scoutars),
-                    getString(R.string.araklith)
-            };
-
-            int[][] columnIndices = {
-                    {mCursor.getColumnIndex(GameLogEntry.COLUMN_TUSKADON_MISSION_POINTS),
-                            mCursor.getColumnIndex(GameLogEntry.COLUMN_TUSKADON_PLAYER_BOARD_POINTS),
-                            mCursor.getColumnIndex(GameLogEntry.COLUMN_TUSKADON_TRAIT_POINTS),
-                            mCursor.getColumnIndex(GameLogEntry.COLUMN_TUSKADON_RESOURCE_POINTS),
-                            mCursor.getColumnIndex(GameLogEntry.COLUMN_TUSKADON_TOTAL_POINTS)},
-                    {mCursor.getColumnIndex(GameLogEntry.COLUMN_STARLING_MISSION_POINTS),
-                            mCursor.getColumnIndex(GameLogEntry.COLUMN_STARLING_PLAYER_BOARD_POINTS),
-                            mCursor.getColumnIndex(GameLogEntry.COLUMN_STARLING_TRAIT_POINTS),
-                            mCursor.getColumnIndex(GameLogEntry.COLUMN_STARLING_RESOURCE_POINTS),
-                            mCursor.getColumnIndex(GameLogEntry.COLUMN_STARLING_TOTAL_POINTS)},
-                    {mCursor.getColumnIndex(GameLogEntry.COLUMN_COSMOSAURUS_MISSION_POINTS),
-                            mCursor.getColumnIndex(GameLogEntry.COLUMN_COSMOSAURUS_PLAYER_BOARD_POINTS),
-                            mCursor.getColumnIndex(GameLogEntry.COLUMN_COSMOSAURUS_TRAIT_POINTS),
-                            mCursor.getColumnIndex(GameLogEntry.COLUMN_COSMOSAURUS_RESOURCE_POINTS),
-                            mCursor.getColumnIndex(GameLogEntry.COLUMN_COSMOSAURUS_TOTAL_POINTS)},
-                    {mCursor.getColumnIndex(GameLogEntry.COLUMN_SCOUTARS_MISSION_POINTS),
-                            mCursor.getColumnIndex(GameLogEntry.COLUMN_SCOUTARS_PLAYER_BOARD_POINTS),
-                            mCursor.getColumnIndex(GameLogEntry.COLUMN_SCOUTARS_TRAIT_POINTS),
-                            mCursor.getColumnIndex(GameLogEntry.COLUMN_SCOUTARS_RESOURCE_POINTS),
-                            mCursor.getColumnIndex(GameLogEntry.COLUMN_SCOUTARS_TOTAL_POINTS)},
-                    {mCursor.getColumnIndex(GameLogEntry.COLUMN_ARAKLITH_MISSION_POINTS),
-                            mCursor.getColumnIndex(GameLogEntry.COLUMN_ARAKLITH_PLAYER_BOARD_POINTS),
-                            mCursor.getColumnIndex(GameLogEntry.COLUMN_ARAKLITH_TRAIT_POINTS),
-                            mCursor.getColumnIndex(GameLogEntry.COLUMN_ARAKLITH_RESOURCE_POINTS),
-                            mCursor.getColumnIndex(GameLogEntry.COLUMN_ARAKLITH_TOTAL_POINTS)}
-            };
-
-
-            for (int i = 0; i <= 4; i++) {
-                if (currentSpecies.equals(species[i])) {
-                    int missionPoints = mCursor.getInt(columnIndices[i][MISSION_POINTS_INDEX]);
-                    pointsEditTextViews[MISSION_POINTS_INDEX].setText(String.valueOf(missionPoints));
-                    int playerBoardPoints = mCursor.getInt(columnIndices[i][PLAYER_BOARD_POINTS_INDEX]);
-                    pointsEditTextViews[PLAYER_BOARD_POINTS_INDEX].setText(String.valueOf(playerBoardPoints));
-                    int traitPoints = mCursor.getInt(columnIndices[i][TRAIT_POINTS_INDEX]);
-                    pointsEditTextViews[TRAIT_POINTS_INDEX].setText(String.valueOf(traitPoints));
-                    int resourcesPoints = mCursor.getInt(columnIndices[i][RESOURCES_POINTS_INDEX]);
-                    pointsEditTextViews[RESOURCES_POINTS_INDEX].setText(String.valueOf(resourcesPoints));
-                }
-            }
-        }
-    }
-
 }
