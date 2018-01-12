@@ -77,13 +77,15 @@
 
     <Button
         android:id="@+id/next_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_marginBottom="@dimen/smallMargin"
         android:layout_marginRight="@dimen/standarMargin"
-        android:background="@drawable/disabled_button_background"
+        android:background="@drawable/button_background"
+        android:textColor="@color/nebula_very_light_blue"
+        android:textSize="18sp"
         android:text="@string/next" />
 
 </RelativeLayout>

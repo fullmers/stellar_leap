@@ -21,8 +21,10 @@
         android:background="@drawable/button_background"
         android:paddingLeft="@dimen/standarMargin"
         android:paddingRight="@dimen/standarMargin"
-        android:layout_width="170dp"
-        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/nebula_very_light_blue"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
         android:text="@string/score_game" />
 
     <Button
@@ -31,8 +33,10 @@
         android:background="@drawable/button_background"
         android:paddingLeft="@dimen/standarMargin"
         android:paddingRight="@dimen/standarMargin"
-        android:layout_width="170dp"
-        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/nebula_very_light_blue"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
         android:text="@string/about" />
 
     <Button
@@ -41,8 +45,10 @@
         android:background="@drawable/button_background"
         android:paddingLeft="@dimen/standarMargin"
         android:paddingRight="@dimen/standarMargin"
-        android:layout_width="170dp"
-        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/nebula_very_light_blue"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
         android:text="@string/game_logs" />
 
 </LinearLayout>

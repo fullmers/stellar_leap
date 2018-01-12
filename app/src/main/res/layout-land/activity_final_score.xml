@@ -24,20 +24,21 @@
             <Button
                 android:id="@+id/btn_delete"
                 android:background="@drawable/button_background"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-
-                android:text="delete"
+                android:textSize="16sp"
+                android:textColor="@color/nebula_very_light_blue"
+                android:layout_width="115dp"
+                android:layout_height="30dp"
+                android:text="@string/delete"
                 android:visibility="gone" />
 
             <Button
                 android:id="@+id/btn_new_game"
                 android:background="@drawable/button_background"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:textColor="@color/nebula_dark_blue"
-                android:textSize="12sp"
-                android:text="New Game"
+                android:textSize="16sp"
+                android:textColor="@color/nebula_very_light_blue"
+                android:layout_width="115dp"
+                android:layout_height="30dp"
+                android:text="@string/new_game"
                 android:visibility="visible" />
 
         </LinearLayout>

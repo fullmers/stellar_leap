@@ -1,6 +1,7 @@
 package com.weirdgiraffegames.stellarleapscorepad;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.Toast;
 
 import com.weirdgiraffegames.stellarleapscorepad.data.GameLogContract;
 
@@ -26,21 +28,24 @@ public class ChooseRacesActivity extends AppCompatActivity {
     @BindView(R.id.araklith_chkbx) CheckBox chkbx_araklith;
     @BindView(R.id.next_btn) Button btn_next;
 
-    boolean isTuskadonSelected;
-    boolean isStarlingsSelected;
-    boolean isCosmosaurusSelected;
-    boolean isScoutarsSelected;
-    boolean isAraklithSelected;
+    private boolean isTuskadonSelected;
+    private boolean isStarlingsSelected;
+    private boolean isCosmosaurusSelected;
+    private boolean isScoutarsSelected;
+    private boolean isAraklithSelected;
 
-    int numSelected = 0;
+    private int numSelected = 0;
 
-    ArrayList<String> selectedSpecies;
+    private ArrayList<String> selectedSpecies;
+
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_races);
         ButterKnife.bind(this);
+        context = this;
         setupUI();
 
         btn_next.setOnClickListener(new View.OnClickListener() {
@@ -54,6 +59,8 @@ public class ChooseRacesActivity extends AppCompatActivity {
                     Uri uri= initializeGameEntry();
                     i.setData(uri);
                     startActivity(i);
+                } else {
+                    Toast.makeText(context,getString(R.string.must_select_one),Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -121,10 +128,10 @@ public class ChooseRacesActivity extends AppCompatActivity {
             numSelected = temp;
 
             if (numSelected >= 1) {
-                btn_next.setBackground(getResources().getDrawable(R.drawable.button_background));
+                //btn_next.setBackground(getResources().getDrawable(R.drawable.button_background_drawable));
                 btn_next.setEnabled(true);
             } else {
-                btn_next.setBackground(getResources().getDrawable(R.drawable.disabled_button_background));
+                //btn_next.setBackground(getResources().getDrawable(R.drawable.disabled_button_background));
                 btn_next.setEnabled(false);
             }
         }
