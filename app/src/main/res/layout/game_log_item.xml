@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="70dp"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/black"
     android:orientation="vertical">
 
     <LinearLayout
@@ -11,7 +10,7 @@
         android:layout_height="65dp"
         android:paddingLeft="@dimen/standarMargin"
         android:paddingRight="@dimen/standarMargin"
-        android:background="@color/black"
+        android:background="@color/semi_transparent_black"
         android:gravity="center_vertical"
         android:orientation="horizontal">
     <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
@@ -52,5 +51,5 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/scoreLineWidth"
         android:background="#FFF"
-        android:src="@drawable/glowing_line" />
+        android:src="@drawable/glowing_line_black_background" />
 </LinearLayout>
