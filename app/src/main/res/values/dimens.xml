@@ -6,7 +6,7 @@
     <dimen name="inputCellHeight">35dp</dimen>
     <dimen name="inputCellWidth">45dp</dimen>
 
-    <dimen name="headerTextSize">30sp</dimen>
+    <dimen name="headerTextSize">33sp</dimen>
 
     <dimen name="traitSpinnerTextSize">20sp</dimen>
     <dimen name="traitWidth">200dp</dimen>
