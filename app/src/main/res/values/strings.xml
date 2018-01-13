@@ -38,6 +38,8 @@
 
     <!--InputPointsActivity-->
     <string name="comes_from_final_score_activity_key">comesFromFinalScoreActivityKey</string>
+    <string name="continue_back">Continue</string>
+    <string name="continue_back_dialog_msg">Are you sure you want to go back? You will lose any entered score data.</string>
 
     <string name="tuskadon_points">Tuskadon Points</string>
     <string name="starling_points">Starling Points</string>

@@ -1,7 +1,9 @@
 package com.weirdgiraffegames.stellarleapscorepad;
 
+import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -91,10 +93,30 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
                 loaderExtras.putString(getString(R.string.selected_species_key),currentSpecies);
                 getSupportLoaderManager().restartLoader(INPUT_POINTS_LOADER_ID, loaderExtras, this);
             } else {
-                Intent i = new Intent(InputPointsActivity.this, ChooseRacesActivity.class);
-                startActivity(i);
+                showBackConfirmationDialog();
             }
         }
+    }
+
+    private void showBackConfirmationDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(getString(R.string.continue_back_dialog_msg));
+        builder.setPositiveButton(R.string.continue_back, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                getContentResolver().delete(mUri,null,null);
+                Intent i = new Intent(InputPointsActivity.this,ChooseRacesActivity.class);
+                startActivity(i);
+            }
+        });
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                if (dialog != null) {
+                    dialog.dismiss();
+                }
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 
     private void setupUI() {
