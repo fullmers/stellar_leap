@@ -36,12 +36,11 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
     private int layoutIndex = 0;
     private Uri mUri;
     private boolean comesFromFinalScoreActivity = false;
-    private boolean wasBackPressed = false;
     private String currentSpecies;
+    private LoaderManager.LoaderCallbacks<Cursor> loaderCallbacks;
 
     private static final int INPUT_POINTS_LOADER_ID = 2;
 
-    //private List<String> currentInputPointsColumns = null;
     private String[] currentInputPointsColumns;
     private String currentTotalPointsColumn = "";
     private EditText[] pointsEditTextViews;
@@ -62,6 +61,7 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input_points);
         context = this;
+        loaderCallbacks = this;
         selectedSpecies = getIntent().getExtras().getStringArrayList(getString(R.string.selected_species_key));
         numSelectedSpecies = selectedSpecies.size();
         comesFromFinalScoreActivity = getIntent().getExtras().getBoolean(getString(R.string.comes_from_final_score_activity_key));
@@ -78,7 +78,6 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
 
     @Override
     public void onBackPressed() {
-        wasBackPressed = true;
         if (comesFromFinalScoreActivity) {
             Intent i = new Intent(InputPointsActivity.this, FinalScoreActivity.class);
             i.setData(mUri);
@@ -123,8 +122,10 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
                         updateSpeciesPoints();
                         clearInputs();
                         setupCurrentSpecies();
-                        //TODO check if species already has points in it and load if needed
-                        //ie, user entered some values, then pressed back and next again
+
+                        Bundle loaderExtras = new Bundle();
+                        loaderExtras.putString(getString(R.string.selected_species_key),currentSpecies);
+                        getSupportLoaderManager().restartLoader(INPUT_POINTS_LOADER_ID, loaderExtras,loaderCallbacks);
                     }
                 } else {
                     Toast.makeText(context, getString(R.string.validation_toast), Toast.LENGTH_SHORT).show();
@@ -248,24 +249,23 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
-        //load values into edit texts if the user came to the view by pressing back or
-        //navigating from the FinalScoreActivity, to edit the values
-        if (comesFromFinalScoreActivity || wasBackPressed) {
+        //load values into edit texts if there is something there to load
             if (cursor != null && cursor.moveToFirst()) {
-                int missionPoints = cursor.getInt(Constants.Projections.MISSION_POINTS_INDEX);
-                pointsEditTextViews[Constants.Projections.MISSION_POINTS_INDEX].setText(String.valueOf(missionPoints));
+                int totalPoints = cursor.getInt(Constants.Projections.TOTAL_POINTS_INDEX);
+                if (totalPoints != 0) { //there is something to load
+                    int missionPoints = cursor.getInt(Constants.Projections.MISSION_POINTS_INDEX);
+                    pointsEditTextViews[Constants.Projections.MISSION_POINTS_INDEX].setText(String.valueOf(missionPoints));
 
-                int playerBoardPoints = cursor.getInt(Constants.Projections.PLAYER_BOARD_POINTS_INDEX);
-                pointsEditTextViews[Constants.Projections.PLAYER_BOARD_POINTS_INDEX].setText(String.valueOf(playerBoardPoints));
+                    int playerBoardPoints = cursor.getInt(Constants.Projections.PLAYER_BOARD_POINTS_INDEX);
+                    pointsEditTextViews[Constants.Projections.PLAYER_BOARD_POINTS_INDEX].setText(String.valueOf(playerBoardPoints));
 
-                int traitPoints = cursor.getInt(Constants.Projections.TRAIT_POINTS_INDEX);
-                pointsEditTextViews[Constants.Projections.TRAIT_POINTS_INDEX].setText(String.valueOf(traitPoints));
+                    int traitPoints = cursor.getInt(Constants.Projections.TRAIT_POINTS_INDEX);
+                    pointsEditTextViews[Constants.Projections.TRAIT_POINTS_INDEX].setText(String.valueOf(traitPoints));
 
-                int resourcesPoints = cursor.getInt(Constants.Projections.RESOURCES_POINTS_INDEX);
-                pointsEditTextViews[Constants.Projections.RESOURCES_POINTS_INDEX].setText(String.valueOf(resourcesPoints));
+                    int resourcesPoints = cursor.getInt(Constants.Projections.RESOURCES_POINTS_INDEX);
+                    pointsEditTextViews[Constants.Projections.RESOURCES_POINTS_INDEX].setText(String.valueOf(resourcesPoints));
+                }
             }
-        }
-        wasBackPressed = false;
         cursor.close();
     }
 
