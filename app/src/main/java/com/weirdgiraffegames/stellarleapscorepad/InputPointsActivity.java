@@ -22,15 +22,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.weirdgiraffegames.stellarleapscorepad.data.GameLogContract.GameLogEntry;
+import com.weirdgiraffegames.stellarleapscorepad.util.Constants;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
-import static com.weirdgiraffegames.stellarleapscorepad.util.Constants.Columns;
 
 public class InputPointsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, LoaderManager.LoaderCallbacks<Cursor> {
     private Context context;
@@ -40,10 +37,12 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
     private Uri mUri;
     private boolean comesFromFinalScoreActivity = false;
     private boolean wasBackPressed = false;
+    private String currentSpecies;
 
     private static final int INPUT_POINTS_LOADER_ID = 2;
 
-    private List<String> currentInputPointsColumns = null;
+    //private List<String> currentInputPointsColumns = null;
+    private String[] currentInputPointsColumns;
     private String currentTotalPointsColumn = "";
     private EditText[] pointsEditTextViews;
 
@@ -71,7 +70,10 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
         }
         mUri = getIntent().getData();
         setupUI();
-        getSupportLoaderManager().initLoader(INPUT_POINTS_LOADER_ID, null, this);
+
+        Bundle loaderExtras = new Bundle();
+        loaderExtras.putString(getString(R.string.selected_species_key),selectedSpecies.get(layoutIndex));
+        getSupportLoaderManager().initLoader(INPUT_POINTS_LOADER_ID, loaderExtras, this);
     }
 
     @Override
@@ -86,7 +88,9 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
             if (layoutIndex > 0) {
                 layoutIndex--;
                 setupCurrentSpecies();
-                getSupportLoaderManager().restartLoader(INPUT_POINTS_LOADER_ID, null, this);
+                Bundle loaderExtras = new Bundle();
+                loaderExtras.putString(getString(R.string.selected_species_key),currentSpecies);
+                getSupportLoaderManager().restartLoader(INPUT_POINTS_LOADER_ID, loaderExtras, this);
             } else {
                 Intent i = new Intent(InputPointsActivity.this, ChooseRacesActivity.class);
                 startActivity(i);
@@ -119,6 +123,8 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
                         updateSpeciesPoints();
                         clearInputs();
                         setupCurrentSpecies();
+                        //TODO check if species already has points in it and load if needed
+                        //ie, user entered some values, then pressed back and next again
                     }
                 } else {
                     Toast.makeText(context, getString(R.string.validation_toast), Toast.LENGTH_SHORT).show();
@@ -152,13 +158,12 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
     }
 
     private void setupCurrentSpecies() {
-        String currentSpecies = selectedSpecies.get(layoutIndex);
-
+        currentSpecies = selectedSpecies.get(layoutIndex);
         if (currentSpecies.equals(getString(R.string.tuskadon))) {
             speciesIcon.setBackground(getResources().getDrawable(R.drawable.tuskadon_icon));
             speciesHeaderTV.setText(getString(R.string.tuskadon_points));
             speciesHeaderTV.setTextColor(getResources().getColor(R.color.tuskadon));
-            currentInputPointsColumns = Arrays.asList(Columns.tuskadonColumns);
+            currentInputPointsColumns = Constants.Projections.tuskadonColumns;
             currentTotalPointsColumn = GameLogEntry.COLUMN_TUSKADON_TOTAL_POINTS;
             return;
         }
@@ -167,7 +172,7 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
             speciesIcon.setBackground(getResources().getDrawable(R.drawable.starlings_icon));
             speciesHeaderTV.setText(getString(R.string.starling_points));
             speciesHeaderTV.setTextColor(getResources().getColor(R.color.starlings));
-            currentInputPointsColumns = Arrays.asList(Columns.starlingColumns);
+            currentInputPointsColumns = Constants.Projections.starlingColumns;
             currentTotalPointsColumn = GameLogEntry.COLUMN_STARLING_TOTAL_POINTS;
             return;
         }
@@ -176,7 +181,7 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
             speciesIcon.setBackground(getResources().getDrawable(R.drawable.cosmosaurus_icon));
             speciesHeaderTV.setText(getString(R.string.cosmosaurus_points));
             speciesHeaderTV.setTextColor(getResources().getColor(R.color.cosmosaurus));
-            currentInputPointsColumns = Arrays.asList(Columns.cosmosaurusColumns);
+            currentInputPointsColumns = Constants.Projections.cosmosaurusColumns;
             currentTotalPointsColumn = GameLogEntry.COLUMN_COSMOSAURUS_TOTAL_POINTS;
             return;
         }
@@ -185,7 +190,7 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
             speciesIcon.setBackground(getResources().getDrawable(R.drawable.scoutar_icon));
             speciesHeaderTV.setText(getString(R.string.scoutars_points));
             speciesHeaderTV.setTextColor(getResources().getColor(R.color.scoutars));
-            currentInputPointsColumns = Arrays.asList(Columns.scoutarColumns);
+            currentInputPointsColumns = Constants.Projections.scoutarColumns;
             currentTotalPointsColumn = GameLogEntry.COLUMN_SCOUTARS_TOTAL_POINTS;
         }
 
@@ -193,7 +198,7 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
             speciesIcon.setBackground(getResources().getDrawable(R.drawable.araklith_icon));
             speciesHeaderTV.setText(getString(R.string.araklith_points));
             speciesHeaderTV.setTextColor(getResources().getColor(R.color.araklith));
-            currentInputPointsColumns = Arrays.asList(Columns.araklithColumns);
+            currentInputPointsColumns = Constants.Projections.araklithColumns;
             currentTotalPointsColumn = GameLogEntry.COLUMN_ARAKLITH_TOTAL_POINTS;
             return;
         }
@@ -206,7 +211,7 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
         for (int i = 0; i < 4; i++) {
             int pointValue = Integer.parseInt(pointsEditTextViews[i].getText().toString());
             total = total + pointValue;
-            values.put(currentInputPointsColumns.get(i), pointValue);
+            values.put(currentInputPointsColumns[i], pointValue);
         }
         values.put(currentTotalPointsColumn, total);
 
@@ -232,7 +237,7 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
                 case INPUT_POINTS_LOADER_ID:
                     return new CursorLoader(this,
                             mUri,
-                            null,
+                            currentInputPointsColumns,
                             null,
                             null,
                             null);
@@ -246,44 +251,18 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
         //load values into edit texts if the user came to the view by pressing back or
         //navigating from the FinalScoreActivity, to edit the values
         if (comesFromFinalScoreActivity || wasBackPressed) {
-            String currentSpecies = selectedSpecies.get(layoutIndex);
             if (cursor != null && cursor.moveToFirst()) {
-                String[] species = {
-                        getString(R.string.tuskadon),
-                        getString(R.string.starlings),
-                        getString(R.string.cosmosaurus),
-                        getString(R.string.scoutars),
-                        getString(R.string.araklith)
-                };
-                int numSpecies = species.length;
+                int missionPoints = cursor.getInt(Constants.Projections.MISSION_POINTS_INDEX);
+                pointsEditTextViews[Constants.Projections.MISSION_POINTS_INDEX].setText(String.valueOf(missionPoints));
 
-                String[][] allColumns = {
-                        Columns.tuskadonColumns,
-                        Columns.starlingColumns,
-                        Columns.cosmosaurusColumns,
-                        Columns.scoutarColumns,
-                        Columns.araklithColumns
-                };
+                int playerBoardPoints = cursor.getInt(Constants.Projections.PLAYER_BOARD_POINTS_INDEX);
+                pointsEditTextViews[Constants.Projections.PLAYER_BOARD_POINTS_INDEX].setText(String.valueOf(playerBoardPoints));
 
-                for (int i = 0; i < numSpecies; i++) {
-                    if (currentSpecies.equals(species[i])) {
-                        int missionColumnIndex = cursor.getColumnIndex(allColumns[i][Columns.MISSION_POINTS_INDEX]);
-                        int missionPoints = cursor.getInt(missionColumnIndex);
-                        pointsEditTextViews[Columns.MISSION_POINTS_INDEX].setText(String.valueOf(missionPoints));
+                int traitPoints = cursor.getInt(Constants.Projections.TRAIT_POINTS_INDEX);
+                pointsEditTextViews[Constants.Projections.TRAIT_POINTS_INDEX].setText(String.valueOf(traitPoints));
 
-                        int playerBoardColumnIndex = cursor.getColumnIndex(allColumns[i][Columns.PLAYER_BOARD_POINTS_INDEX]);
-                        int playerBoardPoints = cursor.getInt(playerBoardColumnIndex);
-                        pointsEditTextViews[Columns.PLAYER_BOARD_POINTS_INDEX].setText(String.valueOf(playerBoardPoints));
-
-                        int traitPointsColumnIndex = cursor.getColumnIndex(allColumns[i][Columns.TRAIT_POINTS_INDEX]);
-                        int traitPoints = cursor.getInt(traitPointsColumnIndex);
-                        pointsEditTextViews[Columns.TRAIT_POINTS_INDEX].setText(String.valueOf(traitPoints));
-
-                        int resourcePointsColumnIndex = cursor.getColumnIndex(allColumns[i][Columns.RESOURCES_POINTS_INDEX]);
-                        int resourcesPoints = cursor.getInt(resourcePointsColumnIndex);
-                        pointsEditTextViews[Columns.RESOURCES_POINTS_INDEX].setText(String.valueOf(resourcesPoints));
-                    }
-                }
+                int resourcesPoints = cursor.getInt(Constants.Projections.RESOURCES_POINTS_INDEX);
+                pointsEditTextViews[Constants.Projections.RESOURCES_POINTS_INDEX].setText(String.valueOf(resourcesPoints));
             }
         }
         wasBackPressed = false;

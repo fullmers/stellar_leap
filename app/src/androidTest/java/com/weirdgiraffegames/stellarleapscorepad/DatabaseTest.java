@@ -137,15 +137,15 @@ public class DatabaseTest {
         Cursor wCursor = database.query(
                 /* Name of table on which to perform the query */
                 GameLogContract.GameLogEntry.TABLE_NAME,
-                /* Columns; leaving this null returns every column in the table */
+                /* Projections; leaving this null returns every column in the table */
                 null,
                 /* Optional specification for columns in the "where" clause above */
                 null,
                 /* Values for "where" clause */
                 null,
-                /* Columns to group by */
+                /* Projections to group by */
                 null,
-                /* Columns to filter by row groups */
+                /* Projections to filter by row groups */
                 null,
                 /* Sort order to return in Cursor */
                 null);
@@ -266,15 +266,15 @@ public class DatabaseTest {
         Cursor wCursor = database.query(
                 /* Name of table on which to perform the query */
                 GameLogContract.GameLogEntry.TABLE_NAME,
-                /* Columns; leaving this null returns every column in the table */
+                /* Projections; leaving this null returns every column in the table */
                 null,
                 /* Optional specification for columns in the "where" clause above */
                 null,
                 /* Values for "where" clause */
                 null,
-                /* Columns to group by */
+                /* Projections to group by */
                 null,
-                /* Columns to filter by row groups */
+                /* Projections to filter by row groups */
                 null,
                 /* Sort order to return in Cursor */
                 null);

@@ -8,7 +8,7 @@ import com.weirdgiraffegames.stellarleapscorepad.data.GameLogContract.GameLogEnt
 
  public class Constants {
 
-     public static class Columns {
+     public static class Projections {
          public static final int MISSION_POINTS_INDEX = 0;
          public static final int PLAYER_BOARD_POINTS_INDEX = 1;
          public static final int TRAIT_POINTS_INDEX = 2;
