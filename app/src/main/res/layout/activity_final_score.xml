@@ -119,7 +119,7 @@
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/scoreLineWidth"
-                                android:src="@drawable/glowing_line" />
+                                android:src="@drawable/glowing_line_white_background" />
 
                             <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                                 android:id="@+id/tuskadon_player_board_points_tv"
@@ -129,7 +129,7 @@
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/scoreLineWidth"
-                                android:src="@drawable/glowing_line" />
+                                android:src="@drawable/glowing_line_white_background" />
 
                             <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                                 android:id="@+id/tuskadon_trait_points_tv"
@@ -139,7 +139,7 @@
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/scoreLineWidth"
-                                android:src="@drawable/glowing_line" />
+                                android:src="@drawable/glowing_line_white_background" />
 
                             <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                                 android:id="@+id/tuskadon_resources_points_tv"
@@ -149,7 +149,7 @@
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/scoreLineWidth"
-                                android:src="@drawable/glowing_line" />
+                                android:src="@drawable/glowing_line_white_background" />
 
                             <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                                 android:id="@+id/tuskadon_total_points_tv"
@@ -163,7 +163,7 @@
                             android:layout_width="@dimen/scoreLineWidth"
                             android:layout_height="match_parent"
                             android:background="#FFF"
-                            android:src="@drawable/vertical_glowing_line" />
+                            android:src="@drawable/vertical_glowing_line_white_background" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -187,7 +187,7 @@
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/scoreLineWidth"
-                                android:src="@drawable/glowing_line" />
+                                android:src="@drawable/glowing_line_white_background" />
 
                             <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                                 android:id="@+id/starling_player_board_points_tv"
@@ -197,7 +197,7 @@
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/scoreLineWidth"
-                                android:src="@drawable/glowing_line" />
+                                android:src="@drawable/glowing_line_white_background" />
 
                             <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                                 android:id="@+id/starling_trait_points_tv"
@@ -207,7 +207,7 @@
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/scoreLineWidth"
-                                android:src="@drawable/glowing_line" />
+                                android:src="@drawable/glowing_line_white_background" />
 
                             <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                                 android:id="@+id/starling_resources_points_tv"
@@ -217,7 +217,7 @@
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/scoreLineWidth"
-                                android:src="@drawable/glowing_line" />
+                                android:src="@drawable/glowing_line_white_background" />
 
                             <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                                 android:id="@+id/starling_total_points_tv"
@@ -231,7 +231,7 @@
                             android:layout_width="@dimen/scoreLineWidth"
                             android:layout_height="match_parent"
                             android:background="#FFF"
-                            android:src="@drawable/vertical_glowing_line" />
+                            android:src="@drawable/vertical_glowing_line_white_background" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -255,7 +255,7 @@
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/scoreLineWidth"
-                                android:src="@drawable/glowing_line" />
+                                android:src="@drawable/glowing_line_white_background" />
 
                             <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                                 android:id="@+id/cosmosaurus_player_board_points_tv"
@@ -265,7 +265,7 @@
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/scoreLineWidth"
-                                android:src="@drawable/glowing_line" />
+                                android:src="@drawable/glowing_line_white_background" />
 
                             <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                                 android:id="@+id/cosmosaurus_trait_points_tv"
@@ -275,7 +275,7 @@
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/scoreLineWidth"
-                                android:src="@drawable/glowing_line" />
+                                android:src="@drawable/glowing_line_white_background" />
 
                             <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                                 android:id="@+id/cosmosaurus_resources_points_tv"
@@ -285,7 +285,7 @@
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/scoreLineWidth"
-                                android:src="@drawable/glowing_line" />
+                                android:src="@drawable/glowing_line_white_background" />
 
                             <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                                 android:id="@+id/cosmosaurus_total_points_tv"
@@ -299,7 +299,7 @@
                             android:layout_width="@dimen/scoreLineWidth"
                             android:layout_height="match_parent"
                             android:background="#FFF"
-                            android:src="@drawable/vertical_glowing_line" />
+                            android:src="@drawable/vertical_glowing_line_white_background" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -323,7 +323,7 @@
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/scoreLineWidth"
-                                android:src="@drawable/glowing_line" />
+                                android:src="@drawable/glowing_line_white_background" />
 
                             <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                                 android:id="@+id/scoutars_player_board_points_tv"
@@ -333,7 +333,7 @@
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/scoreLineWidth"
-                                android:src="@drawable/glowing_line" />
+                                android:src="@drawable/glowing_line_white_background" />
 
                             <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                                 android:id="@+id/scoutars_trait_points_tv"
@@ -343,7 +343,7 @@
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/scoreLineWidth"
-                                android:src="@drawable/glowing_line" />
+                                android:src="@drawable/glowing_line_white_background" />
 
                             <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                                 android:id="@+id/scoutars_resources_points_tv"
@@ -353,7 +353,7 @@
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/scoreLineWidth"
-                                android:src="@drawable/glowing_line" />
+                                android:src="@drawable/glowing_line_white_background" />
 
                             <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                                 android:id="@+id/scoutars_total_points_tv"
@@ -367,7 +367,7 @@
                             android:layout_width="@dimen/scoreLineWidth"
                             android:layout_height="match_parent"
                             android:background="#FFF"
-                            android:src="@drawable/vertical_glowing_line" />
+                            android:src="@drawable/vertical_glowing_line_white_background" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -391,7 +391,7 @@
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/scoreLineWidth"
-                                android:src="@drawable/glowing_line" />
+                                android:src="@drawable/glowing_line_white_background" />
 
                             <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                                 android:id="@+id/araklith_player_board_points_tv"
@@ -401,7 +401,7 @@
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/scoreLineWidth"
-                                android:src="@drawable/glowing_line" />
+                                android:src="@drawable/glowing_line_white_background" />
 
                             <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                                 android:id="@+id/araklith_trait_points_tv"
@@ -411,7 +411,7 @@
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/scoreLineWidth"
-                                android:src="@drawable/glowing_line" />
+                                android:src="@drawable/glowing_line_white_background" />
 
                             <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                                 android:id="@+id/araklith_resources_points_tv"
@@ -421,7 +421,7 @@
                             <ImageView
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/scoreLineWidth"
-                                android:src="@drawable/glowing_line" />
+                                android:src="@drawable/glowing_line_white_background" />
 
                             <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                                 android:id="@+id/araklith_total_points_tv"

@@ -2,15 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="70dp"
+    android:background="@color/semi_transparent_black"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="65dp"
-        android:paddingLeft="@dimen/standarMargin"
-        android:paddingRight="@dimen/standarMargin"
-        android:background="@color/semi_transparent_black"
+        android:layout_marginRight="@dimen/standarMargin"
+        android:layout_marginLeft="@dimen/standarMargin"
         android:gravity="center_vertical"
         android:orientation="horizontal">
     <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
@@ -50,6 +50,7 @@
         android:id="@+id/divider_line"
         android:layout_width="match_parent"
         android:layout_height="@dimen/scoreLineWidth"
-        android:background="#FFF"
-        android:src="@drawable/glowing_line_black_background" />
+        android:layout_marginRight="@dimen/standarMargin"
+        android:layout_marginLeft="@dimen/standarMargin"
+        android:background="@drawable/glowing_line_black_background" />
 </LinearLayout>

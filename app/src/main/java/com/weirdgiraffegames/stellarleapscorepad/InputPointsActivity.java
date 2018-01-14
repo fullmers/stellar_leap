@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
@@ -31,6 +32,8 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static android.content.res.Configuration.ORIENTATION_LANDSCAPE;
+
 public class InputPointsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, LoaderManager.LoaderCallbacks<Cursor> {
     private Context context;
     private ArrayList<String> selectedSpecies;
@@ -39,7 +42,6 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
     private Uri mUri;
     private boolean comesFromFinalScoreActivity = false;
     private String currentSpecies;
-    private LoaderManager.LoaderCallbacks<Cursor> loaderCallbacks;
 
     private static final int INPUT_POINTS_LOADER_ID = 2;
 
@@ -57,13 +59,13 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
     @BindView(R.id.trait_spinner) Spinner traitSpinner;
     @BindView(R.id.trait_points_instructions_tv) TextView traitInstructionsTV;
     @BindView(R.id.resource_points_instructions_tv) TextView resourceInstructionsTV;
+    @Nullable @BindView(R.id.landscape_screen_divider) View landscapeDivider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input_points);
         context = this;
-        loaderCallbacks = this;
         selectedSpecies = getIntent().getExtras().getStringArrayList(getString(R.string.selected_species_key));
         numSelectedSpecies = selectedSpecies.size();
         comesFromFinalScoreActivity = getIntent().getExtras().getBoolean(getString(R.string.comes_from_final_score_activity_key));
@@ -147,7 +149,7 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
 
                         Bundle loaderExtras = new Bundle();
                         loaderExtras.putString(getString(R.string.selected_species_key),currentSpecies);
-                        getSupportLoaderManager().restartLoader(INPUT_POINTS_LOADER_ID, loaderExtras,loaderCallbacks);
+                        getSupportLoaderManager().restartLoader(INPUT_POINTS_LOADER_ID, loaderExtras,(LoaderManager.LoaderCallbacks<Cursor>) context);
                     }
                 } else {
                     Toast.makeText(context, getString(R.string.validation_toast), Toast.LENGTH_SHORT).show();
@@ -182,12 +184,17 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
 
     private void setupCurrentSpecies() {
         currentSpecies = selectedSpecies.get(layoutIndex);
+        boolean isLandscape = (getResources().getConfiguration().orientation == ORIENTATION_LANDSCAPE);
+
         if (currentSpecies.equals(getString(R.string.tuskadon))) {
             speciesIcon.setBackground(getResources().getDrawable(R.drawable.tuskadon_icon));
             speciesHeaderTV.setText(getString(R.string.tuskadon_points));
             speciesHeaderTV.setTextColor(getResources().getColor(R.color.tuskadon));
             currentInputPointsColumns = Constants.Projections.tuskadonColumns;
             currentTotalPointsColumn = GameLogEntry.COLUMN_TUSKADON_TOTAL_POINTS;
+            if (isLandscape){
+                landscapeDivider.setBackground(getResources().getDrawable(R.drawable.tuskadon_line));
+            }
             return;
         }
 
@@ -197,6 +204,9 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
             speciesHeaderTV.setTextColor(getResources().getColor(R.color.starlings));
             currentInputPointsColumns = Constants.Projections.starlingColumns;
             currentTotalPointsColumn = GameLogEntry.COLUMN_STARLING_TOTAL_POINTS;
+            if (isLandscape){
+                landscapeDivider.setBackground(getResources().getDrawable(R.drawable.starlings_line));
+            }
             return;
         }
 
@@ -206,6 +216,9 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
             speciesHeaderTV.setTextColor(getResources().getColor(R.color.cosmosaurus));
             currentInputPointsColumns = Constants.Projections.cosmosaurusColumns;
             currentTotalPointsColumn = GameLogEntry.COLUMN_COSMOSAURUS_TOTAL_POINTS;
+            if (isLandscape){
+                landscapeDivider.setBackground(getResources().getDrawable(R.drawable.cosmosaurus_line));
+            }
             return;
         }
 
@@ -215,6 +228,9 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
             speciesHeaderTV.setTextColor(getResources().getColor(R.color.scoutars));
             currentInputPointsColumns = Constants.Projections.scoutarColumns;
             currentTotalPointsColumn = GameLogEntry.COLUMN_SCOUTARS_TOTAL_POINTS;
+            if (isLandscape){
+                landscapeDivider.setBackground(getResources().getDrawable(R.drawable.scoutars_line));
+            }
         }
 
         if (currentSpecies.equals(getString(R.string.araklith))) {
@@ -223,6 +239,9 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
             speciesHeaderTV.setTextColor(getResources().getColor(R.color.araklith));
             currentInputPointsColumns = Constants.Projections.araklithColumns;
             currentTotalPointsColumn = GameLogEntry.COLUMN_ARAKLITH_TOTAL_POINTS;
+            if (isLandscape){
+                landscapeDivider.setBackground(getResources().getDrawable(R.drawable.araklith_line));
+            }
             return;
         }
     }
@@ -288,7 +307,6 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
                     pointsEditTextViews[Constants.Projections.RESOURCES_POINTS_INDEX].setText(String.valueOf(resourcesPoints));
                 }
             }
-        cursor.close();
     }
 
     @Override
