@@ -38,12 +38,11 @@
         <item name="android:textSize">18sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:paddingLeft">@dimen/standarMargin</item>
-        <item name="android:layout_marginTop">@dimen/standarMargin</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:gravity">left</item>
+        <item name="android:layout_marginTop">@dimen/chooseRaces_margin</item>
+        <item name="android:layout_width">200dp</item>
+        <item name="android:layout_height">65dp</item>
+        <item name="android:gravity">center_vertical</item>
         <item name="android:textColor">@color/checkbox_text</item>
-        <item name="android:button">@android:drawable/btn_star</item>
     </style>
 
     <style name="InputPointsEditText" parent="@android:style/Widget.Holo.EditText">

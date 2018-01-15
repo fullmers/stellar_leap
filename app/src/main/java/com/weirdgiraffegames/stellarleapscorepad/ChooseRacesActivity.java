@@ -3,6 +3,7 @@ package com.weirdgiraffegames.stellarleapscorepad;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -101,6 +102,13 @@ public class ChooseRacesActivity extends AppCompatActivity {
         chkbx_cosmosaurus.setOnCheckedChangeListener(new RaceCheckedChangeListener());
         chkbx_scoutars.setOnCheckedChangeListener(new RaceCheckedChangeListener());
         chkbx_araklith.setOnCheckedChangeListener(new RaceCheckedChangeListener());
+
+        Typeface prototype = Typeface.createFromAsset(getAssets(),"Prototype.ttf");
+        chkbx_tuskadon.setTypeface(prototype);
+        chkbx_starlings.setTypeface(prototype);
+        chkbx_cosmosaurus.setTypeface(prototype);
+        chkbx_scoutars.setTypeface(prototype);
+        chkbx_araklith.setTypeface(prototype);
     }
 
     private class RaceCheckedChangeListener implements CompoundButton.OnCheckedChangeListener {

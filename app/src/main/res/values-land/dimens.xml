@@ -27,4 +27,6 @@
     <dimen name="scoreHeaderHeight">45dp</dimen>
 
     <dimen name="lineRadius">170dp</dimen>
+
+    <dimen name="chooseRaces_margin">0dp</dimen>
 </resources>

@@ -43,26 +43,41 @@
 
             <CheckBox
                 android:id="@+id/tuskadon_chkbx"
+                android:button="@drawable/tuskadon_selector"
                 style="@style/CustomCheckBox"
                 android:text="@string/tuskadon" />
 
             <CheckBox
                 android:id="@+id/starling_chkbx"
+                android:button="@drawable/starlings_selector"
                 style="@style/CustomCheckBox"
                 android:text="@string/starlings" />
 
             <CheckBox
                 android:id="@+id/cosmosaurus_chkbx"
+                android:button="@drawable/cosmosaurus_selector"
                 style="@style/CustomCheckBox"
                 android:text="@string/cosmosaurus" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="70dp"
+            android:background="@color/semi_transparent_black"
+            android:orientation="vertical">
 
             <CheckBox
                 android:id="@+id/scoutars_chkbx"
+                android:button="@drawable/scoutars_selector"
                 style="@style/CustomCheckBox"
                 android:text="@string/scoutars" />
 
             <CheckBox
                 android:id="@+id/araklith_chkbx"
+                android:button="@drawable/araklith_selector"
                 style="@style/CustomCheckBox"
                 android:text="@string/araklith" />
         </LinearLayout>
