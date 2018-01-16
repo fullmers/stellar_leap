@@ -15,13 +15,14 @@
 
     <style name="ScorePadLabel" parent="@android:style/TextAppearance.Medium">
         <item name="android:textColor">#FFF</item>
-        <item name="android:textSize">15sp</item>
+        <item name="android:textSize">13.5sp</item>
+        <item name="android:paddingTop">5dp</item>
         <item name="android:paddingBottom">5dp</item>
-        <item name="android:paddingRight">7dp</item>
-        <item name="android:background">@drawable/scorepad_label_background</item>
+        <item name="android:paddingRight">12dp</item>
+        <item name="android:background">@drawable/blank_arrow_label</item>
         <item name="android:layout_width">@dimen/scoreLabelWidth</item>
         <item name="android:layout_height">@dimen/scoreLabelHeight</item>
-        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:layout_marginTop">@dimen/scoreLabelTopMargin</item>
         <item name="android:gravity">right|center_vertical</item>
     </style>
 

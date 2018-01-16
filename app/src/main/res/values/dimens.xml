@@ -29,4 +29,5 @@
     <dimen name="lineRadius">170dp</dimen>
 
     <dimen name="chooseRaces_margin">16dp</dimen>
+    <dimen name="scoreLabelTopMargin">13dp</dimen>
 </resources>

@@ -16,17 +16,19 @@
 
     <dimen name="inputPointHeaderIconSide">80sp</dimen>
 
-    <dimen name="scoreColumnWidth">70dp</dimen>
+    <dimen name="scoreColumnWidth">98dp</dimen>
     <dimen name="scoreColumnHeight">40dp</dimen>
-    <dimen name="scoreLabelHeight">30dp</dimen>
-    <dimen name="scoreLabelWidth">120dp</dimen>
+    <dimen name="scoreLabelHeight">40dp</dimen>
+    <dimen name="scoreLabelWidth">100dp</dimen>
 
     <dimen name="scoreLineWidth">5dp</dimen>
 
-    <dimen name="scoreHeaderWidth">75dp</dimen>
+    <dimen name="scoreHeaderWidth">90dp</dimen>
     <dimen name="scoreHeaderHeight">45dp</dimen>
 
     <dimen name="lineRadius">170dp</dimen>
 
     <dimen name="chooseRaces_margin">0dp</dimen>
+
+    <dimen name="scoreLabelTopMargin">8dp</dimen>
 </resources>

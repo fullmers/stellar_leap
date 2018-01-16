@@ -12,7 +12,7 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="left"
         android:orientation="vertical">
         <LinearLayout
             android:id="@+id/species_headers"
@@ -26,75 +26,45 @@
 
             <ImageView
                 android:id="@+id/tuskadon_header"
-                android:layout_width="@dimen/scoreHeaderWidth"
-                android:layout_height="match_parent"
-                android:src="@drawable/tuskadon_icon" />
+                android:layout_width="@dimen/scoreColumnWidth"
+                android:layout_height="wrap_content"
+                android:src="@drawable/tuskadon_with_label" />
 
             <ImageView
                 android:id="@+id/starling_header"
-                android:layout_width="@dimen/scoreHeaderWidth"
-                android:layout_height="match_parent"
-                android:src="@drawable/starlings_icon" />
+                android:layout_width="@dimen/scoreColumnWidth"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:src="@drawable/starlings_with_label" />
 
             <ImageView
                 android:id="@+id/cosmosaurus_header"
-                android:layout_width="@dimen/scoreHeaderWidth"
-                android:layout_height="match_parent"
-                android:src="@drawable/cosmosaurus_icon" />
+                android:layout_width="65dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/cosmosaurus_with_label" />
 
             <ImageView
                 android:id="@+id/scoutars_header"
-                android:layout_width="@dimen/scoreHeaderWidth"
-                android:layout_height="match_parent"
-                android:src="@drawable/scoutar_icon" />
+                android:layout_width="@dimen/scoreColumnWidth"
+                android:layout_height="wrap_content"
+                android:src="@drawable/scoutars_with_label" />
 
             <ImageView
                 android:id="@+id/araklith_header"
                 android:layout_width="@dimen/scoreColumnWidth"
-                android:layout_height="match_parent"
-                android:src="@drawable/araklith_icon" />
+                android:layout_height="wrap_content"
+                android:src="@drawable/araklith_with_label" />
 
         </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/scoreboard_labels"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/black"
-                android:orientation="vertical"
-                android:layout_below="@id/species_headers"
-                android:layout_alignParentLeft="true">
-
-                <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
-                    style="@style/ScorePadLabel"
-                    android:layout_marginTop="5dp"
-                    android:text="@string/missions" />
-
-                <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
-                    style="@style/ScorePadLabel"
-                    android:text="@string/player_board" />
-
-                <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
-                    style="@style/ScorePadLabel"
-                    android:text="@string/trait" />
-
-                <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
-                    style="@style/ScorePadLabel"
-                    android:text="@string/resources" />
-
-                <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
-                    style="@style/ScorePadLabel"
-                    android:text="@string/total" />
-
-            </LinearLayout>
-
-                <LinearLayout
+        <LinearLayout
                     android:id="@+id/scoreboard"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/scorepad_background"
                     android:orientation="horizontal"
                     android:layout_below="@id/species_headers"
+                    android:layout_marginLeft="-18dp"
                     android:layout_toRightOf="@id/scoreboard_labels"
                     android:padding="@dimen/smallMargin">
 
@@ -431,12 +401,45 @@
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
+        <LinearLayout
+            android:id="@+id/scoreboard_labels"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/species_headers"
+            android:layout_alignParentLeft="true">
+
+            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+                style="@style/ScorePadLabel"
+                android:layout_marginTop="5dp"
+                android:text="@string/missions" />
+
+            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+                style="@style/ScorePadLabel"
+                android:textSize="11.5dp"
+                android:paddingRight="9dp"
+                android:text="@string/player_board" />
+
+            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+                style="@style/ScorePadLabel"
+                android:text="@string/trait" />
+
+            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+                style="@style/ScorePadLabel"
+                android:text="@string/resources" />
+
+            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+                style="@style/ScorePadLabel"
+                android:text="@string/total" />
+
+        </LinearLayout>
     </RelativeLayout>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="left"
         android:layout_marginTop="@dimen/standarMargin"
+        android:layout_marginLeft="@dimen/standarMargin"
         android:orientation="vertical">
 
         <Button
@@ -456,7 +459,7 @@
             android:text="@string/new_game"
             android:textSize="16sp"
             android:textColor="@color/nebula_very_light_blue"
-            android:layout_width="200dp"
+            android:layout_width="120dp"
             android:visibility="visible" />
 
     </LinearLayout>
