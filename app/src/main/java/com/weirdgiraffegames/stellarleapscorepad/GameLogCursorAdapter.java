@@ -44,38 +44,38 @@ public class GameLogCursorAdapter extends RecyclerView.Adapter<GameLogCursorAdap
 
     @Override
     public void onBindViewHolder(GameViewHolder holder, int position) {
-        int gameIDIndex = mCursor.getColumnIndex(GameLogContract.GameLogEntry._ID);
-        int gameDateIndex = mCursor.getColumnIndex(GameLogContract.GameLogEntry.COLUMN_TIMESTAMP);
-        int tuskadonTotalIndex =mCursor.getColumnIndex(GameLogContract.GameLogEntry.COLUMN_TUSKADON_TOTAL_POINTS);
-        int starlingTotalIndex = mCursor.getColumnIndex(GameLogContract.GameLogEntry.COLUMN_STARLING_TOTAL_POINTS);
-        int cosmosaurusTotalIndex = mCursor.getColumnIndex(GameLogContract.GameLogEntry.COLUMN_COSMOSAURUS_TOTAL_POINTS);
-        int scoutarsTotalIndex = mCursor.getColumnIndex(GameLogContract.GameLogEntry.COLUMN_SCOUTARS_TOTAL_POINTS);
-        int araklithTotalIndex = mCursor.getColumnIndex(GameLogContract.GameLogEntry.COLUMN_ARAKLITH_TOTAL_POINTS);
+            int gameIDIndex = mCursor.getColumnIndex(GameLogContract.GameLogEntry._ID);
+            int gameDateIndex = mCursor.getColumnIndex(GameLogContract.GameLogEntry.COLUMN_TIMESTAMP);
+            int tuskadonTotalIndex =mCursor.getColumnIndex(GameLogContract.GameLogEntry.COLUMN_TUSKADON_TOTAL_POINTS);
+            int starlingTotalIndex = mCursor.getColumnIndex(GameLogContract.GameLogEntry.COLUMN_STARLING_TOTAL_POINTS);
+            int cosmosaurusTotalIndex = mCursor.getColumnIndex(GameLogContract.GameLogEntry.COLUMN_COSMOSAURUS_TOTAL_POINTS);
+            int scoutarsTotalIndex = mCursor.getColumnIndex(GameLogContract.GameLogEntry.COLUMN_SCOUTARS_TOTAL_POINTS);
+            int araklithTotalIndex = mCursor.getColumnIndex(GameLogContract.GameLogEntry.COLUMN_ARAKLITH_TOTAL_POINTS);
 
-        mCursor.moveToPosition(position);
+            mCursor.moveToPosition(position);
 
-        final long gameID = mCursor.getLong(gameIDIndex);
-        String timestamp = mCursor.getString(gameDateIndex);
-        String date = parseDate(timestamp);
-        int tuskadonTotal = mCursor.getInt(tuskadonTotalIndex);
-        int starlingTotal = mCursor.getInt(starlingTotalIndex);
-        int cosmosaurusTotal = mCursor.getInt(cosmosaurusTotalIndex);
-        int scoutarsTotal = mCursor.getInt(scoutarsTotalIndex);
-        int araklithTotal = mCursor.getInt(araklithTotalIndex);
+            final long gameID = mCursor.getLong(gameIDIndex);
+            String timestamp = mCursor.getString(gameDateIndex);
+            String date = parseDate(timestamp);
+            int tuskadonTotal = mCursor.getInt(tuskadonTotalIndex);
+            int starlingTotal = mCursor.getInt(starlingTotalIndex);
+            int cosmosaurusTotal = mCursor.getInt(cosmosaurusTotalIndex);
+            int scoutarsTotal = mCursor.getInt(scoutarsTotalIndex);
+            int araklithTotal = mCursor.getInt(araklithTotalIndex);
 
-        //clean out game logs that were started but never completed
-        if (tuskadonTotal == 0 && starlingTotal == 0 && cosmosaurusTotal == 0 && scoutarsTotal == 0 && araklithTotal == 0) {
-            Uri uri = Uri.withAppendedPath(GameLogContract.GameLogEntry.CONTENT_URI,Long.toString(gameID));
-            mContext.getContentResolver().delete(uri,null,null);
-        }
+            //clean out game logs that were started but never completed
+            if (tuskadonTotal == 0 && starlingTotal == 0 && cosmosaurusTotal == 0 && scoutarsTotal == 0 && araklithTotal == 0) {
+                Uri uri = Uri.withAppendedPath(GameLogContract.GameLogEntry.CONTENT_URI,Long.toString(gameID));
+                mContext.getContentResolver().delete(uri,null,null);
+            }
 
-        holder.gameDateTextView.setText(date);
-        holder.tuskadonTextView.setText(String.valueOf(tuskadonTotal));
-        holder.starlingTextView.setText(String.valueOf(starlingTotal));
-        holder.cosmosaurusTextView.setText(String.valueOf(cosmosaurusTotal));
-        holder.scoutarsTextView.setText(String.valueOf(scoutarsTotal));
-        holder.araklithTextView.setText(String.valueOf(araklithTotal));
-        holder.itemView.setTag(gameID);
+            holder.gameDateTextView.setText(date);
+            holder.tuskadonTextView.setText(String.valueOf(tuskadonTotal));
+            holder.starlingTextView.setText(String.valueOf(starlingTotal));
+            holder.cosmosaurusTextView.setText(String.valueOf(cosmosaurusTotal));
+            holder.scoutarsTextView.setText(String.valueOf(scoutarsTotal));
+            holder.araklithTextView.setText(String.valueOf(araklithTotal));
+            holder.itemView.setTag(gameID);
     }
 
     @Override
@@ -109,7 +109,6 @@ public class GameLogCursorAdapter extends RecyclerView.Adapter<GameLogCursorAdap
     class GameViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         @BindView(R.id.game_date_tv) TextView gameDateTextView;
-
         @BindView(R.id.tuskadon_total_tv) TextView tuskadonTextView;
         @BindView(R.id.starling_total_tv) TextView starlingTextView;
         @BindView(R.id.cosmosaurus_total_tv) TextView cosmosaurusTextView;

@@ -93,6 +93,26 @@
 
     </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/empty_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:visibility="gone"
+            android:background="@color/semi_transparent_black">
+
+            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+                android:background="@color/semi_transparent_black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FFF"
+                android:textSize="30sp"
+                android:paddingLeft="@dimen/standarMargin"
+                android:paddingRight="@dimen/standarMargin"
+                android:text="@string/no_game_logs_yet"/>
+        </LinearLayout>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/all_game_logs_recycler_view"
         android:layout_below="@id/game_log_header"

@@ -12,6 +12,8 @@ import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import com.weirdgiraffegames.stellarleapscorepad.data.GameLogContract;
 
@@ -22,6 +24,7 @@ public class GameLogActivity extends AppCompatActivity implements GameLogCursorA
 
     private GameLogCursorAdapter mCursorAdapter;
     @BindView(R.id.all_game_logs_recycler_view) RecyclerView gameLogRecyclerView;
+    @BindView(R.id.empty_list_view) LinearLayout emptyListLl;
     private static final int GAME_LOADER_ID = 0;
 
     @Override
@@ -87,6 +90,12 @@ public class GameLogActivity extends AppCompatActivity implements GameLogCursorA
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+        if (data.getCount() == 0) {
+            emptyListLl.setVisibility(View.VISIBLE);
+        } else {
+            emptyListLl.setVisibility(View.GONE);
+        }
+
         mCursorAdapter.swapCursor(data);
     }
 
