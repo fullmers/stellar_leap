@@ -34,7 +34,7 @@
 
     <!--GameLogActivity-->
     <string name="comes_from_game_log_activity_key">comesFromGameLogActivityKey</string>
-    <string name="date">Date</string>
+    <string name="date">Date:</string>
     <string name="no_game_logs_yet">Nothing to see here yet. Play and score a game!</string>
 
     <!--InputPointsActivity-->

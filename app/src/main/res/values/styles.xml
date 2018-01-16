@@ -60,7 +60,7 @@
     </style>
 
     <style name="GameLogEntry" parent="@android:style/TextAppearance.Medium">
-        <item name="android:textColor">@color/text_blue</item>
+        <item name="android:textColor">#FFF</item>
         <item name="android:textSize">@dimen/gameLogEntryTextSize</item>
         <item name="android:layout_width">@dimen/gameLogEntryTotalPointWidth</item>
         <item name="android:layout_height">wrap_content</item>

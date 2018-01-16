@@ -69,7 +69,7 @@ public class GameLogCursorAdapter extends RecyclerView.Adapter<GameLogCursorAdap
                 mContext.getContentResolver().delete(uri,null,null);
             }
 
-            holder.gameDateTextView.setText(date);
+         //   holder.gameDateTextView.setText(date);
             holder.tuskadonTextView.setText(String.valueOf(tuskadonTotal));
             holder.starlingTextView.setText(String.valueOf(starlingTotal));
             holder.cosmosaurusTextView.setText(String.valueOf(cosmosaurusTotal));
@@ -108,7 +108,7 @@ public class GameLogCursorAdapter extends RecyclerView.Adapter<GameLogCursorAdap
 
     class GameViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        @BindView(R.id.game_date_tv) TextView gameDateTextView;
+        //@Nullable @BindView(R.id.game_date_tv) TextView gameDateTextView;
         @BindView(R.id.tuskadon_total_tv) TextView tuskadonTextView;
         @BindView(R.id.starling_total_tv) TextView starlingTextView;
         @BindView(R.id.cosmosaurus_total_tv) TextView cosmosaurusTextView;

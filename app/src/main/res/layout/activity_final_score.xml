@@ -434,13 +434,35 @@
 
         </LinearLayout>
     </RelativeLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="left"
         android:layout_marginTop="@dimen/standarMargin"
         android:layout_marginLeft="@dimen/standarMargin"
-        android:orientation="vertical">
+        android:layout_marginRight="@dimen/standarMargin"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FFF"
+                android:textSize="18sp"
+                android:text="@string/date" />
+            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+                android:id="@+id/game_date_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/smallMargin"
+                android:textColor="#FFF"
+                android:textSize="18sp"
+                tools:text="11-01-2017" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/btn_delete"
@@ -450,7 +472,8 @@
             android:layout_height="35dp"
             android:background="@drawable/button_background"
             android:text="@string/delete"
-            android:visibility="gone" />
+            android:visibility="gone"
+            android:layout_alignParentRight="true"/>
 
         <Button
             android:id="@+id/btn_new_game"
@@ -460,7 +483,8 @@
             android:textSize="16sp"
             android:textColor="@color/nebula_very_light_blue"
             android:layout_width="120dp"
-            android:visibility="visible" />
+            android:visibility="visible"
+            android:layout_alignParentRight="true"/>
 
-    </LinearLayout>
+    </RelativeLayout>
 </LinearLayout>

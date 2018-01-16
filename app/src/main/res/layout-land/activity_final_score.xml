@@ -16,34 +16,45 @@
         android:layout_marginTop="@dimen/smallMargin"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="30dp"
+        <RelativeLayout
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_marginLeft="@dimen/smallMargin"
             android:orientation="vertical">
 
+            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+                android:id="@+id/game_date_tv"
+                android:layout_alignParentTop="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/smallMargin"
+                android:textColor="#FFF"
+                android:textSize="15sp"
+                tools:text="11-01-2017" />
+
             <Button
                 android:id="@+id/btn_delete"
-                android:textSize="13sp"
+                android:textSize="11sp"
                 android:textColor="@color/nebula_very_light_blue"
-                android:layout_width="75dp"
-                android:layout_height="30dp"
+                android:layout_width="65dp"
+                android:layout_height="35dp"
                 android:background="@drawable/button_background"
                 android:text="@string/delete"
-                android:visibility="gone" />
+                android:visibility="gone"
+                android:layout_alignParentBottom="true"/>
+
             <Button
                 android:id="@+id/btn_new_game"
-                android:layout_height="30dp"
+                android:layout_height="35dp"
                 android:background="@drawable/button_background"
                 android:text="@string/new_game"
-                android:textSize="11.5sp"
+                android:textSize="11sp"
                 android:textColor="@color/nebula_very_light_blue"
-                android:layout_width="75dp"
-                android:visibility="visible" />
-        </LinearLayout>
+                android:layout_width="65dp"
+                android:visibility="visible"
+                android:layout_alignParentBottom="true"/>
+
+        </RelativeLayout>
 
         <LinearLayout
             android:id="@+id/species_headers"

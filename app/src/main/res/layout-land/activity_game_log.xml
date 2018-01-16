@@ -21,7 +21,9 @@
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/standarMargin"
+        android:layout_marginRight="@dimen/standarMargin">
         <LinearLayout
             android:id="@+id/game_log_header"
             android:layout_alignParentTop="true"
@@ -31,6 +33,7 @@
             android:background="@color/semi_transparent_black"
             android:orientation="horizontal">
 
+            <!--
             <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
                 android:layout_width="@dimen/gameLogEntryTotalPointWidth"
                 android:layout_height="match_parent"
@@ -38,12 +41,11 @@
                 android:layout_gravity="center_vertical"
                 android:gravity="center"
                 android:text="@string/date" />
-
+-->
             <ImageView
                 android:id="@+id/tuskadon_header"
                 android:layout_width="@dimen/gameLogEntryTotalPointWidth"
                 android:layout_height="match_parent"
-
                 android:src="@drawable/tuskadon_icon" />
 
             <ImageView
@@ -119,6 +121,7 @@
             android:layout_alignLeft="@id/game_log_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@color/black"
             android:layout_marginTop="@dimen/standarMargin" />
     </RelativeLayout>
 

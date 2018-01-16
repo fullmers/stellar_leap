@@ -9,15 +9,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="65dp"
-        android:layout_marginRight="@dimen/standarMargin"
-        android:layout_marginLeft="@dimen/standarMargin"
         android:gravity="center_vertical"
         android:orientation="horizontal">
+    <!--
     <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
         android:id="@+id/game_date_tv"
         style= "@style/GameLogEntry"
         android:layout_width="wrap_content"
         tools:text = "1-11-2018"/>
+        -->
 
     <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
         android:id="@+id/tuskadon_total_tv"
@@ -50,7 +50,5 @@
         android:id="@+id/divider_line"
         android:layout_width="match_parent"
         android:layout_height="@dimen/scoreLineWidth"
-        android:layout_marginRight="@dimen/standarMargin"
-        android:layout_marginLeft="@dimen/standarMargin"
         android:background="@drawable/glowing_line_black_background" />
 </LinearLayout>

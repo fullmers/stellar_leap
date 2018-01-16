@@ -12,7 +12,7 @@
     <dimen name="traitWidth">200dp</dimen>
 
     <dimen name="gameLogEntryTotalPointWidth">100dp</dimen>
-    <dimen name="gameLogEntryTextSize">16sp</dimen>
+    <dimen name="gameLogEntryTextSize">22sp</dimen>
 
     <dimen name="inputPointHeaderIconSide">80sp</dimen>
 

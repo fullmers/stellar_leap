@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.weirdgiraffegames.stellarleapscorepad.data.GameLogContract;
 import com.weirdgiraffegames.stellarleapscorepad.data.GameLogContract.GameLogEntry;
 
 import java.util.ArrayList;
@@ -46,6 +47,7 @@ public class FinalScoreActivity extends AppCompatActivity implements LoaderManag
 
     @BindView(R.id.btn_new_game) Button newGameButton;
     @BindView(R.id.btn_delete) Button deleteButton;
+    @BindView(R.id.game_date_tv) TextView gameDateTv;
 
     @BindView(R.id.tuskadon_column) LinearLayout tuskadonPointsLayout;
     @BindView(R.id.tuskadon_header) ImageView tuskadonHeaderImage;
@@ -245,6 +247,11 @@ public class FinalScoreActivity extends AppCompatActivity implements LoaderManag
                             cursor.getColumnIndex(GameLogEntry.COLUMN_ARAKLITH_TOTAL_POINTS)}
             };
 
+            int gameDateIndex = mCursor.getColumnIndex(GameLogContract.GameLogEntry.COLUMN_TIMESTAMP);
+            String timestamp = mCursor.getString(gameDateIndex);
+            String date = parseDate(timestamp);
+            gameDateTv.setText(date);
+
             int tuskadonTotal = mCursor.getInt(columnIndices[TUSKADON_INDEX][TOTAL_POINTS_INDEX]);
             int starlingTotal = mCursor.getInt(columnIndices[STARLING_INDEX][TOTAL_POINTS_INDEX]);
             int cosmosaurusTotal = mCursor.getInt(columnIndices[COSMOSAURUS_INDEX][TOTAL_POINTS_INDEX]);
@@ -319,4 +326,10 @@ public class FinalScoreActivity extends AppCompatActivity implements LoaderManag
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {}
+
+    private String parseDate(String fullTimeStamp) {
+        String[] dateParts = fullTimeStamp.split(" ");
+        String dateOnly = dateParts[0];
+        return dateOnly;
+    }
 }
