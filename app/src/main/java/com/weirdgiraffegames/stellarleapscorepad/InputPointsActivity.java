@@ -47,6 +47,7 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
 
     private String[] currentInputPointsColumns;
     private String currentTotalPointsColumn = "";
+    private String currentTraitSpinnerIndexColumn = "";
     private EditText[] pointsEditTextViews;
 
     @BindView(R.id.next_btn) Button nextButton;
@@ -137,13 +138,13 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
                 if (isValidInput) {
                     layoutIndex++;
                     if ((layoutIndex == numSelectedSpecies) || comesFromFinalScoreActivity) {
-                        updateSpeciesPoints();
+                        updateCurrentSpeciesColumns();
                         Intent i = new Intent(InputPointsActivity.this, FinalScoreActivity.class);
                         i.setData(mUri);
                         i.putExtra(getString(R.string.comes_from_game_log_activity_key), false);
                         startActivity(i);
                     } else {
-                        updateSpeciesPoints();
+                        updateCurrentSpeciesColumns();
                         clearInputs();
                         setupCurrentSpecies();
 
@@ -192,6 +193,7 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
             speciesHeaderTV.setTextColor(getResources().getColor(R.color.tuskadon));
             currentInputPointsColumns = Constants.Projections.tuskadonColumns;
             currentTotalPointsColumn = GameLogEntry.COLUMN_TUSKADON_TOTAL_POINTS;
+            currentTraitSpinnerIndexColumn = GameLogEntry.COLUMN_TUSKADON_TRAIT_INDEX;
             if (isLandscape){
                 landscapeDivider.setBackground(getResources().getDrawable(R.drawable.tuskadon_line));
             }
@@ -204,6 +206,7 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
             speciesHeaderTV.setTextColor(getResources().getColor(R.color.starlings));
             currentInputPointsColumns = Constants.Projections.starlingColumns;
             currentTotalPointsColumn = GameLogEntry.COLUMN_STARLING_TOTAL_POINTS;
+            currentTraitSpinnerIndexColumn = GameLogEntry.COLUMN_STARLING_TRAIT_INDEX;
             if (isLandscape){
                 landscapeDivider.setBackground(getResources().getDrawable(R.drawable.starlings_line));
             }
@@ -216,6 +219,7 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
             speciesHeaderTV.setTextColor(getResources().getColor(R.color.cosmosaurus));
             currentInputPointsColumns = Constants.Projections.cosmosaurusColumns;
             currentTotalPointsColumn = GameLogEntry.COLUMN_COSMOSAURUS_TOTAL_POINTS;
+            currentTraitSpinnerIndexColumn = GameLogEntry.COLUMN_COSMOSAURUS_TRAIT_INDEX;
             if (isLandscape){
                 landscapeDivider.setBackground(getResources().getDrawable(R.drawable.cosmosaurus_line));
             }
@@ -228,6 +232,7 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
             speciesHeaderTV.setTextColor(getResources().getColor(R.color.scoutars));
             currentInputPointsColumns = Constants.Projections.scoutarColumns;
             currentTotalPointsColumn = GameLogEntry.COLUMN_SCOUTARS_TOTAL_POINTS;
+            currentTraitSpinnerIndexColumn = GameLogEntry.COLUMN_SCOUTARS_TRAIT_INDEX;
             if (isLandscape){
                 landscapeDivider.setBackground(getResources().getDrawable(R.drawable.scoutars_line));
             }
@@ -239,6 +244,7 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
             speciesHeaderTV.setTextColor(getResources().getColor(R.color.araklith));
             currentInputPointsColumns = Constants.Projections.araklithColumns;
             currentTotalPointsColumn = GameLogEntry.COLUMN_ARAKLITH_TOTAL_POINTS;
+            currentTraitSpinnerIndexColumn = GameLogEntry.COLUMN_ARAKLITH_TRAIT_INDEX;
             if (isLandscape){
                 landscapeDivider.setBackground(getResources().getDrawable(R.drawable.araklith_line));
             }
@@ -246,7 +252,7 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
         }
     }
 
-    private int updateSpeciesPoints() {
+    private int updateCurrentSpeciesColumns() {
         // New value for species columns
         ContentValues values = new ContentValues();
         int total = 0;
@@ -256,6 +262,8 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
             values.put(currentInputPointsColumns[i], pointValue);
         }
         values.put(currentTotalPointsColumn, total);
+        int traitIndex = traitSpinner.getSelectedItemPosition();
+        values.put(currentTraitSpinnerIndexColumn,traitIndex);
 
         return getContentResolver().update(mUri, values, null, null);
     }
@@ -306,6 +314,8 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
                     int resourcesPoints = cursor.getInt(Constants.Projections.RESOURCES_POINTS_INDEX);
                     pointsEditTextViews[Constants.Projections.RESOURCES_POINTS_INDEX].setText(String.valueOf(resourcesPoints));
                 }
+                int traitIndex = cursor.getInt(Constants.Projections.TRAIT_INDEX_INDEX);
+                traitSpinner.setSelection(traitIndex);
             }
     }
 
