@@ -18,14 +18,14 @@
     <dimen name="gameLogEntryTextSize">20sp</dimen>
 
     <!--FinalScoreActivity -->
-    <dimen name="speciesIconHeight">75dp</dimen>
-    <dimen name="speciesIconWidth">75dp</dimen>
+    <dimen name="speciesIconHeight">65dp</dimen>
+    <dimen name="speciesIconWidth">65dp</dimen>
     <dimen name="speciesIconColumnWidth">100dp</dimen>
 
-    <dimen name="scoreCellHeight">75dp</dimen>
-    <dimen name="scoreCellWidth">50dp</dimen>
+    <dimen name="scoreCellHeight">65dp</dimen>
+    <dimen name="scoreCellWidth">43dp</dimen>
 
-    <dimen name="verticalScoreLabelHeight">150dp</dimen>
+    <dimen name="verticalScoreLabelHeight">125dp</dimen>
     <dimen name="verticalScoreLabelTotalWidth">275dp</dimen>
     <dimen name="verticalScoreLabelTextSize">17sp</dimen>
 
@@ -39,6 +39,8 @@
 
     <dimen name="buttonWidth">120dp</dimen>
     <dimen name="buttonHeight">35dp</dimen>
+
+    <item name="guideline_percent" type="dimen" format="float">.5</item>
 
     <!--Drawable dimens -->
     <dimen name="lineRadius">170dp</dimen>

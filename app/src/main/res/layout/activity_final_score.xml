@@ -474,7 +474,7 @@
 
         <com.weirdgiraffegames.stellarleapscorepad.util.RotatedTextView
             style="@style/ScorePadLabelVertical"
-            android:paddingTop="18dp"
+            android:paddingTop="15dp"
             android:text="@string/player_board"
             android:textSize="17sp" />
 
@@ -501,6 +501,7 @@
         android:orientation="vertical"
         android:paddingLeft="@dimen/smallMargin"
         android:paddingStart="@dimen/smallMargin"
+        android:layout_marginTop="@dimen/smallMargin"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/guideline">
@@ -509,7 +510,6 @@
             android:id="@+id/tuskadon_header"
             android:layout_width="match_parent"
             android:layout_height="@dimen/speciesIconHeight"
-            android:layout_marginTop="@dimen/smallMargin"
             android:src="@drawable/tuskadon_with_label" />
 
         <ImageView
