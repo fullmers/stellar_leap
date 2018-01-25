@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
@@ -13,7 +14,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.weirdgiraffegames.stellarleapscorepad.data.GameLogContract;
@@ -49,7 +49,7 @@ public class FinalScoreActivity extends AppCompatActivity implements LoaderManag
     @BindView(R.id.btn_delete) Button deleteButton;
     @BindView(R.id.game_date_tv) TextView gameDateTv;
 
-    @BindView(R.id.tuskadon_column) LinearLayout tuskadonPointsLayout;
+    @BindView(R.id.tuskadon_column) ConstraintLayout tuskadonPointsLayout;
     @BindView(R.id.tuskadon_header) ImageView tuskadonHeaderImage;
     @BindView(R.id.tuskadon_end_line) ImageView tuskadonEndLineImage;
     @BindView(R.id.tuskadon_mission_points_tv) TextView tuskadonMissionPointsTv;
@@ -58,7 +58,7 @@ public class FinalScoreActivity extends AppCompatActivity implements LoaderManag
     @BindView(R.id.tuskadon_resources_points_tv) TextView tuskadonResourcesPointsTv;
     @BindView(R.id.tuskadon_total_points_tv) TextView tuskadonTotalPointsTv;
 
-    @BindView(R.id.starling_column) LinearLayout starlingPointsLayout;
+    @BindView(R.id.starling_column) ConstraintLayout starlingPointsLayout;
     @BindView(R.id.starling_header) ImageView starlingHeaderImage;
     @BindView(R.id.starling_end_line) ImageView starlingEndLineImage;
     @BindView(R.id.starling_mission_points_tv) TextView starlingMissionPointsTv;
@@ -67,7 +67,7 @@ public class FinalScoreActivity extends AppCompatActivity implements LoaderManag
     @BindView(R.id.starling_resources_points_tv) TextView starlingResourcesPointsTv;
     @BindView(R.id.starling_total_points_tv) TextView starlingTotalPointsTv;
 
-    @BindView(R.id.cosmosaurus_column) LinearLayout cosmosaurusPointsLayout;
+    @BindView(R.id.cosmosaurus_column) ConstraintLayout cosmosaurusPointsLayout;
     @BindView(R.id.cosmosaurus_header) ImageView cosmosaurusHeaderImage;
     @BindView(R.id.cosmosaurus_end_line) ImageView cosmosaurusEndLineImage;
     @BindView(R.id.cosmosaurus_mission_points_tv) TextView cosmosaurusMissionPointsTv;
@@ -76,7 +76,7 @@ public class FinalScoreActivity extends AppCompatActivity implements LoaderManag
     @BindView(R.id.cosmosaurus_resources_points_tv) TextView cosmosaurusResourcesPointsTv;
     @BindView(R.id.cosmosaurus_total_points_tv) TextView cosmosaurusTotalPointsTv;
 
-    @BindView(R.id.scoutars_column) LinearLayout scoutarsPointsLayout;
+    @BindView(R.id.scoutars_column) ConstraintLayout scoutarsPointsLayout;
     @BindView(R.id.scoutars_header) ImageView scoutarsHeaderImage;
     @BindView(R.id.scoutars_end_line) ImageView scoutarsEndLineImage;
     @BindView(R.id.scoutars_mission_points_tv) TextView scoutarsMissionPointsTv;
@@ -85,7 +85,7 @@ public class FinalScoreActivity extends AppCompatActivity implements LoaderManag
     @BindView(R.id.scoutars_resources_points_tv) TextView scoutarsResourcesPointsTv;
     @BindView(R.id.scoutars_total_points_tv) TextView scoutarsTotalPointsTv;
 
-    @BindView(R.id.araklith_column) LinearLayout araklithPointsLayout;
+    @BindView(R.id.araklith_column) ConstraintLayout araklithPointsLayout;
     @BindView(R.id.araklith_header) ImageView araklithHeaderImage;
     @BindView(R.id.araklith_mission_points_tv) TextView araklithMissionPointsTv;
     @BindView(R.id.araklith_player_board_points_tv) TextView araklithPlayerBoardPointsTv;
@@ -97,7 +97,7 @@ public class FinalScoreActivity extends AppCompatActivity implements LoaderManag
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_final_score);
+        setContentView(R.layout.activity_layout_final_score_v2);
         ButterKnife.bind(this);
 
         mUri = getIntent().getData();
@@ -182,6 +182,7 @@ public class FinalScoreActivity extends AppCompatActivity implements LoaderManag
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
         if(cursor != null && cursor.moveToFirst()) {
             mCursor = cursor;
+            boolean hasCosmosaurus = false;
 
             String[] species = {
                     getString(R.string.tuskadon),
@@ -191,7 +192,7 @@ public class FinalScoreActivity extends AppCompatActivity implements LoaderManag
                     getString(R.string.araklith)
             };
 
-            LinearLayout[] pointsColumnLayouts =
+            ConstraintLayout[] pointsColumnLayouts =
                     {tuskadonPointsLayout,
                             starlingPointsLayout,
                             cosmosaurusPointsLayout,
@@ -282,6 +283,10 @@ public class FinalScoreActivity extends AppCompatActivity implements LoaderManag
 
                     mTextViews[TOTAL_POINTS_INDEX].setText(String.valueOf(pointTotal));
 
+                    if (species[index].equals(getString(R.string.tuskadon))) {
+                        hasCosmosaurus = true;
+                    }
+
                     lastIndex = index;
                 } else {
                     pointsColumnLayouts[index].setVisibility(View.GONE);
@@ -320,7 +325,6 @@ public class FinalScoreActivity extends AppCompatActivity implements LoaderManag
                     speciesIndex++;
                 }
             }
-            //mCursor.close();
         }
     }
 
