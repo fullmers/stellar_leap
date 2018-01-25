@@ -572,8 +572,8 @@
 
     <Button
         android:id="@+id/btn_delete"
-        android:layout_width="120dp"
-        android:layout_height="35dp"
+        android:layout_width="@dimen/buttonWidth"
+        android:layout_height="@dimen/buttonHeight"
         android:layout_marginTop="@dimen/standardMargin"
         android:background="@drawable/button_background"
         android:text="@string/delete"
@@ -586,8 +586,8 @@
 
     <Button
         android:id="@+id/btn_new_game"
-        android:layout_width="120dp"
-        android:layout_height="35dp"
+        android:layout_width="@dimen/buttonWidth"
+        android:layout_height="@dimen/buttonHeight"
         android:layout_marginTop="@dimen/standardMargin"
         android:background="@drawable/button_background"
         android:text="@string/new_game"

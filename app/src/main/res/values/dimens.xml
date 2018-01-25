@@ -19,6 +19,7 @@
 
     <!--FinalScoreActivity -->
     <dimen name="speciesIconHeight">75dp</dimen>
+    <dimen name="speciesIconWidth">75dp</dimen>
     <dimen name="speciesIconColumnWidth">100dp</dimen>
 
     <dimen name="scoreCellHeight">75dp</dimen>
@@ -26,17 +27,18 @@
 
     <dimen name="verticalScoreLabelHeight">150dp</dimen>
     <dimen name="verticalScoreLabelTotalWidth">275dp</dimen>
+    <dimen name="verticalScoreLabelTextSize">17sp</dimen>
 
-    <dimen name="scoreColumnWidth">100dp</dimen>
-    <dimen name="scoreColumnMaxWidth">100dp</dimen>
-    <dimen name="scoreColumnHeight">55dp</dimen>
-    <dimen name="scoreLabelHeight">50dp</dimen>
-    <dimen name="scoreLabelWidth">80dp</dimen>
+    <dimen name="horizontalScoreLabelHeight">50dp</dimen>
+    <dimen name="horizontalScoreLabelWidth">80dp</dimen>
 
     <dimen name="scoreLineWidth">5dp</dimen>
     <dimen name="scoreHeaderWidth">55dp</dimen>
     <dimen name="scoreHeaderHeight">45dp</dimen>
     <dimen name="scoreLabelTopMargin">13dp</dimen>
+
+    <dimen name="buttonWidth">120dp</dimen>
+    <dimen name="buttonHeight">35dp</dimen>
 
     <!--Drawable dimens -->
     <dimen name="lineRadius">170dp</dimen>
