@@ -12,15 +12,15 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="100dp"
-        android:layout_marginTop="@dimen/standarMargin"
+        android:layout_marginTop="@dimen/standardMargin"
         android:src="@drawable/stellar_leap_logo"/>
 
     <Button
         android:id="@+id/score_new_game_btn"
-        android:layout_marginTop="@dimen/standarMargin"
+        android:layout_marginTop="@dimen/standardMargin"
         android:background="@drawable/button_background"
-        android:paddingLeft="@dimen/standarMargin"
-        android:paddingRight="@dimen/standarMargin"
+        android:paddingLeft="@dimen/standardMargin"
+        android:paddingRight="@dimen/standardMargin"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:textColor="@color/nebula_very_light_blue"
@@ -29,10 +29,10 @@
 
     <Button
         android:id="@+id/about_app_btn"
-        android:layout_marginTop="@dimen/standarMargin"
+        android:layout_marginTop="@dimen/standardMargin"
         android:background="@drawable/button_background"
-        android:paddingLeft="@dimen/standarMargin"
-        android:paddingRight="@dimen/standarMargin"
+        android:paddingLeft="@dimen/standardMargin"
+        android:paddingRight="@dimen/standardMargin"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:textColor="@color/nebula_very_light_blue"
@@ -41,10 +41,10 @@
 
     <Button
         android:id="@+id/game_log_btn"
-        android:layout_marginTop="@dimen/standarMargin"
+        android:layout_marginTop="@dimen/standardMargin"
         android:background="@drawable/button_background"
-        android:paddingLeft="@dimen/standarMargin"
-        android:paddingRight="@dimen/standarMargin"
+        android:paddingLeft="@dimen/standardMargin"
+        android:paddingRight="@dimen/standardMargin"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:textColor="@color/nebula_very_light_blue"

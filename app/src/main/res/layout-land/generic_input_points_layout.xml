@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/inputCellHeight"
-            android:layout_marginLeft="@dimen/standarMargin"
+            android:layout_marginLeft="@dimen/standardMargin"
             android:orientation="vertical">
 
             <LinearLayout
@@ -45,7 +45,7 @@
 
 
             <LinearLayout
-                android:layout_marginTop="@dimen/standarMargin"
+                android:layout_marginTop="@dimen/standardMargin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -79,16 +79,16 @@
             android:id="@+id/landscape_screen_divider"
             android:layout_width="5dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/standarMargin"
+            android:layout_marginLeft="@dimen/standardMargin"
             android:layout_marginTop="@dimen/smallMargin"
-            android:layout_marginBottom="@dimen/standarMargin"
+            android:layout_marginBottom="@dimen/standardMargin"
             android:background="@color/text_blue"></View>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/standarMargin"
-            android:layout_marginRight="@dimen/standarMargin"
+            android:layout_marginLeft="@dimen/standardMargin"
+            android:layout_marginRight="@dimen/standardMargin"
             android:orientation="vertical">
 
             <LinearLayout
@@ -149,7 +149,7 @@
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/standarMargin"
+                    android:layout_marginTop="@dimen/standardMargin"
                     android:orientation="horizontal">
 
                     <TextView

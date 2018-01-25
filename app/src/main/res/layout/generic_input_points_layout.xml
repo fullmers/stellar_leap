@@ -3,14 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingRight="@dimen/standarMargin"
+        android:paddingRight="@dimen/standardMargin"
         android:background="@color/semi_transparent_black"
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="@dimen/standarMargin"
+            android:layout_marginTop="@dimen/standardMargin"
             android:gravity="right">
 
             <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
@@ -34,7 +34,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/standarMargin"
+            android:layout_marginTop="@dimen/standardMargin"
             android:gravity="right"
             android:orientation="horizontal">
 
@@ -63,8 +63,8 @@
             android:id="@+id/trait_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/standarMargin"
-            android:layout_marginTop="@dimen/standarMargin"
+            android:layout_marginLeft="@dimen/standardMargin"
+            android:layout_marginTop="@dimen/standardMargin"
             android:orientation="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -93,7 +93,7 @@
                 <Spinner
                     android:id="@+id/trait_spinner"
                     android:layout_alignParentRight="true"
-                    android:layout_marginLeft="@dimen/standarMargin"
+                    android:layout_marginLeft="@dimen/standardMargin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/dark_gray"
@@ -106,7 +106,7 @@
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/standarMargin"
+                android:layout_marginTop="@dimen/standardMargin"
                 android:orientation="horizontal">
 
                 <TextView
@@ -135,7 +135,7 @@
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/standarMargin"
+                android:layout_marginTop="@dimen/standardMargin"
                 android:orientation="horizontal">
 
                 <TextView

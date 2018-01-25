@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/star_background_temp_landscape"
-    android:padding="@dimen/standarMargin"
+    android:padding="@dimen/standardMargin"
     tools:context="com.weirdgiraffegames.stellarleapscorepad.ChooseRacesActivity">
 
     <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
@@ -96,7 +96,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_marginBottom="@dimen/smallMargin"
-        android:layout_marginRight="@dimen/standarMargin"
+        android:layout_marginRight="@dimen/standardMargin"
         android:background="@drawable/button_background"
         android:textColor="@color/nebula_very_light_blue"
         android:textSize="18sp"
