@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,492 +9,593 @@
     android:orientation="vertical"
     tools:context="com.weirdgiraffegames.stellarleapscorepad.FinalScoreActivity">
 
-    <RelativeLayout
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:orientation="vertical">
-        <LinearLayout
-            android:id="@+id/species_headers"
-            android:layout_alignParentTop="true"
-            android:layout_alignLeft="@id/scoreboard"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/scoreHeaderHeight"
-            android:background="@color/black"
-            android:orientation="horizontal"
-            android:paddingLeft="@dimen/smallMargin">
-
-            <ImageView
-                android:id="@+id/tuskadon_header"
-                android:layout_width="@dimen/scoreColumnWidth"
-                android:layout_height="wrap_content"
-                android:src="@drawable/tuskadon_with_label" />
-
-            <ImageView
-                android:id="@+id/starling_header"
-                android:layout_width="@dimen/scoreColumnWidth"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="3dp"
-                android:src="@drawable/starlings_with_label" />
-
-            <ImageView
-                android:id="@+id/cosmosaurus_header"
-                android:layout_width="65dp"
-                android:layout_height="wrap_content"
-                android:src="@drawable/cosmosaurus_with_label" />
-
-            <ImageView
-                android:id="@+id/scoutars_header"
-                android:layout_width="@dimen/scoreColumnWidth"
-                android:layout_height="wrap_content"
-                android:src="@drawable/scoutars_with_label" />
-
-            <ImageView
-                android:id="@+id/araklith_header"
-                android:layout_width="@dimen/scoreColumnWidth"
-                android:layout_height="wrap_content"
-                android:src="@drawable/araklith_with_label" />
-
-        </LinearLayout>
-
-        <LinearLayout
-                    android:id="@+id/scoreboard"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/scorepad_background"
-                    android:orientation="horizontal"
-                    android:layout_below="@id/species_headers"
-                    android:layout_marginLeft="-18dp"
-                    android:layout_toRightOf="@id/scoreboard_labels"
-                    android:padding="@dimen/smallMargin">
-
-                    <LinearLayout
-                        android:id="@+id/tuskadon_column"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:background="#FFF"
-                        android:orientation="horizontal">
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:background="#FFF"
-                            android:orientation="vertical">
-
-                            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
-                                android:id="@+id/tuskadon_mission_points_tv"
-                                style="@style/ScorePadCell"
-                                android:minWidth="@dimen/scoreColumnWidth"
-                                android:maxWidth="@dimen/scoreColumnMaxWidth"
-                                tools:text="50" />
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/scoreLineWidth"
-                                android:src="@drawable/glowing_line_white_background" />
-
-                            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
-                                android:id="@+id/tuskadon_player_board_points_tv"
-                                style="@style/ScorePadCell"
-                                android:minWidth="@dimen/scoreColumnWidth"
-                                android:maxWidth="@dimen/scoreColumnMaxWidth"
-                                tools:text="50" />
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/scoreLineWidth"
-                                android:src="@drawable/glowing_line_white_background" />
-
-                            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
-                                android:id="@+id/tuskadon_trait_points_tv"
-                                style="@style/ScorePadCell"
-                                android:minWidth="@dimen/scoreColumnWidth"
-                                android:maxWidth="@dimen/scoreColumnMaxWidth"
-                                tools:text="50" />
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/scoreLineWidth"
-                                android:src="@drawable/glowing_line_white_background" />
-
-                            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
-                                android:id="@+id/tuskadon_resources_points_tv"
-                                style="@style/ScorePadCell"
-                                android:minWidth="@dimen/scoreColumnWidth"
-                                android:maxWidth="@dimen/scoreColumnMaxWidth"
-                                tools:text="50" />
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/scoreLineWidth"
-                                android:src="@drawable/glowing_line_white_background" />
-
-                            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
-                                android:id="@+id/tuskadon_total_points_tv"
-                                style="@style/ScorePadCell"
-                                android:minWidth="@dimen/scoreColumnWidth"
-                                android:maxWidth="@dimen/scoreColumnMaxWidth"
-                                tools:text="50" />
-
-                        </LinearLayout>
-
-                        <ImageView
-                            android:id="@+id/tuskadon_end_line"
-                            android:layout_width="@dimen/scoreLineWidth"
-                            android:layout_height="match_parent"
-                            android:background="#FFF"
-                            android:src="@drawable/vertical_glowing_line_white_background" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/starling_column"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:background="#FFF"
-                        android:orientation="horizontal">
-
-                        <LinearLayout
-                            android:layout_width="@dimen/scoreColumnWidth"
-                            android:layout_height="match_parent"
-                            android:background="#FFF"
-                            android:orientation="vertical">
-
-                            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
-                                android:id="@+id/starling_mission_points_tv"
-                                style="@style/ScorePadCell"
-                                tools:text="50" />
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/scoreLineWidth"
-                                android:src="@drawable/glowing_line_white_background" />
-
-                            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
-                                android:id="@+id/starling_player_board_points_tv"
-                                style="@style/ScorePadCell"
-                                tools:text="50" />
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/scoreLineWidth"
-                                android:src="@drawable/glowing_line_white_background" />
-
-                            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
-                                android:id="@+id/starling_trait_points_tv"
-                                style="@style/ScorePadCell"
-                                tools:text="50" />
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/scoreLineWidth"
-                                android:src="@drawable/glowing_line_white_background" />
-
-                            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
-                                android:id="@+id/starling_resources_points_tv"
-                                style="@style/ScorePadCell"
-                                tools:text="50" />
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/scoreLineWidth"
-                                android:src="@drawable/glowing_line_white_background" />
-
-                            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
-                                android:id="@+id/starling_total_points_tv"
-                                style="@style/ScorePadCell"
-                                tools:text="50" />
-
-                        </LinearLayout>
-
-                        <ImageView
-                            android:id="@+id/starling_end_line"
-                            android:layout_width="@dimen/scoreLineWidth"
-                            android:layout_height="match_parent"
-                            android:background="#FFF"
-                            android:src="@drawable/vertical_glowing_line_white_background" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/cosmosaurus_column"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:background="#FFF"
-                        android:orientation="horizontal">
-
-                        <LinearLayout
-                            android:layout_width="@dimen/scoreColumnWidth"
-                            android:layout_height="match_parent"
-                            android:background="#FFF"
-                            android:orientation="vertical">
-
-                            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
-                                android:id="@+id/cosmosaurus_mission_points_tv"
-                                style="@style/ScorePadCell"
-                                tools:text="50" />
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/scoreLineWidth"
-                                android:src="@drawable/glowing_line_white_background" />
-
-                            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
-                                android:id="@+id/cosmosaurus_player_board_points_tv"
-                                style="@style/ScorePadCell"
-                                tools:text="50" />
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/scoreLineWidth"
-                                android:src="@drawable/glowing_line_white_background" />
-
-                            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
-                                android:id="@+id/cosmosaurus_trait_points_tv"
-                                style="@style/ScorePadCell"
-                                tools:text="50" />
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/scoreLineWidth"
-                                android:src="@drawable/glowing_line_white_background" />
-
-                            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
-                                android:id="@+id/cosmosaurus_resources_points_tv"
-                                style="@style/ScorePadCell"
-                                tools:text="50" />
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/scoreLineWidth"
-                                android:src="@drawable/glowing_line_white_background" />
-
-                            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
-                                android:id="@+id/cosmosaurus_total_points_tv"
-                                style="@style/ScorePadCell"
-                                tools:text="50" />
-
-                        </LinearLayout>
-
-                        <ImageView
-                            android:id="@+id/cosmosaurus_end_line"
-                            android:layout_width="@dimen/scoreLineWidth"
-                            android:layout_height="match_parent"
-                            android:background="#FFF"
-                            android:src="@drawable/vertical_glowing_line_white_background" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/scoutars_column"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:background="#FFF"
-                        android:orientation="horizontal">
-
-                        <LinearLayout
-                            android:layout_width="@dimen/scoreColumnWidth"
-                            android:layout_height="match_parent"
-                            android:background="#FFF"
-                            android:orientation="vertical">
-
-                            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
-                                android:id="@+id/scoutars_mission_points_tv"
-                                style="@style/ScorePadCell"
-                                tools:text="50" />
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/scoreLineWidth"
-                                android:src="@drawable/glowing_line_white_background" />
-
-                            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
-                                android:id="@+id/scoutars_player_board_points_tv"
-                                style="@style/ScorePadCell"
-                                tools:text="50" />
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/scoreLineWidth"
-                                android:src="@drawable/glowing_line_white_background" />
-
-                            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
-                                android:id="@+id/scoutars_trait_points_tv"
-                                style="@style/ScorePadCell"
-                                tools:text="50" />
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/scoreLineWidth"
-                                android:src="@drawable/glowing_line_white_background" />
-
-                            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
-                                android:id="@+id/scoutars_resources_points_tv"
-                                style="@style/ScorePadCell"
-                                tools:text="50" />
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/scoreLineWidth"
-                                android:src="@drawable/glowing_line_white_background" />
-
-                            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
-                                android:id="@+id/scoutars_total_points_tv"
-                                style="@style/ScorePadCell"
-                                tools:text="50" />
-
-                        </LinearLayout>
-
-                        <ImageView
-                            android:id="@+id/scoutars_end_line"
-                            android:layout_width="@dimen/scoreLineWidth"
-                            android:layout_height="match_parent"
-                            android:background="#FFF"
-                            android:src="@drawable/vertical_glowing_line_white_background" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/araklith_column"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:background="#FFF"
-                        android:orientation="horizontal">
-
-                        <LinearLayout
-                            android:layout_width="@dimen/scoreColumnWidth"
-                            android:layout_height="match_parent"
-                            android:background="#FFF"
-                            android:orientation="vertical">
-
-                            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
-                                android:id="@+id/araklith_mission_points_tv"
-                                style="@style/ScorePadCell"
-                                tools:text="50" />
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/scoreLineWidth"
-                                android:src="@drawable/glowing_line_white_background" />
-
-                            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
-                                android:id="@+id/araklith_player_board_points_tv"
-                                style="@style/ScorePadCell"
-                                tools:text="50" />
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/scoreLineWidth"
-                                android:src="@drawable/glowing_line_white_background" />
-
-                            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
-                                android:id="@+id/araklith_trait_points_tv"
-                                style="@style/ScorePadCell"
-                                tools:text="50" />
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/scoreLineWidth"
-                                android:src="@drawable/glowing_line_white_background" />
-
-                            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
-                                android:id="@+id/araklith_resources_points_tv"
-                                style="@style/ScorePadCell"
-                                tools:text="50" />
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/scoreLineWidth"
-                                android:src="@drawable/glowing_line_white_background" />
-
-                            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
-                                android:id="@+id/araklith_total_points_tv"
-                                style="@style/ScorePadCell"
-                                tools:text="50" />
-
-                        </LinearLayout>
-                    </LinearLayout>
-                </LinearLayout>
-        <LinearLayout
-            android:id="@+id/scoreboard_labels"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_below="@id/species_headers"
-            android:layout_alignParentLeft="true">
-
-            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
-                style="@style/ScorePadLabel"
-                android:layout_marginTop="5dp"
-                android:text="@string/missions" />
-
-            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
-                style="@style/ScorePadLabel"
-                android:textSize="11.5dp"
-                android:paddingRight="9dp"
-                android:text="@string/player_board" />
-
-            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
-                style="@style/ScorePadLabel"
-                android:text="@string/trait" />
-
-            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
-                style="@style/ScorePadLabel"
-                android:text="@string/resources" />
-
-            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
-                style="@style/ScorePadLabel"
-                android:text="@string/total" />
-
-        </LinearLayout>
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".2" />
+
+    <LinearLayout
+        android:id="@+id/scoreboard"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/standardMargin"
-        android:layout_marginLeft="@dimen/standardMargin"
-        android:layout_marginRight="@dimen/standardMargin"
-        android:orientation="horizontal">
+        android:background="@drawable/scorepad_background"
+        android:orientation="vertical"
+        android:padding="@dimen/smallMargin"
+        app:layout_constraintLeft_toRightOf="@id/species_headers"
+        app:layout_constraintTop_toTopOf="@id/guideline">
 
-        <LinearLayout
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/tuskadon_column"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:background="#FFF">
+
             <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#FFF"
-                android:textSize="18sp"
-                android:text="@string/date" />
+                android:id="@+id/tuskadon_mission_points_tv"
+                style="@style/ScorePadCell"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="50" />
+
+            <ImageView
+                android:layout_width="@dimen/scoreLineWidth"
+                android:layout_height="match_parent"
+                android:src="@drawable/vertical_glowing_line_white_background"
+                app:layout_constraintLeft_toRightOf="@id/tuskadon_mission_points_tv"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
-                android:id="@+id/game_date_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/smallMargin"
-                android:textColor="#FFF"
-                android:textSize="18sp"
-                tools:text="11-01-2017" />
-        </LinearLayout>
+                android:id="@+id/tuskadon_player_board_points_tv"
+                style="@style/ScorePadCell"
+                android:layout_marginLeft="@dimen/scoreLineWidth"
+                android:layout_marginStart="@dimen/scoreLineWidth"
+                app:layout_constraintLeft_toRightOf="@id/tuskadon_mission_points_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="50" />
 
-        <Button
-            android:id="@+id/btn_delete"
-            android:textSize="16sp"
-            android:textColor="@color/nebula_very_light_blue"
-            android:layout_width="200dp"
-            android:layout_height="35dp"
-            android:background="@drawable/button_background"
-            android:text="@string/delete"
-            android:visibility="gone"
-            android:layout_alignParentRight="true"/>
+            <ImageView
+                android:layout_width="@dimen/scoreLineWidth"
+                android:layout_height="match_parent"
+                android:src="@drawable/vertical_glowing_line_white_background"
+                app:layout_constraintLeft_toRightOf="@id/tuskadon_player_board_points_tv"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/btn_new_game"
-            android:layout_height="35dp"
-            android:background="@drawable/button_background"
-            android:text="@string/new_game"
-            android:textSize="16sp"
-            android:textColor="@color/nebula_very_light_blue"
-            android:layout_width="120dp"
-            android:visibility="visible"
-            android:layout_alignParentRight="true"/>
+            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+                android:id="@+id/tuskadon_trait_points_tv"
+                style="@style/ScorePadCell"
+                android:layout_marginLeft="@dimen/scoreLineWidth"
+                android:layout_marginStart="@dimen/scoreLineWidth"
+                app:layout_constraintLeft_toRightOf="@id/tuskadon_player_board_points_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="50" />
 
-    </RelativeLayout>
-</LinearLayout>
+            <ImageView
+                android:layout_width="@dimen/scoreLineWidth"
+                android:layout_height="match_parent"
+                android:src="@drawable/vertical_glowing_line_white_background"
+                app:layout_constraintLeft_toRightOf="@id/tuskadon_trait_points_tv"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+                android:id="@+id/tuskadon_resources_points_tv"
+                style="@style/ScorePadCell"
+                android:layout_marginLeft="@dimen/scoreLineWidth"
+                android:layout_marginStart="@dimen/scoreLineWidth"
+                app:layout_constraintLeft_toRightOf="@id/tuskadon_trait_points_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="50" />
+
+            <ImageView
+                android:layout_width="@dimen/scoreLineWidth"
+                android:layout_height="match_parent"
+                android:src="@drawable/vertical_glowing_line_white_background"
+                app:layout_constraintLeft_toRightOf="@id/tuskadon_resources_points_tv"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+                android:id="@+id/tuskadon_total_points_tv"
+                style="@style/ScorePadCell"
+                android:layout_marginLeft="@dimen/scoreLineWidth"
+                android:layout_marginStart="@dimen/scoreLineWidth"
+                app:layout_constraintLeft_toRightOf="@id/tuskadon_resources_points_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="50" />
+
+            <ImageView
+                android:id="@+id/tuskadon_end_line"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/scoreLineWidth"
+                android:background="#FFF"
+                android:src="@drawable/glowing_line_white_background"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/starling_column"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FFF">
+
+            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+                android:id="@+id/starling_mission_points_tv"
+                style="@style/ScorePadCell"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="50" />
+
+            <ImageView
+                android:layout_width="@dimen/scoreLineWidth"
+                android:layout_height="match_parent"
+                android:src="@drawable/vertical_glowing_line_white_background"
+                app:layout_constraintLeft_toRightOf="@id/starling_mission_points_tv"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+                android:id="@+id/starling_player_board_points_tv"
+                style="@style/ScorePadCell"
+                android:layout_marginLeft="@dimen/scoreLineWidth"
+                android:layout_marginStart="@dimen/scoreLineWidth"
+                app:layout_constraintLeft_toRightOf="@id/starling_mission_points_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="50" />
+
+            <ImageView
+                android:layout_width="@dimen/scoreLineWidth"
+                android:layout_height="match_parent"
+                android:src="@drawable/vertical_glowing_line_white_background"
+                app:layout_constraintLeft_toRightOf="@id/starling_player_board_points_tv"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+                android:id="@+id/starling_trait_points_tv"
+                style="@style/ScorePadCell"
+                android:layout_marginLeft="@dimen/scoreLineWidth"
+                android:layout_marginStart="@dimen/scoreLineWidth"
+                app:layout_constraintLeft_toRightOf="@id/starling_player_board_points_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="50" />
+
+            <ImageView
+                android:layout_width="@dimen/scoreLineWidth"
+                android:layout_height="match_parent"
+                android:src="@drawable/vertical_glowing_line_white_background"
+                app:layout_constraintLeft_toRightOf="@id/starling_trait_points_tv"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+                android:id="@+id/starling_resources_points_tv"
+                style="@style/ScorePadCell"
+                android:layout_marginLeft="@dimen/scoreLineWidth"
+                android:layout_marginStart="@dimen/scoreLineWidth"
+                app:layout_constraintLeft_toRightOf="@id/starling_trait_points_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="50" />
+
+            <ImageView
+                android:layout_width="@dimen/scoreLineWidth"
+                android:layout_height="match_parent"
+                android:src="@drawable/vertical_glowing_line_white_background"
+                app:layout_constraintLeft_toRightOf="@id/starling_resources_points_tv"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+                android:id="@+id/starling_total_points_tv"
+                style="@style/ScorePadCell"
+                android:layout_marginLeft="@dimen/scoreLineWidth"
+                android:layout_marginStart="@dimen/scoreLineWidth"
+                app:layout_constraintLeft_toRightOf="@id/starling_resources_points_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="50" />
+
+            <ImageView
+                android:id="@+id/starling_end_line"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/scoreLineWidth"
+                android:background="#FFF"
+                android:src="@drawable/glowing_line_white_background"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/cosmosaurus_column"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FFF">
+
+            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+                android:id="@+id/cosmosaurus_mission_points_tv"
+                style="@style/ScorePadCell"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="50" />
+
+            <ImageView
+                android:layout_width="@dimen/scoreLineWidth"
+                android:layout_height="match_parent"
+                android:src="@drawable/vertical_glowing_line_white_background"
+                app:layout_constraintLeft_toRightOf="@id/cosmosaurus_mission_points_tv"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+                android:id="@+id/cosmosaurus_player_board_points_tv"
+                style="@style/ScorePadCell"
+                android:layout_marginLeft="@dimen/scoreLineWidth"
+                android:layout_marginStart="@dimen/scoreLineWidth"
+                app:layout_constraintLeft_toRightOf="@id/cosmosaurus_mission_points_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="50" />
+
+            <ImageView
+                android:layout_width="@dimen/scoreLineWidth"
+                android:layout_height="match_parent"
+                android:src="@drawable/vertical_glowing_line_white_background"
+                app:layout_constraintLeft_toRightOf="@id/cosmosaurus_player_board_points_tv"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+                android:id="@+id/cosmosaurus_trait_points_tv"
+                style="@style/ScorePadCell"
+                android:layout_marginLeft="@dimen/scoreLineWidth"
+                android:layout_marginStart="@dimen/scoreLineWidth"
+                app:layout_constraintLeft_toRightOf="@id/cosmosaurus_player_board_points_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="50" />
+
+            <ImageView
+                android:layout_width="@dimen/scoreLineWidth"
+                android:layout_height="match_parent"
+                android:src="@drawable/vertical_glowing_line_white_background"
+                app:layout_constraintLeft_toRightOf="@id/cosmosaurus_trait_points_tv"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+                android:id="@+id/cosmosaurus_resources_points_tv"
+                style="@style/ScorePadCell"
+                android:layout_marginLeft="@dimen/scoreLineWidth"
+                android:layout_marginStart="@dimen/scoreLineWidth"
+                app:layout_constraintLeft_toRightOf="@id/cosmosaurus_trait_points_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="50" />
+
+            <ImageView
+                android:layout_width="@dimen/scoreLineWidth"
+                android:layout_height="match_parent"
+                android:src="@drawable/vertical_glowing_line_white_background"
+                app:layout_constraintLeft_toRightOf="@id/cosmosaurus_resources_points_tv"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+                android:id="@+id/cosmosaurus_total_points_tv"
+                style="@style/ScorePadCell"
+                android:layout_marginLeft="@dimen/scoreLineWidth"
+                android:layout_marginStart="@dimen/scoreLineWidth"
+                app:layout_constraintLeft_toRightOf="@id/cosmosaurus_resources_points_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="50" />
+
+            <ImageView
+                android:id="@+id/cosmosaurus_end_line"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/scoreLineWidth"
+                android:background="#FFF"
+                android:src="@drawable/glowing_line_white_background"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/scoutars_column"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FFF">
+
+            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+                android:id="@+id/scoutars_mission_points_tv"
+                style="@style/ScorePadCell"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="50" />
+
+            <ImageView
+                android:layout_width="@dimen/scoreLineWidth"
+                android:layout_height="match_parent"
+                android:src="@drawable/vertical_glowing_line_white_background"
+                app:layout_constraintLeft_toRightOf="@id/scoutars_mission_points_tv"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+                android:id="@+id/scoutars_player_board_points_tv"
+                style="@style/ScorePadCell"
+                android:layout_marginLeft="@dimen/scoreLineWidth"
+                android:layout_marginStart="@dimen/scoreLineWidth"
+                app:layout_constraintLeft_toRightOf="@id/scoutars_mission_points_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="50" />
+
+            <ImageView
+                android:layout_width="@dimen/scoreLineWidth"
+                android:layout_height="match_parent"
+                android:src="@drawable/vertical_glowing_line_white_background"
+                app:layout_constraintLeft_toRightOf="@id/scoutars_player_board_points_tv"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+                android:id="@+id/scoutars_trait_points_tv"
+                style="@style/ScorePadCell"
+                android:layout_marginLeft="@dimen/scoreLineWidth"
+                android:layout_marginStart="@dimen/scoreLineWidth"
+                app:layout_constraintLeft_toRightOf="@id/scoutars_player_board_points_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="50" />
+
+            <ImageView
+                android:layout_width="@dimen/scoreLineWidth"
+                android:layout_height="match_parent"
+                android:src="@drawable/vertical_glowing_line_white_background"
+                app:layout_constraintLeft_toRightOf="@id/scoutars_trait_points_tv"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+                android:id="@+id/scoutars_resources_points_tv"
+                style="@style/ScorePadCell"
+                android:layout_marginLeft="@dimen/scoreLineWidth"
+                android:layout_marginStart="@dimen/scoreLineWidth"
+                app:layout_constraintLeft_toRightOf="@id/scoutars_trait_points_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="50" />
+
+            <ImageView
+                android:layout_width="@dimen/scoreLineWidth"
+                android:layout_height="match_parent"
+                android:src="@drawable/vertical_glowing_line_white_background"
+                app:layout_constraintLeft_toRightOf="@id/scoutars_resources_points_tv"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+                android:id="@+id/scoutars_total_points_tv"
+                style="@style/ScorePadCell"
+                android:layout_marginLeft="@dimen/scoreLineWidth"
+                android:layout_marginStart="@dimen/scoreLineWidth"
+                app:layout_constraintLeft_toRightOf="@id/scoutars_resources_points_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="50" />
+
+            <ImageView
+                android:id="@+id/scoutars_end_line"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/scoreLineWidth"
+                android:background="#FFF"
+                android:src="@drawable/glowing_line_white_background"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/araklith_column"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FFF">
+
+            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+                android:id="@+id/araklith_mission_points_tv"
+                style="@style/ScorePadCell"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="50" />
+
+            <ImageView
+                android:layout_width="@dimen/scoreLineWidth"
+                android:layout_height="match_parent"
+                android:src="@drawable/vertical_glowing_line_white_background"
+                app:layout_constraintLeft_toRightOf="@id/araklith_mission_points_tv"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+                android:id="@+id/araklith_player_board_points_tv"
+                style="@style/ScorePadCell"
+                android:layout_marginLeft="@dimen/scoreLineWidth"
+                android:layout_marginStart="@dimen/scoreLineWidth"
+                app:layout_constraintLeft_toRightOf="@id/araklith_mission_points_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="50" />
+
+            <ImageView
+                android:layout_width="@dimen/scoreLineWidth"
+                android:layout_height="match_parent"
+                android:src="@drawable/vertical_glowing_line_white_background"
+                app:layout_constraintLeft_toRightOf="@id/araklith_player_board_points_tv"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+                android:id="@+id/araklith_trait_points_tv"
+                style="@style/ScorePadCell"
+                android:layout_marginLeft="@dimen/scoreLineWidth"
+                android:layout_marginStart="@dimen/scoreLineWidth"
+                app:layout_constraintLeft_toRightOf="@id/araklith_player_board_points_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="50" />
+
+            <ImageView
+                android:layout_width="@dimen/scoreLineWidth"
+                android:layout_height="match_parent"
+                android:src="@drawable/vertical_glowing_line_white_background"
+                app:layout_constraintLeft_toRightOf="@id/araklith_trait_points_tv"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+                android:id="@+id/araklith_resources_points_tv"
+                style="@style/ScorePadCell"
+                android:layout_marginLeft="@dimen/scoreLineWidth"
+                android:layout_marginStart="@dimen/scoreLineWidth"
+                app:layout_constraintLeft_toRightOf="@id/araklith_trait_points_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="50" />
+
+            <ImageView
+                android:layout_width="@dimen/scoreLineWidth"
+                android:layout_height="match_parent"
+                android:src="@drawable/vertical_glowing_line_white_background"
+                app:layout_constraintLeft_toRightOf="@id/araklith_resources_points_tv"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+                android:id="@+id/araklith_total_points_tv"
+                style="@style/ScorePadCell"
+                android:layout_marginLeft="@dimen/scoreLineWidth"
+                android:layout_marginStart="@dimen/scoreLineWidth"
+                app:layout_constraintLeft_toRightOf="@id/araklith_resources_points_tv"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="50" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/scoreboard_labels"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@id/scoreboard"
+        app:layout_constraintStart_toStartOf="@id/scoreboard"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.weirdgiraffegames.stellarleapscorepad.util.RotatedTextView
+            style="@style/ScorePadLabelVertical"
+            android:text="@string/missions" />
+
+        <com.weirdgiraffegames.stellarleapscorepad.util.RotatedTextView
+            style="@style/ScorePadLabelVertical"
+            android:paddingTop="18dp"
+            android:text="@string/player_board"
+            android:textSize="17sp" />
+
+        <com.weirdgiraffegames.stellarleapscorepad.util.RotatedTextView
+            style="@style/ScorePadLabelVertical"
+            android:text="@string/trait" />
+
+        <com.weirdgiraffegames.stellarleapscorepad.util.RotatedTextView
+            style="@style/ScorePadLabelVertical"
+            android:text="@string/resources" />
+
+        <com.weirdgiraffegames.stellarleapscorepad.util.RotatedTextView
+            style="@style/ScorePadLabelVertical"
+            android:text="@string/total" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/species_headers"
+        android:layout_width="@dimen/speciesIconColumnWidth"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/scoreboard"
+        android:background="@color/semi_transparent_black"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/smallMargin"
+        android:paddingStart="@dimen/smallMargin"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline">
+
+        <ImageView
+            android:id="@+id/tuskadon_header"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/speciesIconHeight"
+            android:layout_marginTop="@dimen/smallMargin"
+            android:src="@drawable/tuskadon_with_label" />
+
+        <ImageView
+            android:id="@+id/starling_header"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/speciesIconHeight"
+            android:src="@drawable/starlings_with_label" />
+
+        <ImageView
+            android:id="@+id/cosmosaurus_header"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/speciesIconHeight"
+            android:src="@drawable/cosmosaurus_with_label" />
+
+        <ImageView
+            android:id="@+id/scoutars_header"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/speciesIconHeight"
+            android:src="@drawable/scoutars_with_label" />
+
+        <ImageView
+            android:id="@+id/araklith_header"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/speciesIconHeight"
+
+            android:src="@drawable/araklith_with_label" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="@dimen/standardMargin"
+        android:layout_marginStart="@dimen/standardMargin"
+        android:layout_marginTop="@dimen/standardMargin"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/scoreboard">
+
+        <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="@string/date"
+            android:textColor="#FFF"
+            android:textSize="18sp" />
+
+        <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+            android:id="@+id/game_date_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/smallMargin"
+            android:textColor="#FFF"
+            android:textSize="18sp"
+            tools:text="11-01-2017" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_delete"
+        android:layout_width="120dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="@dimen/standardMargin"
+        android:background="@drawable/button_background"
+        android:text="@string/delete"
+        android:textColor="@color/nebula_very_light_blue"
+        android:textSize="16sp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="@id/scoreboard"
+        app:layout_constraintRight_toRightOf="@id/scoreboard"
+        app:layout_constraintTop_toBottomOf="@id/scoreboard" />
+
+    <Button
+        android:id="@+id/btn_new_game"
+        android:layout_width="120dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="@dimen/standardMargin"
+        android:background="@drawable/button_background"
+        android:text="@string/new_game"
+        android:textColor="@color/nebula_very_light_blue"
+        android:textSize="16sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@id/scoreboard"
+        app:layout_constraintRight_toRightOf="@id/scoreboard"
+        app:layout_constraintTop_toBottomOf="@id/scoreboard" />
+
+</android.support.constraint.ConstraintLayout>

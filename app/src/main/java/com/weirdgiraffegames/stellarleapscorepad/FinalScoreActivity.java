@@ -97,7 +97,7 @@ public class FinalScoreActivity extends AppCompatActivity implements LoaderManag
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_layout_final_score_v2);
+        setContentView(R.layout.activity_final_score);
         ButterKnife.bind(this);
 
         mUri = getIntent().getData();
