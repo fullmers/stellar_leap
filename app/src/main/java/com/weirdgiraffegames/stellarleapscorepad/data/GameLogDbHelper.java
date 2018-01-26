@@ -13,7 +13,7 @@ import com.weirdgiraffegames.stellarleapscorepad.data.GameLogContract.GameLogEnt
 public class GameLogDbHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "gameLog.db";
-    public static final int DATABASE_VERSION = 4;
+    public static final int DATABASE_VERSION = 5;
 
     public GameLogDbHelper (Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -31,6 +31,7 @@ public class GameLogDbHelper extends SQLiteOpenHelper {
                 GameLogEntry.COLUMN_TUSKADON_MISSION_POINTS + " INTEGER, " +
                 GameLogEntry.COLUMN_TUSKADON_PLAYER_BOARD_POINTS+ " INTEGER, " +
                 GameLogEntry.COLUMN_TUSKADON_TRAIT_POINTS + " INTEGER, " +
+                GameLogEntry.COLUMN_TUSKADON_NUM_RESOURCE + " INTEGER, " +
                 GameLogEntry.COLUMN_TUSKADON_RESOURCE_POINTS + " INTEGER, " +
                 GameLogEntry.COLUMN_TUSKADON_TOTAL_POINTS + " INTEGER, " +
                 GameLogEntry.COLUMN_TUSKADON_TRAIT_INDEX + " INTEGER, " +
@@ -38,6 +39,7 @@ public class GameLogDbHelper extends SQLiteOpenHelper {
                 GameLogEntry.COLUMN_STARLING_MISSION_POINTS + " INTEGER, " +
                 GameLogEntry.COLUMN_STARLING_PLAYER_BOARD_POINTS+ " INTEGER, " +
                 GameLogEntry.COLUMN_STARLING_TRAIT_POINTS + " INTEGER, " +
+                GameLogEntry.COLUMN_STARLING_NUM_RESOURCE + " INTEGER, " +
                 GameLogEntry.COLUMN_STARLING_RESOURCE_POINTS + " INTEGER, " +
                 GameLogEntry.COLUMN_STARLING_TOTAL_POINTS + " INTEGER, " +
                 GameLogEntry.COLUMN_STARLING_TRAIT_INDEX + " INTEGER, " +
@@ -45,6 +47,7 @@ public class GameLogDbHelper extends SQLiteOpenHelper {
                 GameLogEntry.COLUMN_COSMOSAURUS_MISSION_POINTS + " INTEGER, " +
                 GameLogEntry.COLUMN_COSMOSAURUS_PLAYER_BOARD_POINTS+ " INTEGER, " +
                 GameLogEntry.COLUMN_COSMOSAURUS_TRAIT_POINTS + " INTEGER, " +
+                GameLogEntry.COLUMN_COSMOSAURUS_NUM_RESOURCE + " INTEGER, " +
                 GameLogEntry.COLUMN_COSMOSAURUS_RESOURCE_POINTS + " INTEGER, " +
                 GameLogEntry.COLUMN_COSMOSAURUS_TOTAL_POINTS + " INTEGER, " +
                 GameLogEntry.COLUMN_COSMOSAURUS_TRAIT_INDEX + " INTEGER, " +
@@ -52,6 +55,7 @@ public class GameLogDbHelper extends SQLiteOpenHelper {
                 GameLogEntry.COLUMN_SCOUTARS_MISSION_POINTS + " INTEGER, " +
                 GameLogEntry.COLUMN_SCOUTARS_PLAYER_BOARD_POINTS+ " INTEGER, " +
                 GameLogEntry.COLUMN_SCOUTARS_TRAIT_POINTS + " INTEGER, " +
+                GameLogEntry.COLUMN_SCOUTARS_NUM_RESOURCE + " INTEGER, " +
                 GameLogEntry.COLUMN_SCOUTARS_RESOURCE_POINTS + " INTEGER, " +
                 GameLogEntry.COLUMN_SCOUTARS_TOTAL_POINTS + " INTEGER, " +
                 GameLogEntry.COLUMN_SCOUTARS_TRAIT_INDEX + " INTEGER, " +
@@ -59,6 +63,7 @@ public class GameLogDbHelper extends SQLiteOpenHelper {
                 GameLogEntry.COLUMN_ARAKLITH_MISSION_POINTS + " INTEGER, " +
                 GameLogEntry.COLUMN_ARAKLITH_PLAYER_BOARD_POINTS+ " INTEGER, " +
                 GameLogEntry.COLUMN_ARAKLITH_TRAIT_POINTS + " INTEGER, " +
+                GameLogEntry.COLUMN_ARAKLITH_NUM_RESOURCE + " INTEGER, " +
                 GameLogEntry.COLUMN_ARAKLITH_RESOURCE_POINTS + " INTEGER, " +
                 GameLogEntry.COLUMN_ARAKLITH_TOTAL_POINTS + " INTEGER," +
                 GameLogEntry.COLUMN_ARAKLITH_TRAIT_INDEX + " INTEGER" +
