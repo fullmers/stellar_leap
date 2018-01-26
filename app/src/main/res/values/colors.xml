@@ -13,6 +13,7 @@
     <color name="button_background">#7AD8D7</color>
     <color name="text_blue">#20A2B4</color>
     <color name="blue_glow">#9abee2e4</color>
+    <color name="light_gray">#e0e1e1</color>
 
 
     <color name="nebula_dark_blue">#252AFB</color>

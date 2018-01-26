@@ -71,6 +71,11 @@
         <item name="android:background">@color/nebula_very_light_blue</item>
     </style>
 
+    <style name="InputPointsResourcePointsTextView" parent="InputPointsEditText">
+        <item name="android:background">@color/dark_gray</item>
+        <item name="android:textColor">@color/light_gray</item>
+    </style>
+
     <style name="GameLogEntry" parent="@android:style/TextAppearance.Medium">
         <item name="android:textColor">#FFF</item>
         <item name="android:textSize">@dimen/gameLogEntryTextSize</item>

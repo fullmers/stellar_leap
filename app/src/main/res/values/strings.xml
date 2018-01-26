@@ -104,9 +104,13 @@
     <string name="solar_explorer_trait_instructions">Choose a Solar System, gain 5 points per your discovery in that solar system.</string>
     <string name="warmonger_trait_instructions">Gain 3VP for every successful attack.</string>
 
-    <!--Trait resource instructions-->
+    <!--Trait resource instructions
     <string name="every_three_resources">Gain 1VP for every three of your resources.</string>
     <string name="every_four_resources">Gain 1VP for every four of your resources.</string>
+    -->
+    <string name="every_three_resources">Enter the number of resources you have. You will gain 1 VP for every 3 of your resources.</string>
+    <string name="every_four_resources">Enter the number of resources you have. You will gain 1 VP for every 4 of your resources.</string>
+    <string name="points_from_resources">Points from resources:</string>
 
     <!--FinalScoreActivity-->
     <string name="total">Total</string>
