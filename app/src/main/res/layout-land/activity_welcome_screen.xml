@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    android:background="@drawable/star_background_temp_landscape"
+    android:background="@drawable/star_field_background_landscape"
     tools:context="com.weirdgiraffegames.stellarleapscorepad.WelcomeScreenActivity">
 
     <ImageView

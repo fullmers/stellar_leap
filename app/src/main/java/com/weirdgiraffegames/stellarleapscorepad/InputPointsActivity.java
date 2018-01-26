@@ -154,7 +154,7 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
             }
         }
     };
-    
+
     private void setupNextButton() {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override

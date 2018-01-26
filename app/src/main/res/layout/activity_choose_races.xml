@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/star_background_temp_vertical"
+    android:background="@drawable/star_field_background_portrait"
     android:padding="@dimen/standardMargin"
     tools:context="com.weirdgiraffegames.stellarleapscorepad.ChooseRacesActivity">
 
