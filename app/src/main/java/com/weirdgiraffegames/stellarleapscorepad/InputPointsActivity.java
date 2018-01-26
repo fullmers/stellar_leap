@@ -13,7 +13,9 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -33,6 +35,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import static android.content.res.Configuration.ORIENTATION_LANDSCAPE;
+import static com.weirdgiraffegames.stellarleapscorepad.util.Constants.Projections.RESOURCES_POINTS_INDEX;
 
 public class InputPointsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, LoaderManager.LoaderCallbacks<Cursor> {
     private Context context;
@@ -48,7 +51,8 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
     private String[] currentInputPointsColumns;
     private String currentTotalPointsColumn = "";
     private String currentTraitSpinnerIndexColumn = "";
-    private EditText[] pointsEditTextViews;
+    private EditText[] allEditTextViews;
+    private int resourceDivider = 3;
 
     @BindView(R.id.next_btn) Button nextButton;
     @BindView(R.id.selected_species_icon) ImageView speciesIcon;
@@ -56,7 +60,8 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
     @BindView(R.id.mission_points_et) EditText missionPointsET;
     @BindView(R.id.player_board_points_et) EditText playerBoardPointsET;
     @BindView(R.id.trait_points_et) EditText traitPointsET;
-    @BindView(R.id.resource_points_et) EditText resourcePointsET;
+    @BindView(R.id.resource_points_et) EditText numResourcesET;
+    @BindView(R.id.resource_points_tv) TextView resourcePointsTV;
     @BindView(R.id.trait_spinner) Spinner traitSpinner;
     @BindView(R.id.trait_points_instructions_tv) TextView traitInstructionsTV;
     @BindView(R.id.resource_points_instructions_tv) TextView resourceInstructionsTV;
@@ -124,12 +129,32 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
 
     private void setupUI() {
         ButterKnife.bind(this);
-        pointsEditTextViews = new EditText[]{missionPointsET, playerBoardPointsET, traitPointsET, resourcePointsET};
+        numResourcesET.addTextChangedListener(resourcesWatcher);
+        allEditTextViews = new EditText[]{missionPointsET, playerBoardPointsET, traitPointsET, numResourcesET};
         setupCurrentSpecies();
         setupNextButton();
         setupSpinner();
     }
 
+    private final TextWatcher resourcesWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            if (s.length() == 0) {
+                resourcePointsTV.setText("0");
+            } else{
+                int numResources = Integer.valueOf(numResourcesET.getText().toString());
+                int resourcePoints=numResources / resourceDivider; //always round down
+                resourcePointsTV.setText(String.valueOf(resourcePoints));
+            }
+        }
+    };
+    
     private void setupNextButton() {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -160,7 +185,7 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
     }
 
     private boolean isValidInput() {
-        for (EditText et : pointsEditTextViews) {
+        for (EditText et : allEditTextViews) {
             if (TextUtils.isEmpty(et.getText().toString())) {
                 return false;
             }
@@ -169,10 +194,11 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
     }
 
     private void clearInputs() {
-        for (EditText et : pointsEditTextViews) {
+        for (EditText et : allEditTextViews) {
             et.getText().clear();
         }
         traitSpinner.setSelection(0);
+        resourcePointsTV.setText("");
     }
 
     private void setupSpinner() {
@@ -255,15 +281,31 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
     private int updateCurrentSpeciesColumns() {
         // New value for species columns
         ContentValues values = new ContentValues();
-        int total = 0;
-        for (int i = 0; i < 4; i++) {
-            int pointValue = Integer.parseInt(pointsEditTextViews[i].getText().toString());
-            total = total + pointValue;
-            values.put(currentInputPointsColumns[i], pointValue);
-        }
-        values.put(currentTotalPointsColumn, total);
+
+        //from the spinner:
         int traitIndex = traitSpinner.getSelectedItemPosition();
         values.put(currentTraitSpinnerIndexColumn,traitIndex);
+
+        //from all the edit texts:
+        int missionPoints = Integer.parseInt(allEditTextViews[Constants.Projections.MISSION_POINTS_INDEX].getText().toString());
+        values.put(currentInputPointsColumns[Constants.Projections.MISSION_POINTS_INDEX], missionPoints);
+
+        int playerBoardPoints = Integer.parseInt(allEditTextViews[Constants.Projections.PLAYER_BOARD_POINTS_INDEX].getText().toString());
+        values.put(currentInputPointsColumns[Constants.Projections.PLAYER_BOARD_POINTS_INDEX], playerBoardPoints);
+
+        int traitPoints = Integer.parseInt(allEditTextViews[Constants.Projections.TRAIT_POINTS_INDEX].getText().toString());
+        values.put(currentInputPointsColumns[Constants.Projections.TRAIT_POINTS_INDEX], traitPoints);
+
+        int numResources = Integer.parseInt(allEditTextViews[Constants.Projections.NUM_RESOURCES_INDEX].getText().toString());
+        values.put(currentInputPointsColumns[Constants.Projections.NUM_RESOURCES_INDEX], numResources);
+
+        //from calculate resource points text view:
+        int resourcePoints = Integer.parseInt(resourcePointsTV.getText().toString());
+        values.put(currentInputPointsColumns[RESOURCES_POINTS_INDEX],resourcePoints);
+
+        //total points
+        int total = missionPoints + playerBoardPoints + traitPoints + resourcePoints;
+        values.put(currentTotalPointsColumn, total);
 
         return getContentResolver().update(mUri, values, null, null);
     }
@@ -275,6 +317,11 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
         String[] resourceInstructionsArray = getResources().getStringArray(R.array.resource_instructions);
         traitInstructionsTV.setText(traitInstructionsArray[pos]);
         resourceInstructionsTV.setText(resourceInstructionsArray[pos]);
+        if (resourceInstructionsArray[pos].equals(getResources().getString(R.string.every_three_resources))) {
+            resourceDivider = 3;
+        } else {
+            resourceDivider = 4;
+        }
     }
 
     @Override
@@ -303,19 +350,23 @@ public class InputPointsActivity extends AppCompatActivity implements AdapterVie
                 int totalPoints = cursor.getInt(Constants.Projections.TOTAL_POINTS_INDEX);
                 if (totalPoints != 0) { //there is something to load
                     int missionPoints = cursor.getInt(Constants.Projections.MISSION_POINTS_INDEX);
-                    pointsEditTextViews[Constants.Projections.MISSION_POINTS_INDEX].setText(String.valueOf(missionPoints));
+                    allEditTextViews[Constants.Projections.MISSION_POINTS_INDEX].setText(String.valueOf(missionPoints));
 
                     int playerBoardPoints = cursor.getInt(Constants.Projections.PLAYER_BOARD_POINTS_INDEX);
-                    pointsEditTextViews[Constants.Projections.PLAYER_BOARD_POINTS_INDEX].setText(String.valueOf(playerBoardPoints));
+                    allEditTextViews[Constants.Projections.PLAYER_BOARD_POINTS_INDEX].setText(String.valueOf(playerBoardPoints));
 
                     int traitPoints = cursor.getInt(Constants.Projections.TRAIT_POINTS_INDEX);
-                    pointsEditTextViews[Constants.Projections.TRAIT_POINTS_INDEX].setText(String.valueOf(traitPoints));
+                    allEditTextViews[Constants.Projections.TRAIT_POINTS_INDEX].setText(String.valueOf(traitPoints));
 
-                    int resourcesPoints = cursor.getInt(Constants.Projections.RESOURCES_POINTS_INDEX);
-                    pointsEditTextViews[Constants.Projections.RESOURCES_POINTS_INDEX].setText(String.valueOf(resourcesPoints));
+                    int numResources = cursor.getInt(Constants.Projections.NUM_RESOURCES_INDEX);
+                    allEditTextViews[Constants.Projections.NUM_RESOURCES_INDEX].setText(String.valueOf(numResources));
+
+                    int resourcesPoints = cursor.getInt(RESOURCES_POINTS_INDEX);
+                    resourcePointsTV.setText(String.valueOf(resourcesPoints));
+
+                    int traitIndex = cursor.getInt(Constants.Projections.TRAIT_INDEX_INDEX);
+                    traitSpinner.setSelection(traitIndex);
                 }
-                int traitIndex = cursor.getInt(Constants.Projections.TRAIT_INDEX_INDEX);
-                traitSpinner.setSelection(traitIndex);
             }
     }
 
