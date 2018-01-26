@@ -44,8 +44,8 @@
 
             <CheckBox
                 android:id="@+id/tuskadon_chkbx"
-                android:button="@drawable/tuskadon_selector"
                 style="@style/CustomCheckBox"
+                android:button="@drawable/tuskadon_selector"
                 android:text="@string/tuskadon" />
 
             <CheckBox
