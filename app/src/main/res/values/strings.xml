@@ -7,15 +7,10 @@
     <string name="game_logs">Game Logs</string>
 
     <!--AboutActivity-->
-    <!--TODO Get text from Weird Giraffe-->
     <string name="about_weird_giraffe">About Weird Giraffe Games</string>
-    <string name="about_amiculous_apps_title">About Amiculous Apps</string>
-    <string name="about_the_game">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</string>
-    <!--TODO get link to rules-->
-    <string name="see_rules">See rules</string>
-    <!--TODO write something about amiculous apps-->
-    <string name="about_amiculous_apps">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
-
+    <string name="about_weird_giraffe_text">We are two engineers and a cat based in Huntsville, Alabama! We are dedicated to creating engaging games focused on player choices and layered with strategy. For more information visit WeirdGiraffeGames.com.</string>
+    <string name="stellar_leap_url">http://weirdgiraffegames.com/stellar-leap.html</string>
+    <string name="see_rules">More about Stellar Leap</string>
 
     <!--ChooseRacesActivity-->
     <string name="select_races">Select Race(s)</string>

@@ -7,49 +7,34 @@
     android:orientation="vertical"
     android:gravity="center_horizontal"
     android:background="@drawable/star_field_background_portrait"
-    android:paddingLeft="@dimen/standardMargin"
-    android:paddingRight="@dimen/standardMargin"
+    android:paddingLeft="32dp"
+    android:paddingRight="32dp"
     tools:context="com.weirdgiraffegames.stellarleapscorepad.AboutActivity">
 
     <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
-        android:layout_marginTop="@dimen/standardMargin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/text_blue"
-        android:textSize="20sp"
-        android:text="@string/about_weird_giraffe"/>
+            android:layout_marginTop="@dimen/standardMargin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_blue"
+            android:textSize="20sp"
+            android:text="@string/about_weird_giraffe"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#FFF"
-        android:background="@color/semi_transparent_black"
-        android:text="@string/about_the_game"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFF"
+            android:background="@color/semi_transparent_black"
+            android:text="@string/about_weird_giraffe_text"/>
 
-    <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
-        android:layout_marginTop="@dimen/standardMargin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/text_blue"
-        android:textSize="18sp"
-        android:text="@string/about_amiculous_apps_title"/>
+        <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+            android:id="@+id/about_stellar_leap"
+            android:layout_marginTop="@dimen/standardMargin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/text_blue"
+            android:background="@color/semi_transparent_black"
+            android:text="@string/see_rules"/>
 
-    <TextView
-        android:layout_marginTop="0dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#FFF"
-        android:background="@color/semi_transparent_black"
-        android:text="@string/about_amiculous_apps"/>
-
-    <!--TODO get link for rules-->
-    <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
-        android:layout_marginTop="@dimen/standardMargin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textColor="@color/text_blue"
-        android:background="@color/semi_transparent_black"
-        android:text="@string/see_rules"/>
 
 </LinearLayout>

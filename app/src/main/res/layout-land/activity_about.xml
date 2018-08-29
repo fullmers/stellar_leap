@@ -24,26 +24,10 @@
         android:layout_height="wrap_content"
         android:textColor="#FFF"
         android:background="@color/semi_transparent_black"
-        android:text="@string/about_the_game"/>
+        android:text="@string/about_weird_giraffe_text"/>
 
     <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
-        android:layout_marginTop="@dimen/standardMargin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/text_blue"
-        android:textSize="18sp"
-        android:text="@string/about_amiculous_apps_title"/>
-
-    <TextView
-        android:layout_marginTop="0dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#FFF"
-        android:background="@color/semi_transparent_black"
-        android:text="@string/about_amiculous_apps"/>
-
-    <!--TODO get link for rules-->
-    <com.weirdgiraffegames.stellarleapscorepad.util.PrototypeFontTextView
+        android:id="@+id/about_stellar_leap"
         android:layout_marginTop="@dimen/standardMargin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
