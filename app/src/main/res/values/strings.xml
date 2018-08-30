@@ -10,7 +10,11 @@
     <string name="about_weird_giraffe">About Weird Giraffe Games</string>
     <string name="about_weird_giraffe_text">We are two engineers and a cat based in Huntsville, Alabama! We are dedicated to creating engaging games focused on player choices and layered with strategy. For more information visit WeirdGiraffeGames.com.</string>
     <string name="stellar_leap_url">http://weirdgiraffegames.com/stellar-leap.html</string>
-    <string name="see_rules">More about Stellar Leap</string>
+    <string name="weird_giraffe_url">http://weirdgiraffegames.com/</string>
+    <string name="see_rules">Stellar Leap</string>
+    <string name="about_stellar_leap_text">Stellar Leap is a space exploration game for 1-5 players and plays in about an hour with resource management, variable player powers, hidden objectives, and game changing events! \n
+    \n Earn prestige by completing missions, discovering new planets, increasing population, and fulfilling your hidden objective. Variable player powers and game-changing events mean that every game is as different as the planets in our galaxy!
+        \n \n Visit Weirdgiraffegames.com to learn more.</string>
 
     <!--ChooseRacesActivity-->
     <string name="select_races">Select Race(s)</string>

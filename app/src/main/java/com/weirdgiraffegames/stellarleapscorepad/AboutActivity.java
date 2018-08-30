@@ -20,7 +20,17 @@ public class AboutActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick(R.id.about_stellar_leap)
+    @OnClick(R.id.about_weird_giraffe_text)
+    public void openWeirdGiraffePage(View view) {
+        String url = getString(R.string.weird_giraffe_url);
+        Uri webpage = Uri.parse(url);
+        Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+    }
+
+    @OnClick(R.id.about_stellar_leap_text)
     public void openStellarLeapPage(View view) {
         String url = getString(R.string.stellar_leap_url);
         Uri webpage = Uri.parse(url);
