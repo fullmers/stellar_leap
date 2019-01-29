@@ -6,6 +6,14 @@ The app simplifies the end-of-game scoring process. The app also enables the use
 
 It is available for download in the [Google Play Store](https://play.google.com/store/apps/details?id=com.weirdgiraffegames.stellarleapscorepad)
 
+# Screenshots
+
+
+<img width="45%" src=".github/menu.png" />
+<img width="45%" src=".github/select_races.png" />
+<img width="45%" src=".github/enter_points.png" />
+<img width="45%" src=".github/final_score.png" />
+<img width="45%" src=".github/game_log.png" />
 
 # License
 
